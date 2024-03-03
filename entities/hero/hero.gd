@@ -1,6 +1,5 @@
 class_name Hero extends CharacterBody2D
 
-@onready var shoot_timer: Timer = $ShootTimer
 @onready var stats: Stats = $Stats
 
 var arrow = preload("res://attacks/arrow.tscn")
@@ -15,16 +14,14 @@ func _physics_process(delta):
 	move_and_slide()
 
 
-func attack():
-	if shoot_timer.time_left > 0.05:
-		return
-	
+func attack():	
 	var attack_dir = Input.get_vector("attack_left", "attack_right", "attack_up", "attack_down")
 	
 	if abs(attack_dir.x) < 0.001 and abs(attack_dir.y) < 0.001:
 		return
 	
-	shoot_timer.start()
+	if not stats.shoot():
+		return
 	
 	var bullet: RigidBody2D = arrow.instantiate()
 	bullet.position.x = position.x + 10 * cos(attack_dir.angle())

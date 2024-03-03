@@ -29,6 +29,3 @@ shape = SubResource("RectangleShape2D_c78fy")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_xv7rs")
 texture = SubResource("AtlasTexture_78j2y")
-
-[node name="ShootTimer" type="Timer" parent="."]
-wait_time = 0.4
