@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://d1r2usn4lhuqj"]
+[gd_scene load_steps=7 format=3 uid="uid://d1r2usn4lhuqj"]
 
 [ext_resource type="Shader" path="res://assets/tile.gdshader" id="1_1fbp1"]
 [ext_resource type="Texture2D" uid="uid://d4ibrl4nmd57w" path="res://assets/MRMOTEXT_EX.png" id="2_m6afi"]
+[ext_resource type="EventAsset" uid="uid://ct8e5h4fffmln" path="res://addons/FMOD/editor/resources/events/{5f7f5c75-52f3-477c-ae35-7ac698216af6}.tres" id="3_wtphs"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_m12j8"]
 shader = ExtResource("1_1fbp1")
@@ -25,3 +26,7 @@ texture = SubResource("AtlasTexture_gfymt")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_dsmn0")
+
+[node name="StudioEventEmitter2D" type="StudioEventEmitter2D" parent="."]
+play_event = 1
+event = ExtResource("3_wtphs")
