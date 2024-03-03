@@ -1,0 +1,25 @@
+[gd_scene load_steps=6 format=3 uid="uid://cmgwwovyu6kba"]
+
+[ext_resource type="Shader" path="res://tile.gdshader" id="1_ucpnx"]
+[ext_resource type="Texture2D" uid="uid://d4ibrl4nmd57w" path="res://assets/MRMOTEXT_EX.png" id="2_g2vsp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c78fy"]
+size = Vector2(6, 6)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xv7rs"]
+shader = ExtResource("1_ucpnx")
+shader_parameter/move_param = Vector4(2.08165e-12, 2.08165e-12, 2.08165e-12, 2.08165e-12)
+shader_parameter/tile_color = Vector4(1, 1, 1, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_78j2y"]
+atlas = ExtResource("2_g2vsp")
+region = Rect2(0, 224, 8, 8)
+
+[node name="Hero" type="CharacterBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_c78fy")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_xv7rs")
+texture = SubResource("AtlasTexture_78j2y")
