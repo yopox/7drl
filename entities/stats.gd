@@ -11,7 +11,6 @@ var SPD_SCALE := 200.0
 @onready var timer: Timer = $Timer
 
 func shoot() -> bool:
-	print(timer.time_left)
 	if not timer.is_stopped():
 		return false
 		

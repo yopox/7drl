@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://cmgwwovyu6kba"]
+[gd_scene load_steps=10 format=3 uid="uid://cmgwwovyu6kba"]
 
 [ext_resource type="Script" path="res://entities/hero/hero.gd" id="1_0bavb"]
 [ext_resource type="Shader" path="res://assets/tile.gdshader" id="1_ucpnx"]
 [ext_resource type="PackedScene" uid="uid://dgul0eolhcq2n" path="res://entities/stats.tscn" id="2_25foy"]
 [ext_resource type="Texture2D" uid="uid://d4ibrl4nmd57w" path="res://assets/MRMOTEXT_EX.png" id="2_g2vsp"]
+[ext_resource type="Script" path="res://entities/hero/FightZone.gd" id="5_xmbvs"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c78fy"]
 size = Vector2(6, 6)
@@ -17,6 +18,9 @@ shader_parameter/tile_color = Vector4(1, 1, 1, 1)
 atlas = ExtResource("2_g2vsp")
 region = Rect2(0, 224, 8, 8)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_e3cw4"]
+radius = 96.0
+
 [node name="Hero" type="CharacterBody2D"]
 collision_mask = 0
 script = ExtResource("1_0bavb")
@@ -29,3 +33,13 @@ shape = SubResource("RectangleShape2D_c78fy")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_xv7rs")
 texture = SubResource("AtlasTexture_78j2y")
+
+[node name="FightZone" type="Area2D" parent="."]
+visible = false
+collision_layer = 0
+collision_mask = 4
+monitorable = false
+script = ExtResource("5_xmbvs")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FightZone"]
+shape = SubResource("CircleShape2D_e3cw4")
