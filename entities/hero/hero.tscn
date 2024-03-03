@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://cmgwwovyu6kba"]
 
 [ext_resource type="Script" path="res://entities/hero/hero.gd" id="1_0bavb"]
-[ext_resource type="Shader" path="res://tile.gdshader" id="1_ucpnx"]
+[ext_resource type="Shader" path="res://assets/tile.gdshader" id="1_ucpnx"]
 [ext_resource type="Texture2D" uid="uid://d4ibrl4nmd57w" path="res://assets/MRMOTEXT_EX.png" id="2_g2vsp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c78fy"]
@@ -17,6 +17,7 @@ atlas = ExtResource("2_g2vsp")
 region = Rect2(0, 224, 8, 8)
 
 [node name="Hero" type="CharacterBody2D"]
+collision_mask = 0
 script = ExtResource("1_0bavb")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -25,3 +26,6 @@ shape = SubResource("RectangleShape2D_c78fy")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_xv7rs")
 texture = SubResource("AtlasTexture_78j2y")
+
+[node name="ShootTimer" type="Timer" parent="."]
+wait_time = 0.4
