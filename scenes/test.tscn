@@ -7,7 +7,7 @@
 [node name="Test" type="Node2D"]
 
 [node name="Hero" parent="." instance=ExtResource("1_1mg1f")]
-position = Vector2(1123, 534)
+position = Vector2(1087, 537)
 
 [node name="Camera2D" type="Camera2D" parent="Hero"]
 zoom = Vector2(6, 6)

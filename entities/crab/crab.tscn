@@ -1,7 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://fmnaew6q3fnr"]
+[gd_scene load_steps=9 format=3 uid="uid://fmnaew6q3fnr"]
 
 [ext_resource type="Shader" path="res://assets/tile.gdshader" id="1_heqgj"]
+[ext_resource type="Script" path="res://entities/crab/crab.gd" id="1_rs7sn"]
 [ext_resource type="Texture2D" uid="uid://d4ibrl4nmd57w" path="res://assets/MRMOTEXT_EX.png" id="2_pjjx0"]
+[ext_resource type="PackedScene" uid="uid://dgul0eolhcq2n" path="res://entities/stats.tscn" id="4_8dx75"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_c0wwa"]
 shader = ExtResource("1_heqgj")
@@ -15,11 +17,18 @@ region = Rect2(24, 224, 8, 8)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s5c2f"]
 size = Vector2(6, 6)
 
-[node name="Crab" type="RigidBody2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_e2o2t"]
+radius = 48.0
+
+[node name="Crab" type="CharacterBody2D"]
 collision_layer = 4
-collision_mask = 18
-mass = 0.5
-lock_rotation = true
+collision_mask = 19
+script = ExtResource("1_rs7sn")
+
+[node name="Stats" parent="." instance=ExtResource("4_8dx75")]
+HP = 6
+SPD = 12
+ATK_SPD = 0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_c0wwa")
@@ -27,3 +36,12 @@ texture = SubResource("AtlasTexture_yqrx1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_s5c2f")
+
+[node name="Zone" type="Area2D" parent="."]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Zone"]
+shape = SubResource("CircleShape2D_e2o2t")
+
+[connection signal="body_entered" from="Zone" to="." method="_on_zone_body_entered"]
+[connection signal="body_exited" from="Zone" to="." method="_on_zone_body_exited"]
