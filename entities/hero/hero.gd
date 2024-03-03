@@ -1,8 +1,7 @@
 extends CharacterBody2D
 
-const SPEED = 10
-
 @onready var shoot_timer: Timer = $ShootTimer
+@onready var stats: Stats = $Stats
 
 var arrow = preload("res://attacks/arrow.tscn")
 
@@ -11,7 +10,7 @@ func _process(delta):
 
 func _physics_process(delta):
 	var input_dir = Input.get_vector("left", "right", "up", "down")
-	velocity = input_dir * SPEED * delta * 200.0
+	velocity = input_dir * stats.SPD * delta * 200.0
 	move_and_slide()
 
 func attack():
