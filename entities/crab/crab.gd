@@ -19,9 +19,13 @@ func _physics_process(delta):
 
 
 func _on_zone_body_entered(body):
+	if not body is Hero:
+		return
 	following = true
 	hero = body
 
 
 func _on_zone_body_exited(body):
+	if !body is Hero:
+		return
 	following = false
