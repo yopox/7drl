@@ -118,7 +118,6 @@ script = ExtResource("1_l1yae")
 z_index = 100
 
 [node name="Camera2D" type="Camera2D" parent="Hero"]
-zoom = Vector2(6, 6)
 
 [node name="TileMap" parent="." instance=ExtResource("3_0ur23")]
 
