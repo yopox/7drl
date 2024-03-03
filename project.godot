@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="7drl"
-run/main_scene="res://scenes/main.tscn"
+run/main_scene="res://scenes/test.tscn"
 config/features=PackedStringArray("4.2", "Mobile")
 config/icon="res://icon.svg"
 
@@ -106,6 +106,7 @@ attack_right={
 
 2d/default_gravity=2.08165e-12
 2d/default_gravity_vector=Vector2(2.08165e-12, 2.08165e-12)
+2d/default_linear_damp=1.0
 
 [rendering]
 

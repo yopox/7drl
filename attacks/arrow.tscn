@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://d1r2usn4lhuqj"]
+[gd_scene load_steps=11 format=3 uid="uid://d1r2usn4lhuqj"]
 
 [ext_resource type="Shader" path="res://assets/tile.gdshader" id="1_1fbp1"]
+[ext_resource type="Script" path="res://attacks/arrow.gd" id="1_os4aa"]
 [ext_resource type="Texture2D" uid="uid://d4ibrl4nmd57w" path="res://assets/MRMOTEXT_EX.png" id="2_m6afi"]
-[ext_resource type="EventAsset" uid="uid://ct8e5h4fffmln" path="res://addons/FMOD/editor/resources/events/{5f7f5c75-52f3-477c-ae35-7ac698216af6}.tres" id="3_wtphs"]
+[ext_resource type="EventAsset" uid="uid://ck5m5qu6bfu7n" path="res://addons/FMOD/editor/resources/events/{5f7f5c75-52f3-477c-ae35-7ac698216af6}.tres" id="3_wtphs"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_m12j8"]
 shader = ExtResource("1_1fbp1")
@@ -16,9 +17,65 @@ region = Rect2(16, 232, 8, 8)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dsmn0"]
 size = Vector2(2, 6)
 
+[sub_resource type="Animation" id="Animation_2l6cq"]
+resource_name = "lifetime"
+length = 6.0
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(4),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:freeze")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 3, 4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 3, 3.25, 3.5, 3.75, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [true, false, true, false, true, false]
+}
+
+[sub_resource type="Animation" id="Animation_5evc4"]
+length = 0.001
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ingo8"]
+_data = {
+"RESET": SubResource("Animation_5evc4"),
+"lifetime": SubResource("Animation_2l6cq")
+}
+
 [node name="Arrow" type="RigidBody2D"]
 collision_layer = 2
 collision_mask = 20
+mass = 0.01
+lock_rotation = true
+max_contacts_reported = 1
+contact_monitor = true
+script = ExtResource("1_os4aa")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_m12j8")
@@ -30,3 +87,9 @@ shape = SubResource("RectangleShape2D_dsmn0")
 [node name="StudioEventEmitter2D" type="StudioEventEmitter2D" parent="."]
 play_event = 1
 event = ExtResource("3_wtphs")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ingo8")
+}
+autoplay = "lifetime"

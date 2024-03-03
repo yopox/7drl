@@ -17,9 +17,10 @@ func _physics_process(delta):
 func attack():
 	if shoot_timer.time_left > 0.05:
 		return
-		
+	
 	var attack_dir = Input.get_vector("attack_left", "attack_right", "attack_up", "attack_down")
-	if abs(attack_dir.x) < 0.01 and abs(attack_dir.y) < 0.01:
+	
+	if abs(attack_dir.x) < 0.001 and abs(attack_dir.y) < 0.001:
 		return
 	
 	shoot_timer.start()
@@ -28,6 +29,6 @@ func attack():
 	bullet.position.x = position.x + 10 * cos(attack_dir.angle())
 	bullet.position.y = position.y + 10 * sin(attack_dir.angle())
 	bullet.rotation = attack_dir.angle() - PI / 2.0
-	bullet.apply_impulse(attack_dir * 150)
+	bullet.apply_impulse(attack_dir)
 	
 	get_parent().add_child(bullet)
