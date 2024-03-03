@@ -1,0 +1,68 @@
+[gd_scene load_steps=8 format=3 uid="uid://bs450qjrbimjm"]
+
+[ext_resource type="Shader" path="res://assets/tile.gdshader" id="1_tqxlr"]
+[ext_resource type="Texture2D" uid="uid://d4ibrl4nmd57w" path="res://assets/MRMOTEXT_EX.png" id="2_ux47k"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_y5ut2"]
+shader = ExtResource("1_tqxlr")
+shader_parameter/move_param = Vector4(1.31, 1, 1.17, 1)
+shader_parameter/tile_color = Vector4(0.1, 0.6, 1, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wdov4"]
+atlas = ExtResource("2_ux47k")
+region = Rect2(241, 113, 6, 6)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_byh41"]
+size = Vector2(6, 6)
+
+[sub_resource type="Animation" id="Animation_gfxay"]
+resource_name = "lifetime"
+length = 2.0
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.75, 1, 1.25, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [true, false, true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_k5ofi"]
+_data = {
+"lifetime": SubResource("Animation_gfxay")
+}
+
+[node name="Bubble" type="RigidBody2D"]
+collision_layer = 8
+lock_rotation = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_y5ut2")
+texture = SubResource("AtlasTexture_wdov4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_byh41")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_k5ofi")
+}
+autoplay = "lifetime"

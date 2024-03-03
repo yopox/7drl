@@ -1,0 +1,46 @@
+[gd_scene load_steps=9 format=3 uid="uid://o4ojnevevt2l"]
+
+[ext_resource type="Shader" path="res://assets/tile.gdshader" id="1_648os"]
+[ext_resource type="Script" path="res://entities/shrimp/shrimp.gd" id="1_1215u"]
+[ext_resource type="PackedScene" uid="uid://dgul0eolhcq2n" path="res://entities/stats.tscn" id="2_g3v2o"]
+[ext_resource type="Texture2D" uid="uid://d4ibrl4nmd57w" path="res://assets/MRMOTEXT_EX.png" id="2_xgnjb"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2wyt6"]
+shader = ExtResource("1_648os")
+shader_parameter/move_param = Vector4(2.08165e-12, 2.08165e-12, 1.7, 1)
+shader_parameter/tile_color = Vector4(0.7, 0.1, 0.3, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_frdt0"]
+atlas = ExtResource("2_xgnjb")
+region = Rect2(48, 232, 8, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_27w8b"]
+size = Vector2(6, 7)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8g06j"]
+radius = 64.0
+
+[node name="Shrimp" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 23
+script = ExtResource("1_1215u")
+
+[node name="Stats" parent="." instance=ExtResource("2_g3v2o")]
+ATK_SPD = 6
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_2wyt6")
+texture = SubResource("AtlasTexture_frdt0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_27w8b")
+
+[node name="Zone" type="Area2D" parent="."]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Zone"]
+shape = SubResource("CircleShape2D_8g06j")
+
+[connection signal="body_entered" from="Zone" to="." method="_on_zone_body_entered"]
+[connection signal="body_exited" from="Zone" to="." method="_on_zone_body_exited"]

@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://dwhg6icaxvxjd"]
+[gd_scene load_steps=5 format=3 uid="uid://dwhg6icaxvxjd"]
 
 [ext_resource type="PackedScene" uid="uid://cmgwwovyu6kba" path="res://entities/hero/hero.tscn" id="1_1mg1f"]
 [ext_resource type="PackedScene" uid="uid://dc17tw0kij6ie" path="res://scenes/tile_map.tscn" id="2_77ne1"]
 [ext_resource type="PackedScene" uid="uid://fmnaew6q3fnr" path="res://entities/crab/crab.tscn" id="3_ogjmi"]
+[ext_resource type="PackedScene" uid="uid://o4ojnevevt2l" path="res://entities/shrimp/shrimp.tscn" id="4_tk2ht"]
 
 [node name="Test" type="Node2D"]
 
@@ -13,6 +14,10 @@ position = Vector2(1087, 537)
 zoom = Vector2(6, 6)
 
 [node name="TileMap" parent="." instance=ExtResource("2_77ne1")]
+z_index = 10
 
 [node name="Crab" parent="." instance=ExtResource("3_ogjmi")]
 position = Vector2(1170, 534)
+
+[node name="Shrimp" parent="." instance=ExtResource("4_tk2ht")]
+position = Vector2(1019, 495)
