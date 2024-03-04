@@ -1,7 +1,7 @@
 shader_type canvas_item;
 
 uniform vec4 move_param = vec4(0.0, 0.0, 0.0, 0.0);
-uniform vec4 tile_color = vec4(1.0, 1.0, 1.0, 0.25);
+uniform vec4 tile_color = vec4(0.18, 0.173, 0.231, 0.5);
 
 void vertex() {
 	if (move_param[0] > 0.05 || move_param[2] > 0.05) {
@@ -11,7 +11,7 @@ void vertex() {
 
 void fragment() {
 	COLOR = texture(TEXTURE, UV);
-	
+
 	if (COLOR.r == 0.0) {
 		COLOR.a = 0.0;
 	} else {

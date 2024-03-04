@@ -5,7 +5,7 @@
 ## Pre-existing art
 
 - [MRMOTEXT](https://mrmotarius.itch.io/mrmotext)
-- [Bubblegum 16 Palette](https://lospec.com/palette-list/bubblegum-16)
+- [Indecision Palette](https://lospec.com/palette-list/indecision)
 
 ## Setup
 

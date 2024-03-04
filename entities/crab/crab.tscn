@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://fmnaew6q3fnr"]
+[gd_scene load_steps=10 format=3 uid="uid://fmnaew6q3fnr"]
 
 [ext_resource type="Shader" path="res://assets/tile.gdshader" id="1_heqgj"]
 [ext_resource type="Script" path="res://entities/crab/crab.gd" id="1_rs7sn"]
@@ -8,7 +8,7 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_c0wwa"]
 shader = ExtResource("1_heqgj")
 shader_parameter/move_param = Vector4(0, 0, 0, 0)
-shader_parameter/tile_color = Vector4(1, 0.518, 0.149, 1)
+shader_parameter/tile_color = Vector4(0.769, 0.396, 0.11, 1)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yqrx1"]
 atlas = ExtResource("2_pjjx0")
@@ -19,6 +19,14 @@ size = Vector2(6, 6)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_e2o2t"]
 radius = 48.0
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_8tdq0"]
+particle_flag_disable_z = true
+angle_min = -720.0
+angle_max = 720.0
+initial_velocity_min = -20.0
+initial_velocity_max = 20.0
+gravity = Vector3(2.08165e-12, 2.08165e-12, 2.08165e-12)
 
 [node name="Crab" type="CharacterBody2D"]
 collision_layer = 4
@@ -42,6 +50,11 @@ collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Zone"]
 shape = SubResource("CircleShape2D_e2o2t")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+visible = false
+amount = 2
+process_material = SubResource("ParticleProcessMaterial_8tdq0")
 
 [connection signal="hit" from="." to="Stats" method="_on_hit"]
 [connection signal="body_entered" from="Zone" to="." method="_on_zone_body_entered"]

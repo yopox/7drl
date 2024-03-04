@@ -12,8 +12,8 @@ size = Vector2(6, 6)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xv7rs"]
 shader = ExtResource("1_ucpnx")
-shader_parameter/move_param = Vector4(2.08165e-12, 2.08165e-12, 2.08165e-12, 2.08165e-12)
-shader_parameter/tile_color = Vector4(0.98, 0.992, 1, 1)
+shader_parameter/move_param = Vector4(0, 0, 0, 0)
+shader_parameter/tile_color = Vector4(0.757, 0.898, 0.918, 1)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_78j2y"]
 atlas = ExtResource("2_g2vsp")
@@ -27,10 +27,6 @@ collision_mask = 0
 script = ExtResource("1_0bavb")
 
 [node name="Stats" parent="." instance=ExtResource("2_25foy")]
-HP = 20
-ATK = 5
-SPD = 10
-ATK_SPD = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_c78fy")
