@@ -1,4 +1,9 @@
 class_name DashManager extends Node
+@export var event: EventAsset
+var instance: EventInstance
+
+func _ready():
+	instance = FMODRuntime.create_instance(event)
 
 @onready var timer: Timer = $Timer
 
@@ -10,6 +15,7 @@ func dash() -> bool:
 		return false
 	dashes -= 1
 	timer.start()
+	instance.start()
 	return true
 
 
