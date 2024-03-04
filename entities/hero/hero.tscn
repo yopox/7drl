@@ -12,7 +12,7 @@ size = Vector2(6, 6)
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xv7rs"]
 shader = ExtResource("1_ucpnx")
 shader_parameter/move_param = Vector4(2.08165e-12, 2.08165e-12, 2.08165e-12, 2.08165e-12)
-shader_parameter/tile_color = Vector4(1, 1, 1, 1)
+shader_parameter/tile_color = Vector4(0.98, 0.992, 1, 1)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_78j2y"]
 atlas = ExtResource("2_g2vsp")
