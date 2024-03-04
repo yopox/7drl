@@ -8,7 +8,7 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_m12j8"]
 shader = ExtResource("1_1fbp1")
 shader_parameter/move_param = Vector4(0, 0, 0, 0)
-shader_parameter/tile_color = Vector4(0.757, 0.898, 0.918, 1)
+shader_parameter/tile_color = Vector4(1, 1, 1, 1)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gfymt"]
 atlas = ExtResource("2_m6afi")

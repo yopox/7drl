@@ -40,8 +40,7 @@ name = "Dash"
 collision_mask = 28
 script = ExtResource("1_0bavb")
 
-[node name="Stats" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("2_25foy")]
-sprite = NodePath("../Sprite2D")
+[node name="Stats" parent="." instance=ExtResource("2_25foy")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_c78fy")
