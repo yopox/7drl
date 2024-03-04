@@ -1,9 +1,14 @@
 class_name Hero extends CharacterBody2D
 
 @onready var stats: Stats = $Stats
+@onready var dash_manager: DashManager = $DashManager
+@onready var dash_timer: Timer = $DashTimer
+@onready var dash_particles: GPUParticles2D = $DashParticles
 
 var arrow = preload("res://attacks/arrow.tscn")
 
+var dash = false
+var dash_vel: Vector2
 
 func _ready():
 	HeroUtil.hero = self
@@ -15,7 +20,15 @@ func _process(_delta):
 
 func _physics_process(delta):
 	var input_dir = Input.get_vector("left", "right", "up", "down")
-	velocity = input_dir * delta * stats.SPD * stats.SPD_SCALE
+	if dash:
+		velocity = dash_vel
+	else:
+		velocity = input_dir * delta * stats.SPD * stats.SPD_SCALE
+		
+	if !dash and Input.is_action_just_pressed("dash") and dash_manager.dash():
+		start_dash()
+		velocity = dash_vel
+	
 	move_and_slide()
 
 
@@ -36,3 +49,17 @@ func attack():
 	bullet.apply_impulse(attack_dir)
 	
 	get_parent().add_child(bullet)
+
+
+func start_dash():
+	dash = true
+	dash_timer.start()
+	dash_particles.emitting = true
+	collision_mask = 16
+	dash_vel = velocity * 6
+
+
+func _on_dash_timer_timeout():
+	dash = false
+	dash_particles.emitting = false
+	collision_mask = 4 + 8 + 16

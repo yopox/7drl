@@ -7,16 +7,16 @@ var W := Vector2i(23, 28)
 
 var CARD_POINTS = [
 	[0, E],
-	[PI / 2, N],
+	[PI / 2, S],
 	[PI, W],
-	[3 * PI / 2, S],
+	[3 * PI / 2, N],
 ]
 
 var EMPTY := Vector2i(31, 31)
 var CHEST := Vector2i(31, 15)
 var GOAL := Vector2i(30, 15)
 
-var angle = 0
+var angle = 3 * PI / 2
 var SPAN = 170.0 * PI / 180.0
 var SEGMENT = SPAN / 9.0
 
@@ -27,7 +27,7 @@ func _process(delta):
 			var beta = hero.velocity.angle()
 			if angle - beta > PI:
 				beta += 2 * PI
-			angle = fposmod((angle * 11 + beta) / 12, 2 * PI)
+			angle = fposmod((angle * 31 + beta) / 32, 2 * PI)
 			
 	var current = angle - SPAN / 2
 	for i in range(9):
