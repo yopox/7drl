@@ -40,7 +40,8 @@ name = "Dash"
 collision_mask = 28
 script = ExtResource("1_0bavb")
 
-[node name="Stats" parent="." instance=ExtResource("2_25foy")]
+[node name="Stats" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("2_25foy")]
+sprite = NodePath("../Sprite2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_c78fy")
@@ -67,7 +68,7 @@ offset = Vector2(36, 2.08165e-12)
 emitting = false
 amount = 64
 process_material = SubResource("ParticleProcessMaterial_mq0ep")
-lifetime = 2.0
+lifetime = 0.3
 
 [node name="DashManager" parent="." instance=ExtResource("7_iljwf")]
 event = SubResource("EventAsset_3djvd")

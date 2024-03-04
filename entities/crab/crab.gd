@@ -8,7 +8,9 @@ var hero: Hero = null
 
 
 func _physics_process(delta):
-	if following and hero != null:
+	if stats.invulnerable:
+		velocity = Vector2.ZERO
+	elif following and hero != null:
 		var direction = (hero.position - position).normalized()
 		#print(direction * delta * stats.SPD * stats.SPD_SCALE)
 		velocity = direction * delta * stats.SPD * stats.SPD_SCALE
