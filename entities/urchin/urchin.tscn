@@ -1,0 +1,41 @@
+[gd_scene load_steps=8 format=3 uid="uid://cw1stwqv2g0b3"]
+
+[ext_resource type="Script" path="res://entities/urchin/urchin.gd" id="1_pl0v6"]
+[ext_resource type="Shader" path="res://assets/tile.gdshader" id="2_8ym41"]
+[ext_resource type="Texture2D" uid="uid://d4ibrl4nmd57w" path="res://assets/MRMOTEXT_EX.png" id="3_0f2fk"]
+[ext_resource type="PackedScene" uid="uid://dgul0eolhcq2n" path="res://entities/stats.tscn" id="4_6xuf7"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vnlb5"]
+shader = ExtResource("2_8ym41")
+shader_parameter/move_param = Vector4(0, 0, 0, 0)
+shader_parameter/tile_color = Vector4(0.38, 0.251, 0.478, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iey0a"]
+atlas = ExtResource("3_0f2fk")
+region = Rect2(192, 224, 8, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t5tx7"]
+size = Vector2(6, 6)
+
+[node name="Urchin" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 22
+script = ExtResource("1_pl0v6")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_vnlb5")
+texture = SubResource("AtlasTexture_iey0a")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_t5tx7")
+
+[node name="Stats" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("4_6xuf7")]
+HP = 10
+sprite = NodePath("../Sprite2D")
+
+[node name="SpikesTimer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[connection signal="hit" from="." to="Stats" method="_on_hit"]
+[connection signal="timeout" from="SpikesTimer" to="." method="_on_spikes_timer_timeout"]

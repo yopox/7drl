@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://dwhg6icaxvxjd"]
+[gd_scene load_steps=7 format=3 uid="uid://dwhg6icaxvxjd"]
 
 [ext_resource type="PackedScene" uid="uid://cmgwwovyu6kba" path="res://entities/hero/hero.tscn" id="1_1mg1f"]
 [ext_resource type="PackedScene" uid="uid://dc17tw0kij6ie" path="res://scenes/tile_map.tscn" id="2_77ne1"]
 [ext_resource type="PackedScene" uid="uid://fmnaew6q3fnr" path="res://entities/crab/crab.tscn" id="3_ogjmi"]
 [ext_resource type="PackedScene" uid="uid://o4ojnevevt2l" path="res://entities/shrimp/shrimp.tscn" id="4_tk2ht"]
 [ext_resource type="PackedScene" uid="uid://bybyhur6jxc01" path="res://scenes/gui.tscn" id="5_hrf7a"]
+[ext_resource type="PackedScene" uid="uid://cw1stwqv2g0b3" path="res://entities/urchin/urchin.tscn" id="6_1jpkg"]
 
 [node name="Test" type="Node2D"]
 
@@ -20,3 +21,6 @@ position = Vector2(1170, 534)
 
 [node name="Shrimp" parent="." instance=ExtResource("4_tk2ht")]
 position = Vector2(1019, 495)
+
+[node name="Urchin" parent="." instance=ExtResource("6_1jpkg")]
+position = Vector2(1104, 498)
