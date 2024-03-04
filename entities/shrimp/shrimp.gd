@@ -6,7 +6,7 @@ var attacking = false
 var hero: Hero = null
 var bubble = preload("res://attacks/bubble.tscn")
 
-func _process(delta):
+func _process(_delta):
 	if attacking and stats.shoot():
 		shoot()
 

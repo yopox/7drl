@@ -4,7 +4,7 @@ class_name Hero extends CharacterBody2D
 
 var arrow = preload("res://attacks/arrow.tscn")
 
-func _process(delta):
+func _process(_delta):
 	attack()
 
 
