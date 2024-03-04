@@ -27,7 +27,7 @@ func _process(delta):
 			var beta = hero.velocity.angle()
 			if angle - beta > PI:
 				beta += 2 * PI
-			angle = fposmod((angle * 5 + beta) / 6, 2 * PI)
+			angle = fposmod((angle * 11 + beta) / 12, 2 * PI)
 			
 	var current = angle - SPAN / 2
 	for i in range(9):
