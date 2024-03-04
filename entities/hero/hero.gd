@@ -4,6 +4,11 @@ class_name Hero extends CharacterBody2D
 
 var arrow = preload("res://attacks/arrow.tscn")
 
+
+func _ready():
+	HeroUtil.hero = self
+
+
 func _process(_delta):
 	attack()
 
