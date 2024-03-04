@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://d4ibrl4nmd57w" path="res://assets/MRMOTEXT_EX.png" id="2_g2vsp"]
 [ext_resource type="Script" path="res://entities/hero/FightZone.gd" id="5_xmbvs"]
 [ext_resource type="EventAsset" uid="uid://cmdbapmvmglmv" path="res://addons/FMOD/editor/resources/events/{11055db4-7ce9-49b0-8c44-c8c5a71c834a}.tres" id="6_5ol6p"]
-[ext_resource type="Script" path="res://entities/hero/DashManager.gd" id="7_f0rkw"]
+[ext_resource type="PackedScene" uid="uid://2upqhrf5ek4c" path="res://attacks/dash_manager.tscn" id="7_iljwf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c78fy"]
 size = Vector2(6, 6)
@@ -61,14 +61,9 @@ amount = 64
 process_material = SubResource("ParticleProcessMaterial_mq0ep")
 lifetime = 2.0
 
-[node name="DashManager" type="Node" parent="."]
-script = ExtResource("7_f0rkw")
-
-[node name="Timer" type="Timer" parent="DashManager"]
-wait_time = 5.0
+[node name="DashManager" parent="." instance=ExtResource("7_iljwf")]
 
 [node name="DashTimer" type="Timer" parent="."]
 wait_time = 0.2
 
-[connection signal="timeout" from="DashManager/Timer" to="DashManager" method="_on_timer_timeout"]
 [connection signal="timeout" from="DashTimer" to="." method="_on_dash_timer_timeout"]

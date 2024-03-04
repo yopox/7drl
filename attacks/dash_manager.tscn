@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://2upqhrf5ek4c"]
+
+[ext_resource type="Script" path="res://entities/hero/DashManager.gd" id="1_expu2"]
+
+[node name="DashManager" type="Node"]
+script = ExtResource("1_expu2")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
