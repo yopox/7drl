@@ -8,6 +8,8 @@ class_name Stats extends Node
 # Compute movements by: normalized direction * delta * SPD * SPD_SCALE
 var SPD_SCALE := 200.0
 
+var CURRENT_HP: int = HP
+
 @onready var timer: Timer = $Timer
 
 func shoot() -> bool:
@@ -16,3 +18,9 @@ func shoot() -> bool:
 		
 	timer.start(5.0 / max(1.0, ATK_SPD))
 	return true
+
+
+func _on_hit(stats: Stats):
+	CURRENT_HP -= stats.ATK
+	if CURRENT_HP <= 0:
+		get_parent().queue_free()

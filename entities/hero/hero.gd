@@ -24,6 +24,7 @@ func attack():
 		return
 	
 	var bullet: RigidBody2D = arrow.instantiate()
+	bullet.stats = stats
 	bullet.position.x = position.x + 10 * cos(attack_dir.angle())
 	bullet.position.y = position.y + 10 * sin(attack_dir.angle())
 	bullet.rotation = attack_dir.angle() - PI / 2.0

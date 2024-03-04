@@ -1,4 +1,4 @@
-extends CharacterBody2D
+extends Enemy
 
 @onready var stats: Stats = $Stats
 

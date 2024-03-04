@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://dgul0eolhcq2n" path="res://entities/stats.tscn" id="2_25foy"]
 [ext_resource type="Texture2D" uid="uid://d4ibrl4nmd57w" path="res://assets/MRMOTEXT_EX.png" id="2_g2vsp"]
 [ext_resource type="Script" path="res://entities/hero/FightZone.gd" id="5_xmbvs"]
-[ext_resource type="EventAsset" uid="uid://ctu8kway4nlaa" path="res://addons/FMOD/editor/resources/events/{11055db4-7ce9-49b0-8c44-c8c5a71c834a}.tres" id="6_5ol6p"]
+[ext_resource type="EventAsset" uid="uid://cmdbapmvmglmv" path="res://addons/FMOD/editor/resources/events/{11055db4-7ce9-49b0-8c44-c8c5a71c834a}.tres" id="6_5ol6p"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c78fy"]
 size = Vector2(6, 6)
@@ -27,6 +27,10 @@ collision_mask = 0
 script = ExtResource("1_0bavb")
 
 [node name="Stats" parent="." instance=ExtResource("2_25foy")]
+HP = 20
+ATK = 5
+SPD = 10
+ATK_SPD = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_c78fy")
