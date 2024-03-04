@@ -3,12 +3,12 @@
 [ext_resource type="Shader" path="res://assets/tile.gdshader" id="1_1fbp1"]
 [ext_resource type="Script" path="res://attacks/arrow.gd" id="1_os4aa"]
 [ext_resource type="Texture2D" uid="uid://d4ibrl4nmd57w" path="res://assets/MRMOTEXT_EX.png" id="2_m6afi"]
-[ext_resource type="EventAsset" uid="uid://ck5m5qu6bfu7n" path="res://addons/FMOD/editor/resources/events/{5f7f5c75-52f3-477c-ae35-7ac698216af6}.tres" id="3_wtphs"]
+[ext_resource type="EventAsset" uid="uid://2cpqp1fxqxd3" path="res://addons/FMOD/editor/resources/events/{4747d4e1-62df-4867-924b-8330960c43b2}.tres" id="4_xhokk"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_m12j8"]
 shader = ExtResource("1_1fbp1")
 shader_parameter/move_param = Vector4(0, 0, 0, 0)
-shader_parameter/tile_color = Vector4(0.757, 0.898, 0.918, 1)
+shader_parameter/tile_color = Vector4(1, 1, 1, 1)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gfymt"]
 atlas = ExtResource("2_m6afi")
@@ -86,7 +86,7 @@ shape = SubResource("RectangleShape2D_dsmn0")
 
 [node name="StudioEventEmitter2D" type="StudioEventEmitter2D" parent="."]
 play_event = 1
-event = ExtResource("3_wtphs")
+event = ExtResource("4_xhokk")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
