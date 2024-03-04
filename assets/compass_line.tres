@@ -1,0 +1,8 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://xonobik0nqaq"]
+
+[ext_resource type="Shader" path="res://scenes/textmode.gdshader" id="1_60bc0"]
+
+[resource]
+shader = ExtResource("1_60bc0")
+shader_parameter/fg = Vector4(0.455, 0.49, 0.533, 1)
+shader_parameter/bg = Vector4(0.243, 0.255, 0.373, 1)

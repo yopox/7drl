@@ -4,6 +4,11 @@ class_name Hero extends CharacterBody2D
 
 var arrow = preload("res://attacks/arrow.tscn")
 
+
+func _ready():
+	HeroUtil.hero = self
+
+
 func _process(_delta):
 	attack()
 
@@ -25,8 +30,8 @@ func attack():
 	
 	var bullet: RigidBody2D = arrow.instantiate()
 	bullet.stats = stats
-	bullet.position.x = position.x + 10 * cos(attack_dir.angle())
-	bullet.position.y = position.y + 10 * sin(attack_dir.angle())
+	bullet.position.x = position.x + 6 * cos(attack_dir.angle())
+	bullet.position.y = position.y + 6 * sin(attack_dir.angle())
 	bullet.rotation = attack_dir.angle() - PI / 2.0
 	bullet.apply_impulse(attack_dir)
 	
