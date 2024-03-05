@@ -10,6 +10,9 @@ var arrow = preload("res://attacks/arrow.tscn")
 var dash = false
 var dash_vel: Vector2
 
+signal hit(stats: Stats)
+
+
 func _ready():
 	HeroUtil.hero = self
 
