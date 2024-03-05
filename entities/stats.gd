@@ -1,4 +1,8 @@
 class_name Stats extends Node
+@export var hit_event: EventAsset
+@export var death_event: EventAsset
+var instance_hit: EventInstance
+var instance_death: EventInstance
 
 @export var HP: int = 20:
 	set(value):
@@ -21,6 +25,10 @@ var SPD_SCALE := 200.0
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var emitter: GPUParticles2D = $GPUParticles2D
 
+func _ready():
+	instance_hit = FMODRuntime.create_instance(hit_event)
+	instance_death = FMODRuntime.create_instance(death_event)
+	
 func shoot() -> bool:
 	if not timer.is_stopped():
 		return false
@@ -34,8 +42,14 @@ func _on_hit(stats: Stats):
 		return
 	CURRENT_HP -= stats.ATK
 	if CURRENT_HP <= 0:
+		# death
+		instance_death.start()
+		instance_hit.start()
 		emitter.amount *= 2
 		emitter.lifetime *= 1.6
+	else: 
+		# hit
+		instance_hit.start()
 	emitter.emitting = true
 	animation_player.play("hit")
 
