@@ -61,7 +61,7 @@ func _on_hit(stats: Stats):
 	if CURRENT_HP <= 0:
 		# death
 		instance_death.start()
-		instance_hit.start()
+		
 		emitter.amount *= 2
 		emitter.lifetime *= 1.6
 	else: 
