@@ -2,13 +2,12 @@ class_name Stats extends Node
 
 @export_category("Character Stats")
 
-@export var HP: int = 20:
-	set(value):
-		CURRENT_HP = value
-		HP = value
+@export var LVL: int = 1
+@export var HP: int = 20: set = set_max_hp
 @export var ATK: int = 5
 @export var FRQ: int = 5
 @export var SPD: int = 10
+var XP: int = 0
 
 @export_category("Nodes")
 
@@ -40,7 +39,13 @@ func _ready():
 	instance_death = FMODRuntime.create_instance(death_event)
 	if get_parent() is Enemy:
 		dead.connect((get_parent() as Enemy).die)
-	
+
+
+func set_max_hp(value: int):
+	CURRENT_HP = value
+	HP = value
+
+
 func shoot() -> bool:
 	if not timer.is_stopped():
 		return false
@@ -88,3 +93,9 @@ func check_death():
 		dead.emit()
 	else:
 		invulnerable = false
+
+
+func level_xp(level: int) -> int:
+	if level <= 0:
+		return 0
+	return int(5 * 1.3 ** (level - 1))

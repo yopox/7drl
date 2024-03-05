@@ -11,6 +11,8 @@ func _process(delta):
 	if hero == null:
 		return
 	
+	LVL.bar_progress = (hero.stats.XP * 1.0 - hero.stats.level_xp(hero.stats.LVL - 1)) / hero.stats.level_xp(hero.stats.LVL)
+	LVL.text = "LVL  %02d" % hero.stats.LVL
 	HP.bar_progress = hero.stats.CURRENT_HP * 1.0 / hero.stats.HP
 	HP.text = "HP   %02d" % hero.stats.CURRENT_HP
 	ATK.text = "ATK  %02d" % hero.stats.ATK
