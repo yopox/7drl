@@ -22,8 +22,8 @@ HeroUtil="*res://autoload/hero_util.gd"
 
 [display]
 
-window/size/viewport_width=1824
-window/size/viewport_height=960
+window/size/viewport_width=1872
+window/size/viewport_height=1056
 window/stretch/mode="viewport"
 window/stretch/scale=6.0
 
