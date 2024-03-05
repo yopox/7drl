@@ -1,9 +1,9 @@
 [gd_scene load_steps=11 format=3 uid="uid://d1r2usn4lhuqj"]
 
 [ext_resource type="Shader" path="res://assets/tile.gdshader" id="1_1fbp1"]
-[ext_resource type="Script" path="res://attacks/arrow.gd" id="1_os4aa"]
+[ext_resource type="Script" path="res://attacks/attack.gd" id="1_72shu"]
 [ext_resource type="Texture2D" uid="uid://d4ibrl4nmd57w" path="res://assets/MRMOTEXT_EX.png" id="2_m6afi"]
-[ext_resource type="EventAsset" uid="uid://2cpqp1fxqxd3" path="res://addons/FMOD/editor/resources/events/{4747d4e1-62df-4867-924b-8330960c43b2}.tres" id="4_xhokk"]
+[ext_resource type="EventAsset" uid="uid://c5wijfp4ewj2c" path="res://addons/FMOD/editor/resources/events/{4747d4e1-62df-4867-924b-8330960c43b2}.tres" id="4_xhokk"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_m12j8"]
 shader = ExtResource("1_1fbp1")
@@ -70,12 +70,12 @@ _data = {
 
 [node name="Arrow" type="RigidBody2D"]
 collision_layer = 2
-collision_mask = 20
+collision_mask = 21
 mass = 0.01
 lock_rotation = true
 max_contacts_reported = 1
 contact_monitor = true
-script = ExtResource("1_os4aa")
+script = ExtResource("1_72shu")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_m12j8")

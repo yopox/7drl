@@ -1,6 +1,4 @@
-extends RigidBody2D
-
-var stats: Stats
+extends Attack
 
 
 func _on_lifetime_timeout():
