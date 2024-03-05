@@ -1,6 +1,5 @@
 extends Enemy
 
-@onready var stats: Stats = $Stats
 @onready var spikes_timer: Timer = $SpikesTimer
 
 var spike = preload("res://attacks/spike.tscn")

@@ -1,6 +1,5 @@
 extends Enemy
 
-@onready var stats: Stats = $Stats
 @onready var zone: Area2D = $Zone
 
 var following: bool = false

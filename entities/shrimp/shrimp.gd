@@ -1,7 +1,5 @@
 extends Enemy
 
-@onready var stats: Stats = $Stats
-
 var attacking = false
 var hero: Hero = null
 var bubble = preload("res://attacks/bubble.tscn")

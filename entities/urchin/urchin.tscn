@@ -17,10 +17,11 @@ region = Rect2(192, 224, 8, 8)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t5tx7"]
 size = Vector2(6, 6)
 
-[node name="Urchin" type="CharacterBody2D"]
+[node name="Urchin" type="CharacterBody2D" node_paths=PackedStringArray("stats")]
 collision_layer = 4
 collision_mask = 30
 script = ExtResource("1_pl0v6")
+stats = NodePath("Stats")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_vnlb5")
