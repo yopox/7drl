@@ -12,7 +12,7 @@ var CARD_POINTS = [
 	[3 * PI / 2, N],
 ]
 
-var EMPTY := Vector2i(31, 31)
+var EMPTY := Vector2i(0, 0)
 var CHEST := Vector2i(31, 15)
 var GOAL := Vector2i(30, 15)
 

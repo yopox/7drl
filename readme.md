@@ -5,7 +5,6 @@
 ## Pre-existing art
 
 - [MRMOTEXT](https://mrmotarius.itch.io/mrmotext)
-- [Indecision Palette](https://lospec.com/palette-list/indecision)
 
 ## Setup
 

@@ -4,5 +4,5 @@
 
 [resource]
 shader = ExtResource("1_60bc0")
-shader_parameter/fg = Vector4(0.455, 0.49, 0.533, 1)
-shader_parameter/bg = Vector4(0.243, 0.255, 0.373, 1)
+shader_parameter/fg = Vector4(0.322, 0.302, 0.302, 1)
+shader_parameter/bg = Vector4(0.114, 0.094, 0.094, 1)

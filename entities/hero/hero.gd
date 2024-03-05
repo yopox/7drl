@@ -77,5 +77,5 @@ func _on_dash_timer_timeout():
 
 func _on_stats_dead():
 	dead = true
-	(sprite.material as ShaderMaterial).set_shader_parameter("tile_color", Vector4(0.243, 0.255, 0.373, 1))
+	(sprite.material as ShaderMaterial).set_shader_parameter("tile_color", Vector4(0.114, 0.094, 0.094, 1))
 	collision_layer = 16

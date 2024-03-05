@@ -6,17 +6,17 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fle0h"]
 shader = ExtResource("1_jkjun")
 shader_parameter/move_param = Vector4(0, 0, 0, 0)
-shader_parameter/tile_color = Vector4(0.141, 0.576, 0.216, 0.5)
+shader_parameter/tile_color = Vector4(0.392, 0.871, 0.435, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qil4m"]
 shader = ExtResource("1_jkjun")
 shader_parameter/move_param = Vector4(0, 0, 0, 0)
-shader_parameter/tile_color = Vector4(0.953, 0.761, 0.125, 0.5)
+shader_parameter/tile_color = Vector4(0.871, 0.725, 0.392, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_r8yj1"]
 shader = ExtResource("1_jkjun")
-shader_parameter/move_param = Vector4(1.7, 1, 3.1, 0.5)
-shader_parameter/tile_color = Vector4(0.231, 0.467, 0.651, 0.5)
+shader_parameter/move_param = Vector4(1.7, 1, 3.1, 1)
+shader_parameter/tile_color = Vector4(0.392, 0.475, 0.871, 1)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ampsb"]
 texture = ExtResource("2_6bvmg")
