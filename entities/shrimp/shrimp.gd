@@ -13,11 +13,12 @@ func _process(_delta):
 
 
 func shoot():
-	var bullet: RigidBody2D = bubble.instantiate()
+	var bullet: Attack = bubble.instantiate()
 	var attack_dir = hero.position - position
 	bullet.position.x = position.x + 10 * cos(attack_dir.angle())
 	bullet.position.y = position.y + 10 * sin(attack_dir.angle())
 	bullet.apply_impulse(attack_dir)
+	bullet.stats = stats
 	
 	get_parent().add_child(bullet)
 

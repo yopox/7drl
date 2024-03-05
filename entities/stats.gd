@@ -1,8 +1,6 @@
 class_name Stats extends Node
-@export var hit_event: EventAsset
-@export var death_event: EventAsset
-var instance_hit: EventInstance
-var instance_death: EventInstance
+
+@export_category("Character Stats")
 
 @export var HP: int = 20:
 	set(value):
@@ -12,8 +10,17 @@ var instance_death: EventInstance
 @export var SPD: int = 10
 @export var ATK_SPD: int = 5
 
+@export_category("Nodes")
+
 var CURRENT_HP: int = HP
 @export var sprite: Sprite2D
+
+@export_category("SFX")
+
+@export var hit_event: EventAsset
+@export var death_event: EventAsset
+var instance_hit: EventInstance
+var instance_death: EventInstance
 
 var invulnerable = false: set = set_invulnerable
 
