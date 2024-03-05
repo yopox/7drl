@@ -99,3 +99,10 @@ func level_xp(level: int) -> int:
 	if level <= 0:
 		return 0
 	return int(5 * 1.3 ** (level - 1))
+
+
+func add_xp(amount: int):
+	XP += amount
+	while XP >= level_xp(LVL):
+		XP -= level_xp(LVL)
+		LVL += 1

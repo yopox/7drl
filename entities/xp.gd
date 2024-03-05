@@ -18,5 +18,5 @@ func _process(_delta):
 	
 	for body in get_colliding_bodies():
 		if body is Hero:
-			(body as Hero).stats.XP += 1
+			(body as Hero).stats.add_xp(1)
 			queue_free()
