@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://bybyhur6jxc01"]
+[gd_scene load_steps=9 format=3 uid="uid://bybyhur6jxc01"]
 
 [ext_resource type="Material" uid="uid://dv6xh64115ihe" path="res://assets/textmode_letter.tres" id="1_38xkm"]
 [ext_resource type="Texture2D" uid="uid://d4ibrl4nmd57w" path="res://assets/MRMOTEXT_EX.png" id="1_mxj7s"]
+[ext_resource type="Script" path="res://scenes/gui.gd" id="1_oq5bf"]
 [ext_resource type="Material" uid="uid://d2cpahxj1a3l8" path="res://assets/textmode_border.tres" id="2_hon51"]
 [ext_resource type="PackedScene" uid="uid://btnpb51vrqidp" path="res://scenes/counter.tscn" id="4_4aveh"]
 [ext_resource type="PackedScene" uid="uid://dbfb07jcd2str" path="res://scenes/compass.tscn" id="4_urrms"]
@@ -2069,6 +2070,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_oq5bf")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

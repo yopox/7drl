@@ -1,6 +1,6 @@
-extends TileMap
+class_name Counter extends TileMap
 
-@export var text: String = "HP 10/10"
+@export var text: String = "HP 10/10": set = set_text
 @export var has_bar: bool = false
 @export var bar_progress: float = 1
 @export var fg: Color = Color(1, 1, 1)
@@ -22,7 +22,14 @@ func _ready():
 	bar_shader.set_shader_parameter("fg", Vector4(bar_fg.r, bar_fg.g, bar_fg.b, 1))
 	bar_shader.set_shader_parameter("bg", Vector4(bg.r, bg.g, bg.b, 1))
 	bar.material = bar_shader
-	
+
+
+func set_text(value):
+	text = value
+	draw()
+
+
+func draw():
 	for x in range(text.length()):
 		if text.unicode_at(x) >= "@".unicode_at(0):
 			set_cell(0, Vector2i(x, 0), 0, Vector2i(text.unicode_at(x) - "@".unicode_at(0), 28))
@@ -38,6 +45,6 @@ func _ready():
 			if n <= 0:
 				bar.set_cell(0, Vector2i(x, 0), 0, Vector2i(0, 0))
 			elif n == 1:
-				bar.set_cell(0, Vector2i(x, 0), 0, Vector2i(18, 2))
+				bar.set_cell(0, Vector2i(x, 0), 0, Vector2i(20, 6))
 			else:
 				bar.set_cell(0, Vector2i(x, 0), 0, Vector2i(18, 2))

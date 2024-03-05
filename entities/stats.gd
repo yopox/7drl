@@ -7,8 +7,8 @@ class_name Stats extends Node
 		CURRENT_HP = value
 		HP = value
 @export var ATK: int = 5
+@export var FRQ: int = 5
 @export var SPD: int = 10
-@export var ATK_SPD: int = 5
 
 @export_category("Nodes")
 
@@ -45,7 +45,7 @@ func shoot() -> bool:
 	if not timer.is_stopped():
 		return false
 		
-	timer.start(5.0 / max(1.0, ATK_SPD))
+	timer.start(5.0 / max(1.0, FRQ))
 	return true
 
 
