@@ -2,6 +2,11 @@ extends RigidBody2D
 
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var area: Area2D = $Area2D
+@export var event: EventAsset
+var xp_sfx: EventInstance
+
+func _ready():
+	xp_sfx = FMODRuntime.create_instance(event)
 
 func set_filled(filled: bool):
 	if filled:
@@ -19,4 +24,5 @@ func _process(_delta):
 	for body in get_colliding_bodies():
 		if body is Hero:
 			(body as Hero).stats.add_xp(1)
+			xp_sfx.start()
 			queue_free()

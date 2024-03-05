@@ -1,7 +1,6 @@
 class_name Stats extends Node
 
 @export_category("Character Stats")
-
 @export var LVL: int = 1
 @export var HP: int = 20: set = set_max_hp
 @export var ATK: int = 5
