@@ -4,11 +4,13 @@ class_name Hero extends CharacterBody2D
 @onready var dash_manager: DashManager = $DashManager
 @onready var dash_timer: Timer = $DashTimer
 @onready var dash_particles: GPUParticles2D = $DashParticles
+@onready var sprite: Sprite2D = $Sprite2D
 
 var arrow = preload("res://attacks/arrow.tscn")
 
 var dash = false
 var dash_vel: Vector2
+var dead = false
 
 signal hit(stats: Stats)
 
@@ -18,10 +20,15 @@ func _ready():
 
 
 func _process(_delta):
+	if dead:
+		return
+		
 	attack()
 
 
 func _physics_process(delta):
+	if dead:
+		return
 	var input_dir = Input.get_vector("left", "right", "up", "down")
 	if dash:
 		velocity = dash_vel
@@ -66,3 +73,9 @@ func _on_dash_timer_timeout():
 	dash = false
 	dash_particles.emitting = false
 	collision_mask = 4 + 8 + 16
+
+
+func _on_stats_dead():
+	dead = true
+	(sprite.material as ShaderMaterial).set_shader_parameter("tile_color", Vector4(0.243, 0.255, 0.373, 1))
+	collision_layer = 16

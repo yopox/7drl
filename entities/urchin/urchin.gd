@@ -6,11 +6,7 @@ extends Enemy
 var spike = preload("res://attacks/spike.tscn")
 
 
-func _ready():
-	hit.connect(counter_attack)
-
-
-func counter_attack(_stats):
+func counter_attack():
 	spikes_timer.start()
 
 
@@ -24,8 +20,8 @@ func _on_spikes_timer_timeout():
 	for i in range(8):
 		var bullet: RigidBody2D = spike.instantiate()
 		bullet.stats = stats
-		bullet.position.x = position.x + 6 * cos(angle)
-		bullet.position.y = position.y + 6 * sin(angle)
+		bullet.position.x = position.x + 8 * cos(angle)
+		bullet.position.y = position.y + 8 * sin(angle)
 		bullet.rotation = angle
 		bullet.apply_impulse(Vector2(cos(angle), sin(angle)))
 		

@@ -20,7 +20,7 @@ var angle = 3 * PI / 2
 var SPAN = 170.0 * PI / 180.0
 var SEGMENT = SPAN / 9.0
 
-func _process(delta):
+func _process(_delta):
 	var hero: Hero = HeroUtil.hero
 	if hero != null:
 		if abs(hero.velocity[0]) > 0.1 or abs(hero.velocity[1]) > 0.1:
@@ -34,9 +34,9 @@ func _process(delta):
 		set_cell(0, Vector2i(i, 0), 0, cardinal(current))
 		current += SPAN / 9.0
 
-func cardinal(angle) -> Vector2i:
+func cardinal(alpha) -> Vector2i:
 	for tile in CARD_POINTS:
-		if is_beta_shown(angle, tile[0]):
+		if is_beta_shown(alpha, tile[0]):
 			return tile[1]
 	return EMPTY
 

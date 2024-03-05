@@ -22,19 +22,24 @@ var CURRENT_HP: int = HP
 var instance_hit: EventInstance
 var instance_death: EventInstance
 
-var invulnerable = false: set = set_invulnerable
+var invulnerable = false
 
 # Compute movements by: normalized direction * delta * SPD * SPD_SCALE
 var SPD_SCALE := 200.0
-
 
 @onready var timer: Timer = $Timer
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var emitter: GPUParticles2D = $GPUParticles2D
 
+signal damaged()
+signal dead()
+
+
 func _ready():
 	instance_hit = FMODRuntime.create_instance(hit_event)
 	instance_death = FMODRuntime.create_instance(death_event)
+	if get_parent() is Enemy:
+		dead.connect((get_parent() as Enemy).die)
 	
 func shoot() -> bool:
 	if not timer.is_stopped():
@@ -45,9 +50,14 @@ func shoot() -> bool:
 
 
 func _on_hit(stats: Stats):
-	if invulnerable:
+	if invulnerable || CURRENT_HP <= 0:
 		return
+	
+	# Take damage
 	CURRENT_HP -= stats.ATK
+	damaged.emit()
+	invulnerable = true
+	
 	if CURRENT_HP <= 0:
 		# death
 		instance_death.start()
@@ -57,7 +67,9 @@ func _on_hit(stats: Stats):
 	else: 
 		# hit
 		instance_hit.start()
+		
 	emitter.emitting = true
+	animation_player.stop()
 	animation_player.play("hit")
 
 
@@ -71,10 +83,8 @@ func show_sprite():
 		sprite.visible = true
 
 
-func set_invulnerable(value):
-	invulnerable = value
-
-
 func check_death():
 	if CURRENT_HP <= 0:
-		get_parent().queue_free()
+		dead.emit()
+	else:
+		invulnerable = false

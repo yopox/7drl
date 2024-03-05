@@ -17,7 +17,7 @@
 position = Vector2(1087, 537)
 
 [node name="Crab" parent="." instance=ExtResource("3_ogjmi")]
-position = Vector2(1170, 534)
+position = Vector2(1218, 534)
 
 [node name="Shrimp" parent="." instance=ExtResource("4_tk2ht")]
 position = Vector2(1107, 471)
