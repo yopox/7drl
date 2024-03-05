@@ -32,4 +32,12 @@ func _ready():
 			set_cell(0, Vector2i(x, 0), 0, Vector2i(0, 0))
 			
 	if has_bar:
-		bar.set_cell(0, Vector2i(0, 0), 0, Vector2i(18, 2))
+		var progress = round(bar_progress * 14)
+		for x in range(7):
+			var n = progress - 2 * x
+			if n <= 0:
+				bar.set_cell(0, Vector2i(x, 0), 0, Vector2i(0, 0))
+			elif n == 1:
+				bar.set_cell(0, Vector2i(x, 0), 0, Vector2i(18, 2))
+			else:
+				bar.set_cell(0, Vector2i(x, 0), 0, Vector2i(18, 2))

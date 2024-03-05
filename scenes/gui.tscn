@@ -2081,25 +2081,26 @@ layer_0/tile_data = PackedInt32Array(1114112, 0, 0, 1114113, 1835008, 11, 111411
 position = Vector2(224, 144)
 
 [node name="Level" parent="CanvasLayer" instance=ExtResource("4_4aveh")]
-position = Vector2(228, 56)
+position = Vector2(232, 56)
 text = "LVL  01"
 has_bar = true
+bar_progress = 2.08165e-12
 bar_fg = Color(0.227451, 0.588235, 0.917647, 1)
 
 [node name="HP" parent="CanvasLayer" instance=ExtResource("4_4aveh")]
-position = Vector2(228, 80)
+position = Vector2(232, 80)
 text = "HP   10"
 has_bar = true
 bar_fg = Color(0.917647, 0.227451, 0.227451, 1)
 
 [node name="ATK" parent="CanvasLayer" instance=ExtResource("4_4aveh")]
-position = Vector2(228, 104)
+position = Vector2(232, 104)
 text = "ATK  05"
 
 [node name="FRQ" parent="CanvasLayer" instance=ExtResource("4_4aveh")]
-position = Vector2(228, 112)
+position = Vector2(232, 112)
 text = "FRQ  05"
 
 [node name="SPD" parent="CanvasLayer" instance=ExtResource("4_4aveh")]
-position = Vector2(228, 120)
+position = Vector2(232, 120)
 text = "SPD  05"
