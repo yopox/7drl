@@ -106,7 +106,7 @@ func attack():
 
 func start_dash():
 	dash = true
-	stats.invulnerable = true
+	stats.invulnerable["dash"] = true
 	dash_timer.start()
 	dash_particles.emitting = true
 	collision_mask = 16
@@ -115,7 +115,7 @@ func start_dash():
 
 func _on_dash_timer_timeout():
 	dash = false
-	stats.invulnerable = false
+	stats.invulnerable["dash"] = false
 	dash_particles.emitting = false
 	collision_mask = 4 + 8 + 16
 

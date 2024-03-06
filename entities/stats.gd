@@ -23,7 +23,7 @@ var CURRENT_HP: int = HP
 var instance_hit: EventInstance
 var instance_death: EventInstance
 
-var invulnerable = false
+var invulnerable = {}
 
 # Compute movements by: normalized direction * delta * SPD * SPD_SCALE
 var SPD_SCALE := 200.0
@@ -75,16 +75,20 @@ func shoot() -> bool:
 	return true
 
 
+func is_invulnerable():
+	return invulnerable.values().any(func(b): return b)
+
+
 func _on_hit(stats: Stats):
-	if invulnerable || CURRENT_HP <= 0:
+	if is_invulnerable() or CURRENT_HP <= 0:
 		return
 	
 	# Take damage
+	invulnerable["hit"] = true
 	CURRENT_HP -= stats.ATK
 	CURRENT_HP = max(CURRENT_HP, 0)
 	damaged.emit()
 	changed.emit()
-	invulnerable = true
 	
 	if CURRENT_HP <= 0:
 		# death
@@ -115,7 +119,7 @@ func check_death():
 	if CURRENT_HP <= 0:
 		dead.emit()
 	else:
-		invulnerable = false
+		invulnerable["hit"] = false
 
 
 func level_xp(level: int) -> int:
