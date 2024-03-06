@@ -1,5 +1,7 @@
 class_name Hero extends CharacterBody2D
 
+@export var water_dmg: int
+
 @onready var stats: Stats = $Stats
 @onready var dash_manager: DashManager = $DashManager
 @onready var dash_timer: Timer = $DashTimer
@@ -11,6 +13,7 @@ var arrow = preload("res://attacks/arrow.tscn")
 var dash = false
 var dash_vel: Vector2
 var dead = false
+var terrain = 1: set = set_terrain
 
 signal hit(stats: Stats)
 
@@ -22,7 +25,9 @@ func _ready():
 func _process(_delta):
 	if dead:
 		return
-		
+	
+	check_terrain()
+	water_damage()
 	attack()
 
 
@@ -42,7 +47,31 @@ func _physics_process(delta):
 	move_and_slide()
 
 
-func attack():	
+func set_terrain(value):
+	terrain = value
+	# TODO: update music
+
+
+func check_terrain():
+	var map = MapUtil.tile_map
+	if map == null:
+		return
+	var cell_pos = map.local_to_map(global_position)
+	if cell_pos == null:
+		return
+	var cell = map.get_cell_tile_data(0, cell_pos)
+	if cell.terrain != terrain:
+		terrain = cell.terrain
+
+
+func water_damage():
+	if terrain == 0:
+		var water_stats = Stats.new()
+		water_stats.ATK = water_dmg
+		hit.emit(water_stats)
+
+
+func attack():
 	var attack_dir = Input.get_vector("attack_left", "attack_right", "attack_up", "attack_down")
 	
 	if abs(attack_dir.x) < 0.001 and abs(attack_dir.y) < 0.001:

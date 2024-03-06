@@ -4,7 +4,7 @@ var instance: EventInstance
 
 func _ready():
 	instance = FMODRuntime.create_instance(event)
-	instance.start()
+	#instance.start()
 	instance.set_parameter_by_name_with_label("EnterCombatTest", "InBattle", false)
 
 

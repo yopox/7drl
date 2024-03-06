@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 FMODRuntime="*res://addons/FMOD/runtime/fmod_runtime_manager.gd"
 HeroUtil="*res://autoload/hero_util.gd"
+MapUtil="*res://autoload/map_util.gd"
 
 [display]
 
