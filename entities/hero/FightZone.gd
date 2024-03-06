@@ -8,7 +8,7 @@ func _ready():
 	instance.set_parameter_by_name_with_label("EnterCombatTest", "InBattle", false)
 
 
-func _process(_delta):
+func update_instance():
 	var enemies = get_overlapping_bodies()
 	var enemy_count = enemies.size()
 	if enemy_count >= 1: 
@@ -16,3 +16,11 @@ func _process(_delta):
 	else:
 		instance.set_parameter_by_name_with_label("EnterCombatTest", "InBattle", false)
 		instance.set_parameter_by_name_with_label("EnterCombatTest", "OutBattle", true)
+
+
+func _on_body_entered(body):
+	update_instance()
+
+
+func _on_body_exited(body):
+	update_instance()
