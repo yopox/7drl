@@ -6,6 +6,7 @@ def parse_color(color):
 
 colors = '''
 #f3f3f3
+#737070
 #524d4d
 #353232
 #1d1818

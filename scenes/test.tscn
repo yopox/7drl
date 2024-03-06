@@ -12,6 +12,7 @@
 [node name="Gui" parent="." instance=ExtResource("5_hrf7a")]
 
 [node name="TileMap" parent="." instance=ExtResource("2_77ne1")]
+generate_enemies = false
 
 [node name="Hero" parent="." instance=ExtResource("1_1mg1f")]
 position = Vector2(1087, 537)

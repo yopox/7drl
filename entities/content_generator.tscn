@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cueokng2ut4by"]
+
+[ext_resource type="Script" path="res://entities/content_generator.gd" id="1_kpuoh"]
+
+[node name="ContentGenerator" type="Node"]
+script = ExtResource("1_kpuoh")

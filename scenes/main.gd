@@ -23,9 +23,6 @@ func _on_noise_generator_grid_updated():
 	var start := find_starting_pos()
 	
 	# Update the hero position
-	hero.position.x = start.x * tilemap.tile_set.tile_size.x + tilemap.tile_set.tile_size.x / 2
-	if start.y % 2 == 1:
-		hero.position.x -= tilemap.tile_set.tile_size.x / 2
-	hero.position.y = start.y * tilemap.tile_set.tile_size.y + tilemap.tile_set.tile_size.y / 2
+	hero.position = tilemap.map_to_local(start)
 	hero.visible = true
 	

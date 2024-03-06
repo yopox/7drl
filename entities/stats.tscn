@@ -1,8 +1,8 @@
 [gd_scene load_steps=7 format=3 uid="uid://dgul0eolhcq2n"]
 
 [ext_resource type="Script" path="res://entities/stats.gd" id="1_pqebt"]
-[ext_resource type="EventAsset" uid="uid://rhs0boq26emq" path="res://addons/FMOD/editor/resources/events/{2b455ed7-9e91-4e79-9bc8-a9c2f2f782dd}.tres" id="2_xjoqi"]
-[ext_resource type="EventAsset" uid="uid://brrvis4ff8pow" path="res://addons/FMOD/editor/resources/events/{d5d2e768-fd51-4a66-bbcd-e2f90fa779c3}.tres" id="3_xkaeq"]
+[ext_resource type="EventAsset" uid="uid://bw4ydbuh007ls" path="res://addons/FMOD/editor/resources/events/{2b455ed7-9e91-4e79-9bc8-a9c2f2f782dd}.tres" id="2_xjoqi"]
+[ext_resource type="EventAsset" uid="uid://dw270fh3dx82y" path="res://addons/FMOD/editor/resources/events/{d5d2e768-fd51-4a66-bbcd-e2f90fa779c3}.tres" id="3_xkaeq"]
 
 [sub_resource type="Animation" id="Animation_d6jk5"]
 resource_name = "hit"

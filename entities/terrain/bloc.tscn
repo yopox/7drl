@@ -1,0 +1,29 @@
+[gd_scene load_steps=7 format=3 uid="uid://dsnpfoi7bvtj3"]
+
+[ext_resource type="Shader" path="res://scenes/textmode.gdshader" id="1_esncv"]
+[ext_resource type="Script" path="res://entities/terrain/bloc.gd" id="1_sop11"]
+[ext_resource type="Texture2D" uid="uid://d4ibrl4nmd57w" path="res://assets/MRMOTEXT_EX.png" id="2_0daib"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_i3ip6"]
+shader = ExtResource("1_esncv")
+shader_parameter/fg = Vector4(0.451, 0.439, 0.439, 1)
+shader_parameter/bg = Vector4(0.114, 0.094, 0.094, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d3p18"]
+atlas = ExtResource("2_0daib")
+region = Rect2(80, 48, 8, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bph5j"]
+size = Vector2(8, 8)
+
+[node name="Bloc" type="StaticBody2D"]
+collision_layer = 16
+collision_mask = 0
+script = ExtResource("1_sop11")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_i3ip6")
+texture = SubResource("AtlasTexture_d3p18")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_bph5j")
