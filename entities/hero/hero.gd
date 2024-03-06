@@ -65,7 +65,7 @@ func check_terrain():
 
 
 func water_damage():
-	if terrain == 0:
+	if terrain == 0 and not dash:
 		var water_stats = Stats.new()
 		water_stats.ATK = water_dmg
 		hit.emit(water_stats)
