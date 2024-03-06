@@ -24,10 +24,11 @@ func update_weights(table) -> int:
 func generate(terrain: int) -> Node2D:
 	var pattern = null
 	
-	var pool = [sand_weights, sand_patterns]
-	match terrain:
-		2:
-			pass
+	var pool: Array
+	if terrain == 1:
+		pool = [sand_weights, sand_patterns]
+	else:
+		return null
 			
 	# Get random pattern
 	var index = randi_range(1, pool[0])
