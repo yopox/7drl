@@ -1,11 +1,12 @@
 class_name Stats extends Node
 
 @export_category("Character Stats")
-@export var LVL: int = 1
-@export var HP: int = 20
-@export var ATK: int = 5
-@export var FRQ: int = 5
-@export var SPD: int = 10
+@export var LVL: int = 1: get = get_lvl
+@export var HP: int = 20: get = get_hp
+@export var ATK: int = 5: get = get_atk
+@export var FRQ: int = 5: get = get_frq
+@export var SPD: int = 10: get = get_spd
+@export var elite: bool = false
 var XP: int = 0
 
 @export_category("Nodes")
@@ -41,6 +42,26 @@ func _ready():
 	instance_death = FMODRuntime.create_instance(death_event)
 	if get_parent() is Enemy:
 		dead.connect((get_parent() as Enemy).die)
+
+
+func get_lvl():
+	return LVL if not elite else 5 * LVL
+
+
+func get_hp():
+	return HP if not elite else 2 * HP
+
+
+func get_atk():
+	return ATK if not elite else 2 * ATK
+
+
+func get_frq():
+	return FRQ if not elite else 2 * FRQ
+
+
+func get_spd():
+	return SPD if not elite else 2 * SPD
 
 
 func shoot() -> bool:

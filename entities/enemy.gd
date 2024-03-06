@@ -1,10 +1,17 @@
 class_name Enemy extends CharacterBody2D
 
 @export var stats: Stats
+@export var elite_emitter: GPUParticles2D
 
 signal hit(stats: Stats)
 
 var xp_ball = preload("res://entities/xp.tscn")
+
+
+func _ready():
+	if randi_range(0, 20) == 0:
+		stats.elite = true
+		elite_emitter.emitting = true
 
 
 func process_enemy(_delta):

@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://cw1stwqv2g0b3"]
+[gd_scene load_steps=9 format=3 uid="uid://cw1stwqv2g0b3"]
 
 [ext_resource type="Script" path="res://entities/urchin/urchin.gd" id="1_pl0v6"]
+[ext_resource type="PackedScene" uid="uid://dgx4rvib5fof0" path="res://entities/elite_emitter.tscn" id="2_3uklo"]
 [ext_resource type="Shader" path="res://assets/tile.gdshader" id="2_8ym41"]
 [ext_resource type="Texture2D" uid="uid://d4ibrl4nmd57w" path="res://assets/MRMOTEXT_EX.png" id="3_0f2fk"]
 [ext_resource type="PackedScene" uid="uid://dgul0eolhcq2n" path="res://entities/stats.tscn" id="4_6xuf7"]
@@ -17,11 +18,14 @@ region = Rect2(192, 224, 8, 8)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t5tx7"]
 size = Vector2(6, 6)
 
-[node name="Urchin" type="CharacterBody2D" node_paths=PackedStringArray("stats")]
+[node name="Urchin" type="CharacterBody2D" node_paths=PackedStringArray("stats", "elite_emitter")]
 collision_layer = 4
 collision_mask = 30
 script = ExtResource("1_pl0v6")
 stats = NodePath("Stats")
+elite_emitter = NodePath("EliteEmitter")
+
+[node name="EliteEmitter" parent="." instance=ExtResource("2_3uklo")]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_vnlb5")
@@ -31,8 +35,9 @@ texture = SubResource("AtlasTexture_iey0a")
 shape = SubResource("RectangleShape2D_t5tx7")
 
 [node name="Stats" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("4_6xuf7")]
-LVL = 10
+LVL = 2
 HP = 10
+ATK = 4
 sprite = NodePath("../Sprite2D")
 
 [node name="SpikesTimer" type="Timer" parent="."]

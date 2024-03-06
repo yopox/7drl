@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://o4ojnevevt2l"]
+[gd_scene load_steps=10 format=3 uid="uid://o4ojnevevt2l"]
 
 [ext_resource type="Shader" path="res://assets/tile.gdshader" id="1_648os"]
 [ext_resource type="Script" path="res://entities/shrimp/shrimp.gd" id="1_1215u"]
 [ext_resource type="PackedScene" uid="uid://dgul0eolhcq2n" path="res://entities/stats.tscn" id="2_g3v2o"]
+[ext_resource type="PackedScene" uid="uid://dgx4rvib5fof0" path="res://entities/elite_emitter.tscn" id="2_kafgc"]
 [ext_resource type="Texture2D" uid="uid://d4ibrl4nmd57w" path="res://assets/MRMOTEXT_EX.png" id="2_xgnjb"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_2wyt6"]
@@ -20,11 +21,14 @@ size = Vector2(6, 7)
 [sub_resource type="CircleShape2D" id="CircleShape2D_8g06j"]
 radius = 64.0
 
-[node name="Shrimp" type="CharacterBody2D" node_paths=PackedStringArray("stats")]
+[node name="Shrimp" type="CharacterBody2D" node_paths=PackedStringArray("stats", "elite_emitter")]
 collision_layer = 4
 collision_mask = 30
 script = ExtResource("1_1215u")
 stats = NodePath("Stats")
+elite_emitter = NodePath("EliteEmitter")
+
+[node name="EliteEmitter" parent="." instance=ExtResource("2_kafgc")]
 
 [node name="Stats" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("2_g3v2o")]
 HP = 15
