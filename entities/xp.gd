@@ -18,7 +18,7 @@ func set_filled(filled: bool):
 func _process(_delta):
 	for body in area.get_overlapping_bodies():
 		if body is Hero:
-			var angle = (body.position - position).angle()
+			var angle = (body.global_position - global_position).angle()
 			apply_impulse(Vector2(cos(angle), sin(angle)) * 0.15)
 	
 	for body in get_colliding_bodies():

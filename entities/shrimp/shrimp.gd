@@ -12,10 +12,10 @@ func _process(_delta):
 
 func shoot():
 	var bullet: Attack = bubble.instantiate()
-	var attack_dir = hero.position - position
+	var attack_dir = (hero.global_position - global_position).normalized()
 	bullet.position.x = position.x + 10 * cos(attack_dir.angle())
 	bullet.position.y = position.y + 10 * sin(attack_dir.angle())
-	bullet.apply_impulse(attack_dir)
+	bullet.apply_impulse(attack_dir * 60)
 	bullet.stats = stats
 	
 	get_parent().add_child(bullet)

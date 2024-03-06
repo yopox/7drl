@@ -31,6 +31,7 @@ texture = SubResource("AtlasTexture_iey0a")
 shape = SubResource("RectangleShape2D_t5tx7")
 
 [node name="Stats" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("4_6xuf7")]
+LVL = 10
 HP = 10
 sprite = NodePath("../Sprite2D")
 

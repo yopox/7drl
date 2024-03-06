@@ -10,7 +10,7 @@ func _physics_process(delta):
 	if stats.invulnerable:
 		velocity = Vector2.ZERO
 	elif following and hero != null:
-		var direction = (hero.position - position).normalized()
+		var direction = (hero.global_position - global_position).normalized()
 		#print(direction * delta * stats.SPD * stats.SPD_SCALE)
 		velocity = direction * delta * stats.SPD * stats.SPD_SCALE
 	else:
