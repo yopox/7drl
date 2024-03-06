@@ -6,7 +6,7 @@ var following: bool = false
 var hero: Hero = null
 
 
-func _physics_process(delta):
+func process_enemy(delta):
 	if stats.invulnerable:
 		velocity = Vector2.ZERO
 	elif following and hero != null:

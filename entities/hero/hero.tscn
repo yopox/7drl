@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cmgwwovyu6kba"]
+[gd_scene load_steps=16 format=3 uid="uid://cmgwwovyu6kba"]
 
 [ext_resource type="Script" path="res://entities/hero/hero.gd" id="1_0bavb"]
 [ext_resource type="Shader" path="res://assets/tile.gdshader" id="1_ucpnx"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://entities/hero/FightZone.gd" id="5_xmbvs"]
 [ext_resource type="EventAsset" uid="uid://cmdbapmvmglmv" path="res://addons/FMOD/editor/resources/events/{11055db4-7ce9-49b0-8c44-c8c5a71c834a}.tres" id="6_5ol6p"]
 [ext_resource type="PackedScene" uid="uid://2upqhrf5ek4c" path="res://attacks/dash_manager.tscn" id="7_iljwf"]
+[ext_resource type="Script" path="res://entities/hero/ActiveZone.gd" id="8_3bxfe"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c78fy"]
 size = Vector2(6, 6)
@@ -35,6 +36,9 @@ max_distance = 20.0
 path = "event:/Dash"
 guid = "{ba2ce8e7-38e1-43e0-b086-81e33ed6d46a}"
 name = "Dash"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jlsid"]
+radius = 128.0
 
 [node name="Hero" type="CharacterBody2D"]
 collision_mask = 28
@@ -75,6 +79,15 @@ event = SubResource("EventAsset_3djvd")
 
 [node name="DashTimer" type="Timer" parent="."]
 wait_time = 0.2
+
+[node name="ActiveZone" type="Area2D" parent="."]
+visible = false
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("8_3bxfe")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ActiveZone"]
+shape = SubResource("CircleShape2D_jlsid")
 
 [connection signal="hit" from="." to="Stats" method="_on_hit"]
 [connection signal="dead" from="Stats" to="." method="_on_stats_dead"]

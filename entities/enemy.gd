@@ -7,6 +7,10 @@ signal hit(stats: Stats)
 var xp_ball = preload("res://entities/xp.tscn")
 
 
+func process_enemy(delta):
+	pass
+
+
 func die():
 	# Spawn loot
 	for _n in range(stats.LVL):

@@ -5,7 +5,7 @@ var hero: Hero = null
 var bubble = preload("res://attacks/bubble.tscn")
 
 
-func _process(_delta):
+func process_enemy(_delta):
 	if attacking and stats.shoot():
 		shoot()
 
