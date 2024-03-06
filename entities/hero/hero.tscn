@@ -91,7 +91,9 @@ script = ExtResource("8_3bxfe")
 shape = SubResource("CircleShape2D_jlsid")
 
 [connection signal="hit" from="." to="Stats" method="_on_hit"]
+[connection signal="changed" from="Stats" to="." method="_on_stats_changed"]
 [connection signal="dead" from="Stats" to="." method="_on_stats_dead"]
+[connection signal="level_up" from="Stats" to="." method="_on_stats_level_up"]
 [connection signal="body_entered" from="FightZone" to="FightZone" method="_on_body_entered"]
 [connection signal="body_exited" from="FightZone" to="FightZone" method="_on_body_exited"]
 [connection signal="timeout" from="DashTimer" to="." method="_on_dash_timer_timeout"]

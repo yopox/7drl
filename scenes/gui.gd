@@ -1,12 +1,26 @@
-extends Control
+class_name GUI extends Control
 
 @onready var LVL: Counter = $CanvasLayer/Level
 @onready var HP: Counter = $CanvasLayer/HP
 @onready var ATK: Counter = $CanvasLayer/ATK
 @onready var FRQ: Counter = $CanvasLayer/FRQ
 @onready var SPD: Counter = $CanvasLayer/SPD
+@onready var stat_select: Node2D = $CanvasLayer/StatSelect
 
-func _process(delta):
+var stat_selected: int = 0
+
+func _ready():
+	update_gui()
+	HeroUtil.gui = self
+
+
+func _process(_delta):
+	if Input.is_action_just_pressed("stat"):
+		stat_selected = (stat_selected + 1) % 4
+		update_gui()
+
+
+func update_gui():
 	var hero: Hero = HeroUtil.hero
 	if hero == null:
 		return
@@ -18,3 +32,13 @@ func _process(delta):
 	ATK.text = "ATK  %02d" % hero.stats.ATK
 	FRQ.text = "FRQ  %02d" % hero.stats.FRQ
 	SPD.text = "SPD  %02d" % hero.stats.SPD
+	
+	match stat_selected:
+		0:
+			stat_select.position.y = 88
+		1:
+			stat_select.position.y = 88 + 16
+		2:
+			stat_select.position.y = 88 + 24
+		3:
+			stat_select.position.y = 88 + 32

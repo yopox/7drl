@@ -108,3 +108,25 @@ func _on_stats_dead():
 	dead = true
 	(sprite.material as ShaderMaterial).set_shader_parameter("tile_color", Vector4(0.114, 0.094, 0.094, 1))
 	collision_layer = 16
+
+
+func _on_stats_level_up():
+	var gui = HeroUtil.gui
+	if gui != null:
+		match gui.stat_selected:
+			0:
+				stats.HP += 2
+			1:
+				stats.ATK += 1
+			2:
+				stats.FRQ += 1
+			3:
+				stats.SPD += 1
+		stats.CURRENT_HP = min(stats.HP, stats.CURRENT_HP + stats.HP / 4)
+		gui.update_gui()
+
+
+func _on_stats_changed():
+	var gui = HeroUtil.gui
+	if gui != null:
+		gui.update_gui()

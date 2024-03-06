@@ -2,7 +2,7 @@ class_name Stats extends Node
 
 @export_category("Character Stats")
 @export var LVL: int = 1
-@export var HP: int = 20: set = set_max_hp
+@export var HP: int = 20
 @export var ATK: int = 5
 @export var FRQ: int = 5
 @export var SPD: int = 10
@@ -31,18 +31,16 @@ var SPD_SCALE := 200.0
 
 signal damaged()
 signal dead()
+signal changed()
+signal level_up()
 
 
 func _ready():
+	CURRENT_HP = HP
 	instance_hit = FMODRuntime.create_instance(hit_event)
 	instance_death = FMODRuntime.create_instance(death_event)
 	if get_parent() is Enemy:
 		dead.connect((get_parent() as Enemy).die)
-
-
-func set_max_hp(value: int):
-	CURRENT_HP = value
-	HP = value
 
 
 func shoot() -> bool:
@@ -60,6 +58,7 @@ func _on_hit(stats: Stats):
 	# Take damage
 	CURRENT_HP -= stats.ATK
 	damaged.emit()
+	changed.emit()
 	invulnerable = true
 	
 	if CURRENT_HP <= 0:
@@ -105,3 +104,5 @@ func add_xp(amount: int):
 	while XP >= level_xp(LVL):
 		XP -= level_xp(LVL)
 		LVL += 1
+		level_up.emit()
+	changed.emit()

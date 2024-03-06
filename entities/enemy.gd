@@ -7,7 +7,7 @@ signal hit(stats: Stats)
 var xp_ball = preload("res://entities/xp.tscn")
 
 
-func process_enemy(delta):
+func process_enemy(_delta):
 	pass
 
 

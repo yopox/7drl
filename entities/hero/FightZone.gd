@@ -18,9 +18,9 @@ func update_instance():
 		instance.set_parameter_by_name_with_label("EnterCombatTest", "OutBattle", true)
 
 
-func _on_body_entered(body):
+func _on_body_entered(_body):
 	update_instance()
 
 
-func _on_body_exited(body):
+func _on_body_exited(_body):
 	update_instance()
