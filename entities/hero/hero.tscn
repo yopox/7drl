@@ -1,13 +1,21 @@
-[gd_scene load_steps=16 format=3 uid="uid://cmgwwovyu6kba"]
+[gd_scene load_steps=17 format=3 uid="uid://cmgwwovyu6kba"]
 
 [ext_resource type="Script" path="res://entities/hero/hero.gd" id="1_0bavb"]
 [ext_resource type="Shader" path="res://assets/tile.gdshader" id="1_ucpnx"]
 [ext_resource type="PackedScene" uid="uid://dgul0eolhcq2n" path="res://entities/stats.tscn" id="2_25foy"]
 [ext_resource type="Texture2D" uid="uid://d4ibrl4nmd57w" path="res://assets/MRMOTEXT_EX.png" id="2_g2vsp"]
 [ext_resource type="Script" path="res://entities/hero/FightZone.gd" id="5_xmbvs"]
-[ext_resource type="EventAsset" uid="uid://cmdbapmvmglmv" path="res://addons/FMOD/editor/resources/events/{11055db4-7ce9-49b0-8c44-c8c5a71c834a}.tres" id="6_5ol6p"]
+[ext_resource type="EventAsset" uid="uid://ctu8kway4nlaa" path="res://addons/FMOD/editor/resources/events/{11055db4-7ce9-49b0-8c44-c8c5a71c834a}.tres" id="6_5ol6p"]
 [ext_resource type="PackedScene" uid="uid://2upqhrf5ek4c" path="res://attacks/dash_manager.tscn" id="7_iljwf"]
 [ext_resource type="Script" path="res://entities/hero/ActiveZone.gd" id="8_3bxfe"]
+
+[sub_resource type="EventAsset" id="EventAsset_f0r53"]
+is_oneshot = true
+min_distance = 1.0
+max_distance = 20.0
+path = "event:/Level Up Sound"
+guid = "{707b91ba-cbb4-4ad0-aa90-a3b8053a6896}"
+name = "Level Up Sound"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c78fy"]
 size = Vector2(6, 6)
@@ -44,6 +52,7 @@ radius = 128.0
 collision_mask = 28
 script = ExtResource("1_0bavb")
 water_dmg = 3
+lvlup_event = SubResource("EventAsset_f0r53")
 
 [node name="Stats" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("2_25foy")]
 sprite = NodePath("../Sprite2D")

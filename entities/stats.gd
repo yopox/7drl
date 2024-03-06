@@ -9,6 +9,7 @@ class_name Stats extends Node
 @export var elite: bool = false
 var XP: int = 0
 
+
 @export_category("Nodes")
 
 var CURRENT_HP: int = HP
@@ -18,6 +19,7 @@ var CURRENT_HP: int = HP
 
 @export var hit_event: EventAsset
 @export var death_event: EventAsset
+
 var instance_hit: EventInstance
 var instance_death: EventInstance
 
@@ -40,6 +42,7 @@ func _ready():
 	CURRENT_HP = HP
 	instance_hit = FMODRuntime.create_instance(hit_event)
 	instance_death = FMODRuntime.create_instance(death_event)
+	
 	if get_parent() is Enemy:
 		dead.connect((get_parent() as Enemy).die)
 

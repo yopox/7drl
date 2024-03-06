@@ -8,6 +8,9 @@ class_name Hero extends CharacterBody2D
 @onready var dash_particles: GPUParticles2D = $DashParticles
 @onready var sprite: Sprite2D = $Sprite2D
 
+@export var lvlup_event: EventAsset
+var lvlup_instance: EventInstance
+
 var arrow = preload("res://attacks/arrow.tscn")
 
 var dash = false
@@ -19,6 +22,7 @@ signal hit(stats: Stats)
 
 
 func _ready():
+	lvlup_instance = FMODRuntime.create_instance(lvlup_event)
 	HeroUtil.hero = self
 
 
@@ -123,6 +127,7 @@ func _on_stats_dead():
 
 
 func _on_stats_level_up():
+	lvlup_instance.start()
 	var gui = HeroUtil.gui
 	if gui != null:
 		match gui.stat_selected:
