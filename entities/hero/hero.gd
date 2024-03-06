@@ -28,12 +28,14 @@ func _process(_delta):
 	
 	check_terrain()
 	water_damage()
+	enemy_damage()
 	attack()
 
 
 func _physics_process(delta):
 	if dead:
 		return
+		
 	var input_dir = Input.get_vector("left", "right", "up", "down")
 	if dash:
 		velocity = dash_vel
@@ -69,6 +71,15 @@ func water_damage():
 		var water_stats = Stats.new()
 		water_stats.ATK = water_dmg
 		hit.emit(water_stats)
+
+
+func enemy_damage():
+	for i in get_slide_collision_count():
+		var body = get_slide_collision(i).get_collider()
+		if body is Enemy:
+			hit.emit((body as Enemy).stats)
+			(body as Enemy).hit_player.emit()
+
 
 
 func attack():

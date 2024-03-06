@@ -1,6 +1,7 @@
 extends Enemy
 
 @onready var zone: Area2D = $Zone
+@onready var pause: Timer = $Pause
 
 var following: bool = false
 var hero: Hero = null
@@ -9,9 +10,8 @@ var hero: Hero = null
 func process_enemy(delta):
 	if stats.invulnerable:
 		velocity = Vector2.ZERO
-	elif following and hero != null:
+	elif following and hero != null and pause.is_stopped():
 		var direction = (hero.global_position - global_position).normalized()
-		#print(direction * delta * stats.SPD * stats.SPD_SCALE)
 		velocity = direction * delta * stats.SPD * stats.SPD_SCALE
 	else:
 		velocity = Vector2.ZERO
@@ -30,3 +30,7 @@ func _on_zone_body_exited(body):
 	if !body is Hero:
 		return
 	following = false
+
+
+func _on_hit_player():
+	pause.start()

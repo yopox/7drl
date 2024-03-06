@@ -4,6 +4,7 @@ class_name Enemy extends CharacterBody2D
 @export var elite_emitter: GPUParticles2D
 
 signal hit(stats: Stats)
+signal hit_player
 
 var xp_ball = preload("res://entities/xp.tscn")
 
