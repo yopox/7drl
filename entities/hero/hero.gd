@@ -67,7 +67,7 @@ func check_terrain():
 
 
 func water_damage():
-	if terrain == 0 and not dash:
+	if terrain == 0:
 		var water_stats = Stats.new()
 		water_stats.ATK = water_dmg
 		hit.emit(water_stats)
@@ -79,7 +79,6 @@ func enemy_damage():
 		if body is Enemy:
 			hit.emit((body as Enemy).stats)
 			(body as Enemy).hit_player.emit()
-
 
 
 func attack():
@@ -103,6 +102,7 @@ func attack():
 
 func start_dash():
 	dash = true
+	stats.invulnerable = true
 	dash_timer.start()
 	dash_particles.emitting = true
 	collision_mask = 16
@@ -111,6 +111,7 @@ func start_dash():
 
 func _on_dash_timer_timeout():
 	dash = false
+	stats.invulnerable = false
 	dash_particles.emitting = false
 	collision_mask = 4 + 8 + 16
 

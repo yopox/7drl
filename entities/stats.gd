@@ -78,6 +78,7 @@ func _on_hit(stats: Stats):
 	
 	# Take damage
 	CURRENT_HP -= stats.ATK
+	CURRENT_HP = max(CURRENT_HP, 0)
 	damaged.emit()
 	changed.emit()
 	invulnerable = true
