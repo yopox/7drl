@@ -32,6 +32,7 @@ func item_used():
 
 	if selected > 0:
 		items.remove_at(selected - 1)
+		selected = 0
 		update()
 
 func update():
