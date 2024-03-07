@@ -47,11 +47,11 @@ func _physics_process(delta):
 		velocity = input_dir * delta * stats.SPD * stats.SPD_SCALE
 		
 	if !dash and Input.is_action_just_pressed("use_item"):
-		match Util.gui.inventory.selected_item:
-			Inventory.Item.Dash:
-				if dash_manager.dash():
-					start_dash()
-					velocity = dash_vel
+		if Util.gui.inventory.selected_item == Inventory.Item.Dash:
+			if dash_manager.dash():
+				start_dash()
+				velocity = dash_vel
+		Util.gui.inventory.item_used()
 	
 	move_and_slide()
 

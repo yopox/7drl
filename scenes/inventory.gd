@@ -9,7 +9,7 @@ enum Item { Dash, Bomb, Potion, }
 var selected: int = 0
 var selected_item: Item = Item.Dash
 var item_scene = preload("res://items/item_node.tscn")
-
+var bomb_scene = preload("res://items/bomb.tscn")
 
 func _ready():
 	update()
@@ -18,16 +18,30 @@ func _ready():
 func _process(_delta):
 	if Input.is_action_just_pressed("select_item"):
 		selected = (selected + 1) % 7
-		if selected > items.size():
-			selected = 0
-		if selected >= 1:
-			selected_item = items[selected - 1]
-		else:
-			selected_item = Item.Dash
 		update()
 
 
+func item_used():
+	match selected_item:
+		Item.Bomb:
+			var bomb = bomb_scene.instantiate()
+			bomb.position = Util.hero.position
+			Util.hero.add_sibling(bomb)
+		Item.Potion:
+			Util.hero.stats.heal()
+
+	if selected > 0:
+		items.remove_at(selected - 1)
+		update()
+
 func update():
+	if selected > items.size():
+		selected = 0
+	if selected >= 1:
+		selected_item = items[selected - 1]
+	else:
+		selected_item = Item.Dash
+	
 	while items_node.get_children().size() < items.size():
 		var scene = item_scene.instantiate()
 		items_node.add_child(scene)

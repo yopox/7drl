@@ -135,3 +135,8 @@ func add_xp(amount: int):
 		LVL += 1
 		level_up.emit()
 	changed.emit()
+
+
+func heal():
+	CURRENT_HP = HP
+	changed.emit()
