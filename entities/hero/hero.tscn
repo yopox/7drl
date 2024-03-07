@@ -85,6 +85,7 @@ process_material = SubResource("ParticleProcessMaterial_mq0ep")
 lifetime = 0.3
 
 [node name="DashManager" parent="." instance=ExtResource("7_iljwf")]
+update_gui = true
 event = SubResource("EventAsset_3djvd")
 
 [node name="DashTimer" type="Timer" parent="."]

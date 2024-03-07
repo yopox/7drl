@@ -53,7 +53,7 @@ func _physics_process(delta):
 		Util.gui.inventory.item_used()
 	
 	move_and_slide()
-	enemy_damage()	
+	enemy_damage()
 
 
 func set_terrain(value):

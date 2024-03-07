@@ -5,11 +5,16 @@ enum Item { Dash, Bomb, Potion, }
 @export var items: Array[Item] = [Item.Bomb, Item.Potion]
 
 @onready var items_node: Node2D = $Items
+@onready var dash: Sprite2D = $Dash
 
 var selected: int = 0
 var selected_item: Item = Item.Dash
 var item_scene = preload("res://items/item_node.tscn")
 var bomb_scene = preload("res://items/bomb.tscn")
+
+var dash_color = Color("#deb964")
+var white = Color("#f3f3f3")
+
 
 func _ready():
 	update()
@@ -61,3 +66,10 @@ func update():
 		set_cell(0, Vector2i(10 + i, 0), 0, Util.get_char_pos(item_name, i))
 	for i in range(7):
 		set_cell(0, Vector2i(1 + i, 1), 0, Vector2i(0, 0) if i != selected else Vector2i(30, 28))
+
+
+func update_dash(available: bool):
+	if available:
+		(dash.material as ShaderMaterial).set_shader_parameter("fg", dash_color)
+	else:
+		(dash.material as ShaderMaterial).set_shader_parameter("fg", white)

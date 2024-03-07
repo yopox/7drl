@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://c7mlxton1tpvq"]
+[gd_scene load_steps=9 format=3 uid="uid://c7mlxton1tpvq"]
 
 [ext_resource type="Material" uid="uid://dv6xh64115ihe" path="res://assets/textmode_letter.tres" id="1_l7vi7"]
 [ext_resource type="Texture2D" uid="uid://d4ibrl4nmd57w" path="res://assets/MRMOTEXT_EX.png" id="2_15lbv"]
 [ext_resource type="Script" path="res://scenes/inventory.gd" id="3_xm3j7"]
 [ext_resource type="PackedScene" uid="uid://ba4cvlmlqe2tm" path="res://items/item_node.tscn" id="4_dcnxo"]
+[ext_resource type="Shader" path="res://scenes/textmode.gdshader" id="5_kaiu3"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_p0jab"]
 texture = ExtResource("2_15lbv")
@@ -2061,6 +2062,11 @@ texture_region_size = Vector2i(8, 8)
 tile_size = Vector2i(8, 8)
 sources/0 = SubResource("TileSetAtlasSource_p0jab")
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ra2nw"]
+shader = ExtResource("5_kaiu3")
+shader_parameter/fg = Vector4(0.953, 0.953, 0.953, 1)
+shader_parameter/bg = Vector4(0.114, 0.094, 0.094, 1)
+
 [node name="Inventory" type="TileMap"]
 position = Vector2(24, 152)
 tile_set = SubResource("TileSet_ml2n2")
@@ -2069,6 +2075,7 @@ layer_0/tile_data = PackedInt32Array(0, 524288, 27, 1, 1507328, 13, 2, 1507328, 
 script = ExtResource("3_xm3j7")
 
 [node name="Dash" parent="." instance=ExtResource("4_dcnxo")]
+material = SubResource("ShaderMaterial_ra2nw")
 position = Vector2(12, 4)
 
 [node name="Items" type="Node2D" parent="."]
