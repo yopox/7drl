@@ -1,7 +1,7 @@
 class_name ContentGenerator extends Node
 
 var sand_patterns = [
-	[5, null],
+	[8, null],
 	[1, preload("res://entities/patterns/shrimp_blocs.tscn")],
 	[4, preload("res://entities/patterns/crab_2.tscn")],
 	[3, preload("res://entities/patterns/crab_l2.tscn")],
@@ -23,11 +23,11 @@ func update_weights(table) -> int:
 	return w
 
 
-func generate(terrain: int) -> Node2D:
+func generate(terrain: String) -> Node2D:
 	var pattern = null
 	
 	var pool: Array
-	if terrain == 1:
+	if terrain == "sand":
 		pool = [sand_weights, sand_patterns]
 	else:
 		return null
