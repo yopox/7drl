@@ -16,6 +16,7 @@ name = "XP Sound"
 shader = ExtResource("2_bbfty")
 shader_parameter/fg = Vector4(0.227, 0.588, 0.918, 1)
 shader_parameter/bg = Vector4(2.08165e-12, 2.08165e-12, 2.08165e-12, 2.08165e-12)
+shader_parameter/no_bg = false
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_68acr"]
 atlas = ExtResource("1_pfmeu")

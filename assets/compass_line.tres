@@ -6,3 +6,4 @@
 shader = ExtResource("1_60bc0")
 shader_parameter/fg = Vector4(0.322, 0.302, 0.302, 1)
 shader_parameter/bg = Vector4(0.114, 0.094, 0.094, 1)
+shader_parameter/no_bg = false
