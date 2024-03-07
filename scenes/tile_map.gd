@@ -15,8 +15,8 @@ func place_enemies():
 	if !generate_enemies:
 		return
 	
-	var div_x = 12
-	var div_y = 6
+	var div_x = 10
+	var div_y = 5
 	
 	for y in range(256 / div_y):
 		var dx = div_x / 2 if y % 2 == 1 else 0

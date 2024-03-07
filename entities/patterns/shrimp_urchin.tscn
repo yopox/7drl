@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://c1hdnpswuayt6"]
+
+[ext_resource type="PackedScene" uid="uid://o4ojnevevt2l" path="res://entities/shrimp/shrimp.tscn" id="1_sg64c"]
+[ext_resource type="PackedScene" uid="uid://cw1stwqv2g0b3" path="res://entities/urchin/urchin.tscn" id="2_cob8y"]
+
+[node name="ShrimpUrchin" type="Node2D"]
+
+[node name="Shrimp" parent="." instance=ExtResource("1_sg64c")]
+
+[node name="Stats" parent="Shrimp" index="1"]
+LVL = 2
+
+[node name="Urchin" parent="." instance=ExtResource("2_cob8y")]
+position = Vector2(2.08165e-12, 16)
+
+[editable path="Shrimp"]
