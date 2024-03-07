@@ -25,7 +25,7 @@ func place_enemies(start_pos: Vector2i, grid: GaeaGrid):
 			var tile_y = y * div_y + randi_range(-1, 1)
 			var pos = Vector2i(tile_x, tile_y)
 			
-			if (start_pos - pos).length_squared() < 25:
+			if (start_pos - pos).length_squared() < 64:
 				continue
 			
 			var cell = grid.get_value(pos, 0)

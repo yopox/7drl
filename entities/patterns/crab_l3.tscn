@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://dugcgkorgacdp"]
+
+[ext_resource type="PackedScene" uid="uid://fmnaew6q3fnr" path="res://entities/crab/crab.tscn" id="1_3px3q"]
+
+[node name="CrabL2" type="Node2D"]
+
+[node name="Crab" parent="." instance=ExtResource("1_3px3q")]
+
+[node name="Stats" parent="Crab" index="0"]
+LVL = 3
+
+[editable path="Crab"]
