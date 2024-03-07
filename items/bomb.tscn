@@ -1,9 +1,17 @@
-[gd_scene load_steps=12 format=3 uid="uid://6umjbeyqxlek"]
+[gd_scene load_steps=13 format=3 uid="uid://6umjbeyqxlek"]
 
 [ext_resource type="Script" path="res://items/bomb.gd" id="1_2yas4"]
 [ext_resource type="Texture2D" uid="uid://d4ibrl4nmd57w" path="res://assets/MRMOTEXT_EX.png" id="1_nxjis"]
 [ext_resource type="Shader" path="res://items/wave.gdshader" id="2_4a8mh"]
 [ext_resource type="Shader" path="res://assets/tile.gdshader" id="2_52v0r"]
+
+[sub_resource type="EventAsset" id="EventAsset_brfvd"]
+is_oneshot = true
+min_distance = 1.0
+max_distance = 20.0
+path = "event:/Bomb Sound"
+guid = "{7b78c578-ddb0-4981-b79a-8f2420d6b71b}"
+name = "Bomb Sound"
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_cc1vi"]
 shader = ExtResource("2_52v0r")
@@ -81,6 +89,7 @@ _data = {
 
 [node name="Bomb" type="Node2D"]
 script = ExtResource("1_2yas4")
+bomb_event = SubResource("EventAsset_brfvd")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_cc1vi")
