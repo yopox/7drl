@@ -16,7 +16,7 @@ func _on_spikes_timer_timeout():
 	
 	var angle = (hero.global_position - global_position).angle()
 	
-	for i in range(8):
+	for i in range(8 if not stats.elite else 16):
 		var bullet: RigidBody2D = spike.instantiate()
 		bullet.stats = stats
 		bullet.position.x = position.x + 8 * cos(angle)
@@ -25,4 +25,4 @@ func _on_spikes_timer_timeout():
 		bullet.apply_impulse(Vector2(cos(angle), sin(angle)))
 		
 		add_sibling(bullet)
-		angle += PI / 4
+		angle += PI / (4 if not stats.elite else 8)
