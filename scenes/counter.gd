@@ -31,12 +31,7 @@ func set_text(value):
 
 func draw():
 	for x in range(text.length()):
-		if text.unicode_at(x) >= "@".unicode_at(0):
-			set_cell(0, Vector2i(x, 0), 0, Vector2i(text.unicode_at(x) - "@".unicode_at(0), 28))
-		elif text.unicode_at(x) >= "!".unicode_at(0):
-			set_cell(0, Vector2i(x, 0), 0, Vector2i(1 + text.unicode_at(x) - "!".unicode_at(0), 27))
-		elif text[x] == " ":
-			set_cell(0, Vector2i(x, 0), 0, Vector2i(0, 0))
+		set_cell(0, Vector2i(x, 0), 0, Util.get_char_pos(text, x))
 			
 	if has_bar:
 		var progress = round(bar_progress * 14)

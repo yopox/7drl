@@ -21,7 +21,7 @@ var SPAN = 170.0 * PI / 180.0
 var SEGMENT = SPAN / 9.0
 
 func _process(_delta):
-	var hero: Hero = HeroUtil.hero
+	var hero: Hero = Util.hero
 	if hero != null:
 		if abs(hero.velocity[0]) > 0.1 or abs(hero.velocity[1]) > 0.1:
 			var beta = hero.velocity.angle()

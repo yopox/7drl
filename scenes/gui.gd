@@ -6,12 +6,13 @@ class_name GUI extends Control
 @onready var FRQ: Counter = $CanvasLayer/FRQ
 @onready var SPD: Counter = $CanvasLayer/SPD
 @onready var stat_select: Node2D = $CanvasLayer/StatSelect
+@onready var inventory: Inventory = $CanvasLayer/Inventory
 
 var stat_selected: int = 0
 
 func _ready():
 	update_gui()
-	HeroUtil.gui = self
+	Util.gui = self
 
 
 func _process(_delta):
@@ -21,7 +22,7 @@ func _process(_delta):
 
 
 func update_gui():
-	var hero: Hero = HeroUtil.hero
+	var hero: Hero = Util.hero
 	if hero == null:
 		return
 	

@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://ba4cvlmlqe2tm"]
+
+[ext_resource type="Shader" path="res://scenes/textmode.gdshader" id="1_aykvl"]
+[ext_resource type="Script" path="res://items/item_node.gd" id="3_qksn3"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dqa18"]
+shader = ExtResource("1_aykvl")
+shader_parameter/fg = Vector4(0.953, 0.953, 0.953, 1)
+shader_parameter/bg = Vector4(0.114, 0.094, 0.094, 1)
+
+[node name="Item" type="Sprite2D"]
+material = SubResource("ShaderMaterial_dqa18")
+script = ExtResource("3_qksn3")

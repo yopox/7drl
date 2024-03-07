@@ -10,7 +10,7 @@ func counter_attack():
 
 
 func _on_spikes_timer_timeout():
-	var hero = HeroUtil.hero
+	var hero = Util.hero
 	if hero == null:
 		return
 	

@@ -23,7 +23,7 @@ signal hit(stats: Stats)
 
 func _ready():
 	lvlup_instance = FMODRuntime.create_instance(lvlup_event)
-	HeroUtil.hero = self
+	Util.hero = self
 
 
 func _process(_delta):
@@ -46,9 +46,12 @@ func _physics_process(delta):
 	else:
 		velocity = input_dir * delta * stats.SPD * stats.SPD_SCALE
 		
-	if !dash and Input.is_action_just_pressed("dash") and dash_manager.dash():
-		start_dash()
-		velocity = dash_vel
+	if !dash and Input.is_action_just_pressed("use_item"):
+		match Util.gui.inventory.selected_item:
+			Inventory.Item.Dash:
+				if dash_manager.dash():
+					start_dash()
+					velocity = dash_vel
 	
 	move_and_slide()
 
@@ -59,7 +62,7 @@ func set_terrain(value):
 
 
 func check_terrain():
-	var map = MapUtil.tile_map
+	var map = Util.tile_map
 	if map == null:
 		return
 	var cell_pos = map.local_to_map(global_position)
@@ -128,7 +131,7 @@ func _on_stats_dead():
 
 func _on_stats_level_up():
 	lvlup_instance.start()
-	var gui = HeroUtil.gui
+	var gui = Util.gui
 	if gui != null:
 		match gui.stat_selected:
 			0:
@@ -144,6 +147,6 @@ func _on_stats_level_up():
 
 
 func _on_stats_changed():
-	var gui = HeroUtil.gui
+	var gui = Util.gui
 	if gui != null:
 		gui.update_gui()

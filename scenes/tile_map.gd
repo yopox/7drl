@@ -6,7 +6,7 @@ var xp = preload("res://entities/terrain/bloc.tscn")
 var content_generator: ContentGenerator
 
 func _ready():
-	MapUtil.tile_map = self
+	Util.tile_map = self
 	content_generator = preload("res://entities/content_generator.tscn").instantiate()
 	content_generator.prepare()
 	place_enemies()
