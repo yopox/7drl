@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://clgxf4cxtpcdw"]
+
+[ext_resource type="PackedScene" uid="uid://o4ojnevevt2l" path="res://entities/shrimp/shrimp.tscn" id="1_k3try"]
+
+[node name="Shrimp" type="Node2D"]
+
+[node name="Shrimp" parent="." instance=ExtResource("1_k3try")]
+
+[node name="Stats" parent="Shrimp" index="1"]
+LVL = 2
+FRQ = 6
+
+[editable path="Shrimp"]

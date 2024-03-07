@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bbypqpn4re82y"]
+
+[ext_resource type="PackedScene" uid="uid://dsnpfoi7bvtj3" path="res://entities/terrain/bloc.tscn" id="1_y8bx1"]
+
+[node name="Bloc" type="Node2D"]
+
+[node name="Bloc" parent="." instance=ExtResource("1_y8bx1")]

@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://3cnls45umxqu"]
+
+[ext_resource type="PackedScene" uid="uid://dsnpfoi7bvtj3" path="res://entities/terrain/bloc.tscn" id="1_eok1k"]
+
+[node name="Bloc" type="Node2D"]
+
+[node name="Bloc" parent="." instance=ExtResource("1_eok1k")]
+position = Vector2(-12, 2.08165e-12)
+
+[node name="Bloc2" parent="." instance=ExtResource("1_eok1k")]
+position = Vector2(12, 2.08165e-12)

@@ -11,6 +11,6 @@
 LVL = 2
 
 [node name="Urchin" parent="." instance=ExtResource("2_cob8y")]
-position = Vector2(2.08165e-12, 16)
+position = Vector2(2.08165e-12, 24)
 
 [editable path="Shrimp"]
