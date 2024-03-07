@@ -2,6 +2,8 @@
 assets/MRMOTEXT_EX.png
 addons/gaea/*
 addons/FMOD/*
+export/*
+android/*
 
 # Godot .gitignore config
 #
