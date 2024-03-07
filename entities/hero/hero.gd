@@ -32,7 +32,6 @@ func _process(_delta):
 	
 	check_terrain()
 	water_damage()
-	enemy_damage()
 	attack()
 
 
@@ -54,6 +53,7 @@ func _physics_process(delta):
 		Util.gui.inventory.item_used()
 	
 	move_and_slide()
+	enemy_damage()	
 
 
 func set_terrain(value):
