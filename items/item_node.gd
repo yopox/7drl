@@ -1,14 +1,20 @@
 class_name ItemNode extends Sprite2D
 
-@export var item: Inventory.Item: set = set_item
-
+@export var item: Inventory.Item = Inventory.Item.Bomb: set = set_item
+var init = false
 
 func _ready():
+	if not init:
+		init_sprite()
+
+
+func init_sprite():
 	texture = AtlasTexture.new()
 	texture.atlas = load("res://assets/MRMOTEXT_EX.png")
 	texture.region.size = Vector2(8, 8)
 	material = ShaderMaterial.new()
 	material.shader = load("res://scenes/textmode.gdshader")
+	init = true
 	update()
 
 
@@ -20,7 +26,10 @@ func _process(_delta):
 
 func set_item(value: Inventory.Item):
 	item = value
-	update()
+	if not init:
+		init_sprite()
+	else:
+		update()
 
 
 func update():
@@ -35,4 +44,4 @@ func update():
 			sm.set_shader_parameter("fg", Color("#ea3a3a"))
 		Inventory.Item.Bomb:
 			t.region.position = Vector2(120, 104)
-			sm.set_shader_parameter("fg", Color("#524d4d"))
+			sm.set_shader_parameter("fg", Color("#737070"))

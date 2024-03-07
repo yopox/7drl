@@ -25,6 +25,15 @@ func _process(_delta):
 		update()
 
 
+func is_full() -> bool:
+	return items.size() >= 6
+
+
+func add_item(item: Item):
+	items.append(item)
+	update()
+
+
 func item_used():
 	match selected_item:
 		Item.Bomb:

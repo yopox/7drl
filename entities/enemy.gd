@@ -7,6 +7,7 @@ signal hit(stats: Stats)
 signal hit_player
 
 var xp_ball = preload("res://entities/xp.tscn")
+var item_drop = preload("res://items/item_drop.tscn")
 
 
 func _ready():
@@ -21,12 +22,18 @@ func process_enemy(_delta):
 
 func die():
 	# Spawn loot
+	if stats.elite:
+		var item = item_drop.instantiate()
+		item.position = position
+		add_sibling(item)
+		item.randomize()
+	
+	# Spawn XP
 	for _n in range(stats.LVL):
 		var ball = xp_ball.instantiate()
-		ball.position.x = position.x
-		ball.position.y = position.y
+		ball.position = position
 		var angle = randf() * 2 * PI
 		ball.apply_impulse(Vector2(cos(angle), sin(angle)))
-		get_parent().add_child(ball)
+		add_sibling(ball)
 		
 	queue_free()
