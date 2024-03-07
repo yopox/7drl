@@ -24,5 +24,5 @@ func _on_spikes_timer_timeout():
 		bullet.rotation = angle
 		bullet.apply_impulse(Vector2(cos(angle), sin(angle)))
 		
-		get_parent().add_child(bullet)
+		add_sibling(bullet)
 		angle += PI / 4

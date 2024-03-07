@@ -104,7 +104,7 @@ func attack():
 	bullet.rotation = attack_dir.angle() - PI / 2.0
 	bullet.apply_impulse(attack_dir)
 	
-	get_parent().add_child(bullet)
+	add_sibling(bullet)
 
 
 func start_dash():

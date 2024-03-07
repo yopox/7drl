@@ -18,7 +18,7 @@ func shoot():
 	bullet.apply_impulse(attack_dir * 60)
 	bullet.stats = stats
 	
-	get_parent().add_child(bullet)
+	add_sibling(bullet)
 
 
 func _on_zone_body_entered(body):
