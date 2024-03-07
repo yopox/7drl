@@ -14,7 +14,7 @@ func _on_spikes_timer_timeout():
 	if hero == null:
 		return
 	
-	var angle = (hero.position - position).angle()
+	var angle = (hero.global_position - global_position).angle()
 	
 	for i in range(8):
 		var bullet: RigidBody2D = spike.instantiate()
