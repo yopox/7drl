@@ -9,6 +9,10 @@ var exit: Vector2 = Vector2.ZERO
 var move_vector: Vector2 = Vector2.ZERO
 var attack_vector: Vector2 = Vector2.ZERO
 
+var android_start: bool = false
+var android_select1: bool = false
+var android_select2: bool = false
+
 func set_hero(value):
 	hero = value
 	if gui != null:

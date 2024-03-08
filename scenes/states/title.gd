@@ -25,6 +25,7 @@ func _process(delta):
 	logo_time = fmod(logo_time, 2 * PI * 0.8)
 	logo.position.y = 63.5 - sin(logo_time / 0.8)
 	
-	if Input.is_action_just_pressed("use_item"):
+	if Input.is_action_just_pressed("use_item") or Util.android_start:
+		Util.android_start = false
 		Audio.play_sfx(Audio.SFX.Select)
 		exit_title.emit()

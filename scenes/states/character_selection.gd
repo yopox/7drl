@@ -22,7 +22,8 @@ func _ready():
 
 
 func _process(delta):
-	if Input.is_action_just_pressed("right") or Input.is_action_just_pressed("attack_right"):
+	if Input.is_action_just_pressed("right") or Input.is_action_just_pressed("attack_right") or Util.android_select1:
+		Util.android_select1 = false
 		Audio.play_sfx(Audio.SFX.Select)
 		hero_selected += 1
 		update()
@@ -32,12 +33,15 @@ func _process(delta):
 		update()
 	
 	if Input.is_action_just_pressed("up") or Input.is_action_just_pressed("down")\
-		or Input.is_action_just_pressed("attack_up") or Input.is_action_just_pressed("attack_down"):
+		or Input.is_action_just_pressed("attack_up") or Input.is_action_just_pressed("attack_down")\
+		or Util.android_select2:
+		Util.android_select2 = false
 		Audio.play_sfx(Audio.SFX.Select)
 		select = not select
 		update()
 
-	if Input.is_action_just_pressed("use_item"):
+	if Input.is_action_just_pressed("use_item") or Util.android_start:
+		Util.android_start = false
 		if select:
 			match hero_selected:
 				0:
