@@ -131,10 +131,28 @@ func attack():
 func launch_arrow(attack_dir: Vector2):
 	var bullet: RigidBody2D = arrow.instantiate()
 	bullet.stats = stats
-	bullet.position.x = position.x + 8 * cos(attack_dir.angle())
-	bullet.position.y = position.y + 8 * sin(attack_dir.angle())
-	bullet.rotation = attack_dir.angle() - PI / 2.0
-	bullet.apply_impulse(attack_dir.normalized() * stats.SPD / 10.0)
+	
+	var angle = attack_dir.angle()
+	var enemies_in_zone = fight_zone.get_overlapping_bodies()\
+		.filter(func(e): return e is Enemy)
+	
+	var min = [20000, 0]
+	for body in enemies_in_zone:
+		var diff = body.global_position - global_position
+		var beta = diff.angle()
+		print("attack %f / enemy %f" % [angle, beta])
+		if abs(angle - beta) < PI / 4 or abs(angle - beta - 2 * PI) < PI / 4:
+			var dist = diff.length_squared()
+			if dist < min[0]:
+				min = [dist, beta]
+	
+	if min[0] < 19999:
+		angle = min[1]
+	
+	bullet.position.x = position.x + 8 * cos(angle)
+	bullet.position.y = position.y + 8 * sin(angle)
+	bullet.rotation = angle - PI / 2.0
+	bullet.apply_impulse(Vector2.from_angle(angle) * stats.SPD / 10.0)
 	add_sibling(bullet)
 
 
