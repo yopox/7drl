@@ -6,10 +6,18 @@ var hero: Hero
 var grid: GaeaGrid
 
 
-func _ready():
+func generate():
 	generator.generate()
 	grid = generator.grid
 	init_level()
+
+
+func setup_hero(hero_class: Hero.Class, stats: Stats):
+	hero = load("res://entities/hero/hero.tscn").instantiate()
+	hero.visible = false
+	hero.hero_class = hero_class
+	add_child(hero)
+	hero.stats.copy(stats)
 
 
 func find_starting_pos() -> Vector2i:
@@ -29,10 +37,6 @@ func find_exit() -> Vector2i:
 
 
 func init_level():
-	hero = load("res://entities/hero/hero.tscn").instantiate()
-	hero.visible = false
-	add_child(hero)
-	
 	var gui = load("res://scenes/gui.tscn").instantiate()
 	add_child(gui)
 	

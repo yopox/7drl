@@ -1,11 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://b2vk64q03a0y6"]
+[gd_scene load_steps=2 format=3 uid="uid://b2vk64q03a0y6"]
 
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_e4mj0"]
-[ext_resource type="PackedScene" uid="uid://c5wo4ke7fsjx7" path="res://scenes/states/title.tscn" id="1_uofx2"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_e4mj0")
-
-[node name="Title" parent="." instance=ExtResource("1_uofx2")]
-
-[connection signal="exit_title" from="Title" to="." method="_on_title_exit_title"]
