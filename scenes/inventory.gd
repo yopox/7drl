@@ -21,8 +21,12 @@ func _ready():
 
 func _process(_delta):
 	if Input.is_action_just_pressed("select_item"):
-		selected = (selected + 1) % 7
-		update()
+		select_item()
+
+
+func select_item():
+	selected = (selected + 1) % 7
+	update()
 
 
 func is_full() -> bool:

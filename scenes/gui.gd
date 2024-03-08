@@ -7,18 +7,26 @@ class_name GUI extends Control
 @onready var SPD: Counter = $CanvasLayer/SPD
 @onready var stat_select: Node2D = $CanvasLayer/StatSelect
 @onready var inventory: Inventory = $CanvasLayer/Inventory
+@onready var buttons: Node2D = $CanvasLayer/Buttons
 
 var stat_selected: int = 0
 
 func _ready():
+	if OS.get_name() != "Android":
+		buttons.queue_free()
+	
 	update_gui()
 	Util.gui = self
 
 
 func _process(_delta):
 	if Input.is_action_just_pressed("stat"):
-		stat_selected = (stat_selected + 1) % 4
-		update_gui()
+		select_stat()
+
+
+func select_stat():
+	stat_selected = (stat_selected + 1) % 4
+	update_gui()
 
 
 func update_gui():
