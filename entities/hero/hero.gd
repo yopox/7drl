@@ -15,6 +15,7 @@ enum Class { Archer, Fighter, Wizard }
 var lvlup_instance: EventInstance
 
 var arrow = preload("res://attacks/arrow.tscn")
+var sword = preload("res://attacks/sword.tscn")
 var wiz_zone = preload("res://attacks/wiz_zone.tscn")
 
 var hero_class: Class = Class.Archer
@@ -30,10 +31,13 @@ func _ready():
 	lvlup_instance = FMODRuntime.create_instance(lvlup_event)
 	match hero_class:
 		Class.Archer:
+			dash_manager.timer.wait_time = 3
 			(sprite.texture as AtlasTexture).region.position = Vector2(0, 224)
 		Class.Fighter:
+			dash_manager.timer.wait_time = 1.5			
 			(sprite.texture as AtlasTexture).region.position = Vector2(224, 240)
 		Class.Wizard:
+			dash_manager.timer.wait_time = 3			
 			(sprite.texture as AtlasTexture).region.position = Vector2(128, 240)
 	Util.hero = self
 
@@ -131,15 +135,35 @@ func attack():
 func launch_arrow(attack_dir: Vector2):
 	var bullet: RigidBody2D = arrow.instantiate()
 	bullet.stats = stats
-	bullet.position.x = position.x + 8 * cos(attack_dir.angle())
-	bullet.position.y = position.y + 8 * sin(attack_dir.angle())
-	bullet.rotation = attack_dir.angle() - PI / 2.0
-	bullet.apply_impulse(attack_dir.normalized() * stats.SPD / 10.0)
+	
+	var angle = attack_dir.angle()
+	var enemies_in_zone = fight_zone.get_overlapping_bodies()\
+		.filter(func(e): return e is Enemy)
+	
+	var min = [20000, 0]
+	for body in enemies_in_zone:
+		var diff = body.global_position - global_position
+		var beta = diff.angle()
+		if abs(angle - beta) < PI / 4 or abs(angle - beta - 2 * PI) < PI / 4:
+			var dist = diff.length_squared()
+			if dist < min[0]:
+				min = [dist, beta]
+	
+	if min[0] < 19999:
+		angle = min[1]
+	
+	bullet.position.x = position.x + 8 * cos(angle)
+	bullet.position.y = position.y + 8 * sin(angle)
+	bullet.rotation = angle - PI / 2.0
+	bullet.apply_impulse(Vector2.from_angle(angle) * stats.SPD / 10.0)
 	add_sibling(bullet)
 
 
 func use_sword(attack_dir: Vector2):
-	pass
+	var sword_body = sword.instantiate()
+	sword_body.stats = stats
+	sword_body.rotation = attack_dir.angle()
+	add_child(sword_body)
 
 
 func launch_zone(attack_dir: Vector2):

@@ -13,8 +13,8 @@ signal exit_title
 func _ready():
 	var version: String = ProjectSettings.get_setting("application/config/version")
 	for i in range(len(version)):
-		var cell = Util.get_char_pos(version[i], i)
-		tile_map.set_cell(0, Vector2i(33 + i, 20), 0, Util.get_char_pos(version, i))
+		var cell = Util.get_char_pos(version, i)
+		tile_map.set_cell(0, Vector2i(33 + i, 20), 0, cell)
 
 func _process(delta):
 	time += delta
