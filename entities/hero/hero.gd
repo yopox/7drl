@@ -140,7 +140,6 @@ func launch_arrow(attack_dir: Vector2):
 	for body in enemies_in_zone:
 		var diff = body.global_position - global_position
 		var beta = diff.angle()
-		print("attack %f / enemy %f" % [angle, beta])
 		if abs(angle - beta) < PI / 4 or abs(angle - beta - 2 * PI) < PI / 4:
 			var dist = diff.length_squared()
 			if dist < min[0]:
