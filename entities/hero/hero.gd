@@ -7,6 +7,7 @@ class_name Hero extends CharacterBody2D
 @onready var dash_timer: Timer = $DashTimer
 @onready var dash_particles: GPUParticles2D = $DashParticles
 @onready var sprite: Sprite2D = $Sprite2D
+@onready var fight_zone: FightZone = $FightZone
 
 @export var lvlup_event: EventAsset
 var lvlup_instance: EventInstance
@@ -66,7 +67,7 @@ func use_item():
 
 func set_terrain(value):
 	terrain = value
-	# TODO: update music
+	fight_zone.update_music(terrain)
 
 
 func check_terrain():
@@ -160,3 +161,5 @@ func _on_stats_changed():
 	var gui = Util.gui
 	if gui != null:
 		gui.update_gui()
+		
+		

@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://dgul0eolhcq2n" path="res://entities/stats.tscn" id="2_25foy"]
 [ext_resource type="Texture2D" uid="uid://d4ibrl4nmd57w" path="res://assets/MRMOTEXT_EX.png" id="2_g2vsp"]
 [ext_resource type="Script" path="res://entities/hero/FightZone.gd" id="5_xmbvs"]
-[ext_resource type="EventAsset" uid="uid://cmdbapmvmglmv" path="res://addons/FMOD/editor/resources/events/{11055db4-7ce9-49b0-8c44-c8c5a71c834a}.tres" id="6_5ol6p"]
+[ext_resource type="EventAsset" uid="uid://ctu8kway4nlaa" path="res://addons/FMOD/editor/resources/events/{11055db4-7ce9-49b0-8c44-c8c5a71c834a}.tres" id="6_5ol6p"]
 [ext_resource type="PackedScene" uid="uid://2upqhrf5ek4c" path="res://attacks/dash_manager.tscn" id="7_iljwf"]
 [ext_resource type="Script" path="res://entities/hero/ActiveZone.gd" id="8_3bxfe"]
 
@@ -70,7 +70,7 @@ collision_layer = 0
 collision_mask = 4
 monitorable = false
 script = ExtResource("5_xmbvs")
-event = ExtResource("6_5ol6p")
+event_lvl1 = ExtResource("6_5ol6p")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FightZone"]
 shape = SubResource("CircleShape2D_e3cw4")
