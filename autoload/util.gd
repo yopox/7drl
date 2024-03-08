@@ -4,6 +4,8 @@ var hero: Hero = null: set = set_hero
 var gui: GUI = null: set = set_gui
 var tile_map: TileMap = null
 
+var exit: Vector2 = Vector2.ZERO
+
 var move_vector: Vector2 = Vector2.ZERO
 var attack_vector: Vector2 = Vector2.ZERO
 

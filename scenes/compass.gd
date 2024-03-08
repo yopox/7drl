@@ -20,6 +20,7 @@ var angle = 3 * PI / 2
 var SPAN = 170.0 * PI / 180.0
 var SEGMENT = SPAN / 9.0
 
+
 func _process(_delta):
 	var hero: Hero = Util.hero
 	if hero != null:
@@ -30,15 +31,23 @@ func _process(_delta):
 			angle = fposmod((angle * 15 + beta) / 16, 2 * PI)
 			
 	var current = angle - SPAN / 2
+	var important = [
+		[(Util.exit - hero.global_position).angle(), GOAL]
+	]
 	for i in range(9):
-		set_cell(0, Vector2i(i, 0), 0, cardinal(current))
+		set_cell(0, Vector2i(i, 0), 0, tile(current, important))
 		current += SPAN / 9.0
 
-func cardinal(alpha) -> Vector2i:
+
+func tile(alpha, important: Array) -> Vector2i:
+	for interest in important:
+		if is_beta_shown(alpha, interest[0]):
+			return interest[1]
 	for tile in CARD_POINTS:
 		if is_beta_shown(alpha, tile[0]):
 			return tile[1]
 	return EMPTY
+
 
 func is_beta_shown(alpha, beta) -> bool:
 	if alpha <= beta and beta < alpha + SEGMENT:

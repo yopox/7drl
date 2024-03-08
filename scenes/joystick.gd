@@ -1,6 +1,5 @@
 class_name Joystick extends Node2D
 
-@onready var button = $Button
 @onready var knob = $ColorRect
 var pressed: bool = false
 var event: InputEventScreenDrag

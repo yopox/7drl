@@ -2,7 +2,7 @@ extends TileMap
 
 @export var generate_enemies = true
 
-var xp = preload("res://entities/terrain/bloc.tscn")
+var bloc = preload("res://entities/terrain/bloc.tscn")
 var content_generator: ContentGenerator
 
 func _ready():
@@ -11,7 +11,7 @@ func _ready():
 	content_generator.prepare()
 
 
-func place_enemies(start_pos: Vector2i, grid: GaeaGrid):
+func place_enemies(start_pos: Vector2i, exit_pos: Vector2i, grid: GaeaGrid):
 	if !generate_enemies:
 		return
 	
@@ -27,6 +27,8 @@ func place_enemies(start_pos: Vector2i, grid: GaeaGrid):
 			
 			if (start_pos - pos).length_squared() < 64:
 				continue
+			if (exit_pos - pos).length_squared() < 64:
+				continue
 			
 			var cell = grid.get_value(pos, 0)
 			if cell == null:
@@ -39,3 +41,7 @@ func place_enemies(start_pos: Vector2i, grid: GaeaGrid):
 			pattern.position = map_to_local(Vector2i(tile_x, tile_y))
 			pattern.visible = true
 			add_sibling.call_deferred(pattern)
+
+	var exit = bloc.instantiate()
+	exit.position = map_to_local(exit_pos)
+	add_sibling(exit)
