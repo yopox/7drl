@@ -32,6 +32,7 @@ func is_full() -> bool:
 
 func add_item(item: Item):
 	items.append(item)
+	Audio.play_sfx(Audio.SFX.GrabItem)
 	update()
 
 

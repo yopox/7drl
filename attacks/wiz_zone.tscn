@@ -1,7 +1,15 @@
-[gd_scene load_steps=7 format=3 uid="uid://x1tw8sl2is6b"]
+[gd_scene load_steps=8 format=3 uid="uid://x1tw8sl2is6b"]
 
 [ext_resource type="Shader" path="res://items/wave.gdshader" id="1_71a14"]
 [ext_resource type="Script" path="res://attacks/wiz_zone.gd" id="1_bnnnb"]
+
+[sub_resource type="EventAsset" id="EventAsset_kf377"]
+is_oneshot = true
+min_distance = 1.0
+max_distance = 20.0
+path = "event:/Wizard Cast"
+guid = "{9763df43-0a81-49ef-9c77-534d79280aa0}"
+name = "Wizard Cast"
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8ygun"]
 shader = ExtResource("1_71a14")
@@ -71,6 +79,7 @@ radius = 24.0
 mass = 0.02
 lock_rotation = true
 script = ExtResource("1_bnnnb")
+cast_event = SubResource("EventAsset_kf377")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 material = SubResource("ShaderMaterial_8ygun")

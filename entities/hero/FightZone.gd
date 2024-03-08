@@ -37,11 +37,11 @@ func set_parameter(name: String, label: String, ignore_seek_speed: bool):
 func update_music(hero_terrain):
 	if hero_terrain == 2 and terrain != 2:
 		terrain = 2
-		instance_lvl1.stop(0)
+		instance_lvl1.stop(FMODStudioModule.FMOD_STUDIO_STOP_ALLOWFADEOUT)
 		instance_lvl2.start()
 	elif hero_terrain == 1 and terrain != 1:
 		terrain = 1
-		instance_lvl2.stop(0)
+		instance_lvl2.stop(FMODStudioModule.FMOD_STUDIO_STOP_ALLOWFADEOUT)
 		instance_lvl1.start()
 
 func _on_body_entered(_body):

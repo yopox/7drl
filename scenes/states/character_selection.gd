@@ -23,14 +23,17 @@ func _ready():
 
 func _process(delta):
 	if Input.is_action_just_pressed("right") or Input.is_action_just_pressed("attack_right"):
+		Audio.play_sfx(Audio.SFX.Select)
 		hero_selected += 1
 		update()
 	elif Input.is_action_just_pressed("left") or Input.is_action_just_pressed("attack_left"):
+		Audio.play_sfx(Audio.SFX.Select)
 		hero_selected -= 1
 		update()
 	
 	if Input.is_action_just_pressed("up") or Input.is_action_just_pressed("down")\
 		or Input.is_action_just_pressed("attack_up") or Input.is_action_just_pressed("attack_down"):
+		Audio.play_sfx(Audio.SFX.Select)
 		select = not select
 		update()
 
@@ -44,6 +47,7 @@ func _process(delta):
 				2:
 					confirm.emit(Hero.Class.Wizard, wizard_stats)
 		else:
+			Audio.play_sfx(Audio.SFX.Back)
 			cancel.emit()
 
 func update():

@@ -3,14 +3,18 @@ extends Node2D
 var title = preload("res://scenes/states/title.tscn")
 var character_selection = preload("res://scenes/states/character_selection.tscn")
 var level = preload("res://scenes/states/level.tscn")
-
+@export var event: EventAsset
+var title_music: EventInstance
+	
 
 func _ready():
+	title_music = FMODRuntime.create_instance(event)
 	spawn_title()
 
 
 func spawn_title():
 	var scene = title.instantiate()
+	title_music.start()
 	add_child(scene)
 	scene.exit_title.connect(_on_title_exit_title)
 
@@ -23,6 +27,7 @@ func spawn_character_selection():
 
 
 func spawn_level(hero: Hero.Class, stats: Stats):
+	title_music.stop(FMODStudioModule.FMOD_STUDIO_STOP_ALLOWFADEOUT)
 	var scene = level.instantiate()
 	add_child(scene)
 	scene.setup_hero(hero, stats)
