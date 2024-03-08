@@ -43,9 +43,9 @@ func tile(alpha, important: Array) -> Vector2i:
 	for interest in important:
 		if is_beta_shown(alpha, interest[0]):
 			return interest[1]
-	for tile in CARD_POINTS:
-		if is_beta_shown(alpha, tile[0]):
-			return tile[1]
+	for cardinal in CARD_POINTS:
+		if is_beta_shown(alpha, cardinal[0]):
+			return cardinal[1]
 	return EMPTY
 
 
