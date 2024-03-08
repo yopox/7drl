@@ -15,6 +15,7 @@ enum Class { Archer, Fighter, Wizard }
 var lvlup_instance: EventInstance
 
 var arrow = preload("res://attacks/arrow.tscn")
+var sword = preload("res://attacks/sword.tscn")
 var wiz_zone = preload("res://attacks/wiz_zone.tscn")
 
 var hero_class: Class = Class.Archer
@@ -30,10 +31,13 @@ func _ready():
 	lvlup_instance = FMODRuntime.create_instance(lvlup_event)
 	match hero_class:
 		Class.Archer:
+			dash_manager.timer.wait_time = 3
 			(sprite.texture as AtlasTexture).region.position = Vector2(0, 224)
 		Class.Fighter:
+			dash_manager.timer.wait_time = 1.5			
 			(sprite.texture as AtlasTexture).region.position = Vector2(224, 240)
 		Class.Wizard:
+			dash_manager.timer.wait_time = 3			
 			(sprite.texture as AtlasTexture).region.position = Vector2(128, 240)
 	Util.hero = self
 
@@ -156,7 +160,10 @@ func launch_arrow(attack_dir: Vector2):
 
 
 func use_sword(attack_dir: Vector2):
-	pass
+	var sword_body = sword.instantiate()
+	sword_body.stats = stats
+	sword_body.rotation = attack_dir.angle()
+	add_child(sword_body)
 
 
 func launch_zone(attack_dir: Vector2):
