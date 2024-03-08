@@ -26,4 +26,5 @@ func _process(delta):
 	logo.position.y = 63.5 - sin(logo_time / 0.8)
 	
 	if Input.is_action_just_pressed("use_item"):
+		Audio.play_sfx(Audio.SFX.Select)
 		exit_title.emit()
