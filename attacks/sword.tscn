@@ -7,6 +7,9 @@
 shader = ExtResource("1_35b16")
 shader_parameter/progress = 2.08165e-12
 
+[sub_resource type="Animation" id="Animation_dl4ex"]
+length = 0.001
+
 [sub_resource type="Animation" id="Animation_1h0sa"]
 resource_name = "new_animation"
 tracks/0/type = "value"
@@ -35,9 +38,6 @@ tracks/1/keys = {
 "method": &"queue_free"
 }]
 }
-
-[sub_resource type="Animation" id="Animation_dl4ex"]
-length = 0.001
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1ice0"]
 _data = {

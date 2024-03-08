@@ -2153,7 +2153,6 @@ centered = false
 
 [node name="Stats" type="Node" parent="Gui/CanvasLayer/Wizard"]
 script = ExtResource("6_aahp7")
-HP = 10
-ATK = 4
-FRQ = 2
+HP = 15
+FRQ = 3
 SPD = 14

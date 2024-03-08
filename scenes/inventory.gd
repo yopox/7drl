@@ -40,6 +40,7 @@ func item_used():
 		Item.Bomb:
 			var bomb = bomb_scene.instantiate()
 			bomb.position = Util.hero.position
+			bomb.damage *= Util.hero.stats.ATK / 5.0
 			Util.hero.add_sibling(bomb)
 		Item.Potion:
 			Util.hero.stats.heal()
