@@ -3160,6 +3160,7 @@ layer_0/tile_data = PackedInt32Array(0, 1245184, 5, 10, 1310720, 4)
 position = Vector2(48, 152)
 
 [node name="Buttons" type="Node2D" parent="CanvasLayer"]
+visible = false
 
 [node name="Joystick" parent="CanvasLayer/Buttons" instance=ExtResource("8_qqk6x")]
 position = Vector2(40, 136)

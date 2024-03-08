@@ -112,7 +112,7 @@ func attack():
 	bullet.position.x = position.x + 8 * cos(attack_dir.angle())
 	bullet.position.y = position.y + 8 * sin(attack_dir.angle())
 	bullet.rotation = attack_dir.angle() - PI / 2.0
-	bullet.apply_impulse(attack_dir)
+	bullet.apply_impulse(attack_dir.normalized())
 	
 	add_sibling(bullet)
 

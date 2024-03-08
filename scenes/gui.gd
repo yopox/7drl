@@ -14,6 +14,8 @@ var stat_selected: int = 0
 func _ready():
 	if OS.get_name() != "Android":
 		buttons.queue_free()
+	else:
+		buttons.visible = true
 	
 	update_gui()
 	Util.gui = self
