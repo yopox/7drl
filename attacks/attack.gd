@@ -9,15 +9,12 @@ func set_stats(value):
 	attack = stats.ATK
 
 
-func _process(_delta):
+func contact(body):
 	if stats == null:
 		stats = Stats.new()
 		stats.ATK = attack
-	var collisions = get_colliding_bodies()
 	
-	for body in collisions:
-		if body.has_signal("hit"):
-			body.hit.emit(stats)
+	if body.has_signal("hit"):
+		body.hit.emit(stats)
 	
-	if collisions.size() > 0:
-		queue_free()
+	queue_free()
