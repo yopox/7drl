@@ -38,10 +38,10 @@ func update():
 	match item:
 		Inventory.Item.Dash:
 			t.region.position = Vector2(24, 56)
-			sm.set_shader_parameter("fg", Color("#deb964"))
+			sm.set_shader_parameter("fg", Color("#d28f46"))
 		Inventory.Item.Potion:
 			t.region.position = Vector2(104, 120)
 			sm.set_shader_parameter("fg", Color("#ea3a3a"))
 		Inventory.Item.Bomb:
 			t.region.position = Vector2(120, 104)
-			sm.set_shader_parameter("fg", Color("#737070"))
+			sm.set_shader_parameter("fg", Color("#4652d2"))

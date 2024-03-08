@@ -1,0 +1,61 @@
+[gd_scene load_steps=8 format=3 uid="uid://dmkf7kd0k8py0"]
+
+[ext_resource type="PackedScene" uid="uid://c4uxdhy6e6qq1" path="res://scenes/joystick.tscn" id="1_3h3yo"]
+[ext_resource type="Script" path="res://scenes/move_joystick.gd" id="2_xm4ks"]
+[ext_resource type="Script" path="res://scenes/attack_joystick.gd" id="3_7f3w4"]
+[ext_resource type="Script" path="res://scenes/stat_button.gd" id="4_tlqh8"]
+[ext_resource type="Script" path="res://scenes/item_button.gd" id="5_7obka"]
+[ext_resource type="Script" path="res://scenes/dash_button.gd" id="6_y803e"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0xy15"]
+
+[node name="Buttons" type="Node2D"]
+visible = false
+
+[node name="Joystick" parent="." instance=ExtResource("1_3h3yo")]
+position = Vector2(40, 136)
+script = ExtResource("2_xm4ks")
+
+[node name="Joystick2" parent="." instance=ExtResource("1_3h3yo")]
+position = Vector2(272, 136)
+script = ExtResource("3_7f3w4")
+
+[node name="TouchScreenButton" type="TouchScreenButton" parent="."]
+position = Vector2(139, 156)
+shape = SubResource("RectangleShape2D_0xy15")
+script = ExtResource("4_tlqh8")
+
+[node name="ColorRect" type="ColorRect" parent="TouchScreenButton"]
+offset_left = -8.0
+offset_top = -8.0
+offset_right = 8.0
+offset_bottom = 8.0
+color = Color(1, 1, 1, 0.294118)
+
+[node name="TouchScreenButton2" type="TouchScreenButton" parent="."]
+position = Vector2(167, 156)
+shape = SubResource("RectangleShape2D_0xy15")
+script = ExtResource("5_7obka")
+
+[node name="ColorRect" type="ColorRect" parent="TouchScreenButton2"]
+offset_left = -8.0
+offset_top = -8.0
+offset_right = 8.0
+offset_bottom = 8.0
+color = Color(1, 1, 1, 0.294118)
+
+[node name="TouchScreenButton3" type="TouchScreenButton" parent="."]
+position = Vector2(195, 156)
+shape = SubResource("RectangleShape2D_0xy15")
+script = ExtResource("6_y803e")
+
+[node name="ColorRect" type="ColorRect" parent="TouchScreenButton3"]
+offset_left = -8.0
+offset_top = -8.0
+offset_right = 8.0
+offset_bottom = 8.0
+color = Color(1, 1, 1, 0.294118)
+
+[connection signal="pressed" from="TouchScreenButton" to="TouchScreenButton" method="_on_pressed"]
+[connection signal="pressed" from="TouchScreenButton2" to="TouchScreenButton2" method="_on_pressed"]
+[connection signal="pressed" from="TouchScreenButton3" to="TouchScreenButton3" method="_on_pressed"]

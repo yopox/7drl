@@ -16,7 +16,7 @@ name = "Bomb Sound"
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_cc1vi"]
 shader = ExtResource("2_52v0r")
 shader_parameter/move_param = Vector4(0, 0, 0, 0)
-shader_parameter/tile_color = Vector4(0.451, 0.439, 0.439, 1)
+shader_parameter/tile_color = Vector4(0.275, 0.322, 0.824, 1)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pisfb"]
 atlas = ExtResource("1_nxjis")
@@ -119,7 +119,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-color = Color(0.917647, 0.227451, 0.227451, 0.607843)
+color = Color(0.376471, 0.239216, 0.239216, 1)
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 0

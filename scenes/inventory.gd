@@ -12,7 +12,7 @@ var selected_item: Item = Item.Dash
 var item_scene = preload("res://items/item_node.tscn")
 var bomb_scene = preload("res://items/bomb.tscn")
 
-var white = Color("#f3f3f3")
+var disabled_color = Color("#524d4d")
 
 
 func _ready():
@@ -83,4 +83,4 @@ func update_dash(available: bool):
 	if available:
 		dash.update()
 	else:
-		(dash.material as ShaderMaterial).set_shader_parameter("fg", white)
+		(dash.material as ShaderMaterial).set_shader_parameter("fg", disabled_color)

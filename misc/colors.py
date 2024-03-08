@@ -5,21 +5,27 @@ def parse_color(color):
     return round(r, 3), round(g, 3), round(b, 3)
 
 colors = '''
-#f3f3f3
-#737070
-#524d4d
-#353232
 #1d1818
+#353232
+#524d4d
+#f3f3f3
 #ea3a3a
 #3a96ea
-#6479de
-#deb964
-#64de6f
-#7964de
-#de6464
-#b1470f
-#b10f72
-#9c0fb1
+#693d3d
+#67693d
+#45693d
+#3d4c69
+#503d69
+#d24646
+#d28f46
+#ccd246
+#52d246
+#46d283
+#46c0d2
+#4652d2
+#a746d2
+#d246cc
+#d24683
 '''
 
 colors = colors.strip().split('\n')
