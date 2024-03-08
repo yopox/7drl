@@ -19,20 +19,19 @@ func update_instance():
 	var has_elites = enemies.filter(func(e): return e is Enemy and (e as Enemy).stats.elite).size() > 0
 	var enemy_count = enemies.size()
 	if enemy_count >= 1 and has_elites == false: 
-		instance_lvl1.set_parameter_by_name_with_label("EnterCombatTest", "InBattle", true)
-		instance_lvl2.set_parameter_by_name_with_label("EnterCombatTest", "InBattle", true)
+		set_parameter("EnterCombatTest", "InBattle", true)
 	else:
-		instance_lvl1.set_parameter_by_name_with_label("EnterCombatTest", "InBattle", false)
-		instance_lvl1.set_parameter_by_name_with_label("EnterCombatTest", "OutBattle", true)
-		instance_lvl2.set_parameter_by_name_with_label("EnterCombatTest", "InBattle", false)
-		instance_lvl2.set_parameter_by_name_with_label("EnterCombatTest", "OutBattle", true)
+		set_parameter("EnterCombatTest", "InBattle", false)
+		set_parameter("EnterCombatTest", "OutBattle", true)
 	if has_elites == true: 
-		instance_lvl1.set_parameter_by_name_with_label("EnterCombatTest", "OutBattle", false)
-		instance_lvl1.set_parameter_by_name_with_label("EnterCombatTest", "InBattle", false)
-		instance_lvl1.set_parameter_by_name_with_label("EnterCombatTest", "InBattleElite", true)
-		instance_lvl2.set_parameter_by_name_with_label("EnterCombatTest", "OutBattle", false)
-		instance_lvl2.set_parameter_by_name_with_label("EnterCombatTest", "InBattle", false)
-		instance_lvl2.set_parameter_by_name_with_label("EnterCombatTest", "InBattleElite", true)
+		set_parameter("EnterCombatTest", "OutBattle", false)
+		set_parameter("EnterCombatTest", "InBattle", false)
+		set_parameter("EnterCombatTest", "InBattleElite", true)
+
+
+func set_parameter(name: String, label: String, ignore_seek_speed: bool):
+	for instance: EventInstance in [instance_lvl1, instance_lvl2]:
+		instance.set_parameter_by_name_with_label(name, label, ignore_seek_speed)
 
 
 func update_music(hero_terrain):
