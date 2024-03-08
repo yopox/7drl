@@ -140,3 +140,11 @@ func add_xp(amount: int):
 func heal():
 	CURRENT_HP = HP
 	changed.emit()
+
+
+func copy(s: Stats):
+	HP = s.HP
+	CURRENT_HP = HP
+	ATK = s.ATK
+	FRQ = s.FRQ
+	SPD = s.SPD

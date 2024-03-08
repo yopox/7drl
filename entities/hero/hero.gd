@@ -1,5 +1,7 @@
 class_name Hero extends CharacterBody2D
 
+enum Class { Archer, Fighter, Wizard }
+
 @export var water_dmg: int
 
 @onready var stats: Stats = $Stats
@@ -12,7 +14,9 @@ class_name Hero extends CharacterBody2D
 var lvlup_instance: EventInstance
 
 var arrow = preload("res://attacks/arrow.tscn")
+var wiz_zone = preload("res://attacks/wiz_zone.tscn")
 
+var hero_class: Class = Class.Archer
 var dash = false
 var dash_vel: Vector2
 var dead = false
@@ -23,6 +27,13 @@ signal hit(stats: Stats)
 
 func _ready():
 	lvlup_instance = FMODRuntime.create_instance(lvlup_event)
+	match hero_class:
+		Class.Archer:
+			(sprite.texture as AtlasTexture).region.position = Vector2(0, 224)
+		Class.Fighter:
+			(sprite.texture as AtlasTexture).region.position = Vector2(224, 240)
+		Class.Wizard:
+			(sprite.texture as AtlasTexture).region.position = Vector2(128, 240)
 	Util.hero = self
 
 
@@ -107,14 +118,36 @@ func attack():
 	if not stats.shoot():
 		return
 	
+	match hero_class:
+		Class.Archer:
+			launch_arrow(attack_dir)
+		Class.Fighter:
+			use_sword(attack_dir)
+		Class.Wizard:
+			launch_zone(attack_dir)
+
+
+func launch_arrow(attack_dir: Vector2):
 	var bullet: RigidBody2D = arrow.instantiate()
 	bullet.stats = stats
 	bullet.position.x = position.x + 8 * cos(attack_dir.angle())
 	bullet.position.y = position.y + 8 * sin(attack_dir.angle())
 	bullet.rotation = attack_dir.angle() - PI / 2.0
-	bullet.apply_impulse(attack_dir.normalized())
-	
+	bullet.apply_impulse(attack_dir.normalized() * stats.SPD / 10.0)
 	add_sibling(bullet)
+
+
+func use_sword(attack_dir: Vector2):
+	pass
+
+
+func launch_zone(attack_dir: Vector2):
+	var zone: WizZone = wiz_zone.instantiate()
+	zone.stats = stats
+	zone.position.x = position.x
+	zone.position.y = position.y
+	zone.apply_impulse(attack_dir.normalized() * stats.SPD / 10.0)
+	add_sibling(zone)
 
 
 func start_dash():

@@ -3,9 +3,9 @@ class_name Counter extends TileMap
 @export var text: String = "HP 10/10": set = set_text
 @export var has_bar: bool = false
 @export var bar_progress: float = 1
-@export var fg: Color = Color(1, 1, 1)
+@export var fg: Color = Color(0.953, 0.953, 0.953)
 @export var bg: Color = Color(0.114, 0.094, 0.094)
-@export var bar_fg: Color = Color(1, 1, 1)
+@export var bar_fg: Color = Color(0.953, 0.953, 0.953)
 
 @onready var bar: TileMap = $Bar
 
@@ -22,6 +22,8 @@ func _ready():
 	bar_shader.set_shader_parameter("fg", Vector4(bar_fg.r, bar_fg.g, bar_fg.b, 1))
 	bar_shader.set_shader_parameter("bg", Vector4(bg.r, bg.g, bg.b, 1))
 	bar.material = bar_shader
+	
+	draw()
 
 
 func set_text(value):

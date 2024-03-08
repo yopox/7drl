@@ -27,7 +27,7 @@ shader_parameter/tile_color = Vector4(0.953, 0.953, 0.953, 1)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_78j2y"]
 atlas = ExtResource("2_g2vsp")
-region = Rect2(0, 224, 8, 8)
+region = Rect2(128, 240, 8, 8)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_e3cw4"]
 radius = 96.0
