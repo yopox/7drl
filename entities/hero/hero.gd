@@ -38,22 +38,30 @@ func _process(_delta):
 func _physics_process(delta):
 	if dead:
 		return
-		
-	var input_dir = Input.get_vector("left", "right", "up", "down")
+	
+	var input_dir = Input.get_vector("left", "right", "up", "down") + Util.move_vector
+	if input_dir.length() < 0.2:
+		input_dir = Vector2.ZERO
+	else:
+		input_dir = input_dir.normalized()
 	if dash:
 		velocity = dash_vel
 	else:
 		velocity = input_dir * delta * stats.SPD * stats.SPD_SCALE
 		
-	if !dash and Input.is_action_just_pressed("use_item"):
-		if Util.gui.inventory.selected_item == Inventory.Item.Dash:
-			if dash_manager.dash():
-				start_dash()
-				velocity = dash_vel
-		Util.gui.inventory.item_used()
+	if Input.is_action_just_pressed("use_item"):
+		use_item()
 	
 	move_and_slide()
 	enemy_damage()
+
+
+func use_item():
+	if Util.gui.inventory.selected_item == Inventory.Item.Dash:
+		if !dash and dash_manager.dash():
+			start_dash()
+			velocity = dash_vel
+	Util.gui.inventory.item_used()
 
 
 func set_terrain(value):
@@ -90,6 +98,8 @@ func enemy_damage():
 
 func attack():
 	var attack_dir = Input.get_vector("attack_left", "attack_right", "attack_up", "attack_down")
+	if attack_dir.length() < 0.1:
+		attack_dir = Util.attack_vector
 	
 	if abs(attack_dir.x) < 0.001 and abs(attack_dir.y) < 0.001:
 		return
@@ -102,7 +112,7 @@ func attack():
 	bullet.position.x = position.x + 8 * cos(attack_dir.angle())
 	bullet.position.y = position.y + 8 * sin(attack_dir.angle())
 	bullet.rotation = attack_dir.angle() - PI / 2.0
-	bullet.apply_impulse(attack_dir)
+	bullet.apply_impulse(attack_dir.normalized())
 	
 	add_sibling(bullet)
 

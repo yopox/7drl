@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bybyhur6jxc01"]
+[gd_scene load_steps=19 format=3 uid="uid://bybyhur6jxc01"]
 
 [ext_resource type="Material" uid="uid://dv6xh64115ihe" path="res://assets/textmode_letter.tres" id="1_38xkm"]
 [ext_resource type="Texture2D" uid="uid://d4ibrl4nmd57w" path="res://assets/MRMOTEXT_EX.png" id="1_mxj7s"]
@@ -7,6 +7,12 @@
 [ext_resource type="PackedScene" uid="uid://btnpb51vrqidp" path="res://scenes/counter.tscn" id="4_4aveh"]
 [ext_resource type="PackedScene" uid="uid://dbfb07jcd2str" path="res://scenes/compass.tscn" id="4_urrms"]
 [ext_resource type="PackedScene" uid="uid://c7mlxton1tpvq" path="res://scenes/inventory.tscn" id="7_gmwyi"]
+[ext_resource type="PackedScene" uid="uid://c4uxdhy6e6qq1" path="res://scenes/joystick.tscn" id="8_qqk6x"]
+[ext_resource type="Script" path="res://scenes/move_joystick.gd" id="9_8ytf0"]
+[ext_resource type="Script" path="res://scenes/attack_joystick.gd" id="10_cbbd0"]
+[ext_resource type="Script" path="res://scenes/stat_button.gd" id="11_4w1kx"]
+[ext_resource type="Script" path="res://scenes/item_button.gd" id="12_62fi8"]
+[ext_resource type="Script" path="res://scenes/dash_button.gd" id="13_6jpya"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_iaxn0"]
 texture = ExtResource("1_mxj7s")
@@ -3098,6 +3104,8 @@ texture_region_size = Vector2i(8, 8)
 tile_size = Vector2i(8, 8)
 sources/0 = SubResource("TileSetAtlasSource_2xpiu")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0xy15"]
+
 [node name="Gui" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -3149,3 +3157,55 @@ format = 2
 layer_0/tile_data = PackedInt32Array(0, 1245184, 5, 10, 1310720, 4)
 
 [node name="Inventory" parent="CanvasLayer" instance=ExtResource("7_gmwyi")]
+position = Vector2(48, 152)
+
+[node name="Buttons" type="Node2D" parent="CanvasLayer"]
+visible = false
+
+[node name="Joystick" parent="CanvasLayer/Buttons" instance=ExtResource("8_qqk6x")]
+position = Vector2(40, 136)
+script = ExtResource("9_8ytf0")
+
+[node name="Joystick2" parent="CanvasLayer/Buttons" instance=ExtResource("8_qqk6x")]
+position = Vector2(272, 136)
+script = ExtResource("10_cbbd0")
+
+[node name="TouchScreenButton" type="TouchScreenButton" parent="CanvasLayer/Buttons"]
+position = Vector2(139, 156)
+shape = SubResource("RectangleShape2D_0xy15")
+script = ExtResource("11_4w1kx")
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Buttons/TouchScreenButton"]
+offset_left = -8.0
+offset_top = -8.0
+offset_right = 8.0
+offset_bottom = 8.0
+color = Color(1, 1, 1, 0.294118)
+
+[node name="TouchScreenButton2" type="TouchScreenButton" parent="CanvasLayer/Buttons"]
+position = Vector2(167, 156)
+shape = SubResource("RectangleShape2D_0xy15")
+script = ExtResource("12_62fi8")
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Buttons/TouchScreenButton2"]
+offset_left = -8.0
+offset_top = -8.0
+offset_right = 8.0
+offset_bottom = 8.0
+color = Color(1, 1, 1, 0.294118)
+
+[node name="TouchScreenButton3" type="TouchScreenButton" parent="CanvasLayer/Buttons"]
+position = Vector2(195, 156)
+shape = SubResource("RectangleShape2D_0xy15")
+script = ExtResource("13_6jpya")
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Buttons/TouchScreenButton3"]
+offset_left = -8.0
+offset_top = -8.0
+offset_right = 8.0
+offset_bottom = 8.0
+color = Color(1, 1, 1, 0.294118)
+
+[connection signal="pressed" from="CanvasLayer/Buttons/TouchScreenButton" to="CanvasLayer/Buttons/TouchScreenButton" method="_on_pressed"]
+[connection signal="pressed" from="CanvasLayer/Buttons/TouchScreenButton2" to="CanvasLayer/Buttons/TouchScreenButton2" method="_on_pressed"]
+[connection signal="pressed" from="CanvasLayer/Buttons/TouchScreenButton3" to="CanvasLayer/Buttons/TouchScreenButton3" method="_on_pressed"]

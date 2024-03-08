@@ -1,0 +1,35 @@
+[gd_scene load_steps=3 format=3 uid="uid://c4uxdhy6e6qq1"]
+
+[ext_resource type="Script" path="res://scenes/joystick.gd" id="1_a62d8"]
+
+[sub_resource type="GDScript" id="GDScript_p8fhw"]
+script/source = "extends ColorRect
+
+var pos: Vector2
+var max_length: float = 24
+var disp: Vector2
+
+
+func update(delta, pressed, diff):
+	if not pressed:
+		position = lerp(position, Vector2(-8, -8), delta * 10)
+		disp = (position + Vector2(8, 8)) / max_length
+		return
+	
+	if diff.length() < max_length:
+		position = diff - Vector2(8, 8)
+	else:
+		position = diff.normalized() * max_length - Vector2(8, 8)
+	disp = (position + Vector2(8, 8)) / max_length
+"
+
+[node name="Joystick" type="Node2D"]
+script = ExtResource("1_a62d8")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -8.0
+offset_top = -8.0
+offset_right = 8.0
+offset_bottom = 8.0
+color = Color(1, 1, 1, 0.294118)
+script = SubResource("GDScript_p8fhw")

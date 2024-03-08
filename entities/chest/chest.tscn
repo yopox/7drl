@@ -1,0 +1,47 @@
+[gd_scene load_steps=9 format=3 uid="uid://cyosk0lhqf341"]
+
+[ext_resource type="Shader" path="res://assets/tile.gdshader" id="1_4sktr"]
+[ext_resource type="Texture2D" uid="uid://d4ibrl4nmd57w" path="res://assets/MRMOTEXT_EX.png" id="2_ynq7l"]
+[ext_resource type="Script" path="res://entities/chest/chest.gd" id="3_ojhbr"]
+[ext_resource type="PackedScene" uid="uid://dgx4rvib5fof0" path="res://entities/elite_emitter.tscn" id="4_23jp6"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yk52a"]
+shader = ExtResource("1_4sktr")
+shader_parameter/move_param = Vector4(0, 0, 0, 0)
+shader_parameter/tile_color = Vector4(0.871, 0.725, 0.392, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_52thh"]
+atlas = ExtResource("2_ynq7l")
+region = Rect2(8, 48, 8, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cn0kw"]
+size = Vector2(8, 7)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_y8ayg"]
+particle_flag_disable_z = true
+emission_shape_offset = Vector3(2.08165e-12, -2, 2.08165e-12)
+emission_shape = 3
+emission_box_extents = Vector3(8, 4, 2.08165e-12)
+gravity = Vector3(2.08165e-12, -16, 2.08165e-12)
+color = Color(0.913725, 0.878431, 0.372549, 1)
+
+[node name="RigidBody2D" type="RigidBody2D"]
+collision_layer = 16
+collision_mask = 2
+max_contacts_reported = 1
+contact_monitor = true
+script = ExtResource("3_ojhbr")
+
+[node name="Chest" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_yk52a")
+position = Vector2(0, -1)
+texture = SubResource("AtlasTexture_52thh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_cn0kw")
+
+[node name="EliteEmitter" parent="." instance=ExtResource("4_23jp6")]
+position = Vector2(0, -1)
+emitting = true
+process_material = SubResource("ParticleProcessMaterial_y8ayg")
