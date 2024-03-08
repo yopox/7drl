@@ -3,12 +3,18 @@ extends Node2D
 @export var damage: int = 15
 @export var progress: float = 0.0
 
+@export var bomb_event: EventAsset
+var bomb_instance: EventInstance
+
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var color_rect: ColorRect = $ColorRect
 @onready var area: Area2D = $Area2D
 @onready var emitter: GPUParticles2D = $GPUParticles2D
 
 
+func _ready():
+	bomb_instance = FMODRuntime.create_instance(bomb_event)
+	
 func _process(_delta):
 	var size = color_rect.size.x / 2
 	(color_rect.material as ShaderMaterial).set_shader_parameter("progress", progress)
@@ -54,3 +60,4 @@ func raycast(start, end, state):
 func explode():
 	sprite.visible = false
 	emitter.emitting = true
+	bomb_instance.start()
