@@ -22,6 +22,7 @@ func _ready():
 func _process(_delta):
 	if Input.is_action_just_pressed("select_item"):
 		selected = (selected + 1) % 7
+		Audio.play_sfx(Audio.SFX.Select)
 		update()
 
 
