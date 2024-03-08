@@ -10,6 +10,7 @@ var sand_patterns = [
 	[1, preload("res://entities/patterns/shrimp_blocs.tscn")],
 	[1, preload("res://entities/patterns/shrimp_urchin.tscn")],
 	[3, preload("res://entities/patterns/urchin_2.tscn")],
+	[1, preload("res://entities/chest/chest.tscn")],
 ]
 var sand_weights: int = 0
 
