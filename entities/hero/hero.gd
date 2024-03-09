@@ -19,6 +19,7 @@ var sword = preload("res://attacks/sword.tscn")
 var wiz_zone = preload("res://attacks/wiz_zone.tscn")
 
 var hero_class: Class = Class.Fighter
+var death_color = Vector4(0.114, 0.094, 0.094, 1)
 var dash = false
 var dash_vel: Vector2
 var dead = false
@@ -30,6 +31,10 @@ signal hit(stats: Stats)
 
 func _ready():
 	lvlup_instance = FMODRuntime.create_instance(lvlup_event)
+	update_stuff()
+
+
+func update_stuff():
 	match hero_class:
 		Class.Archer:
 			dash_manager.timer.wait_time = 3
@@ -196,7 +201,7 @@ func _on_dash_timer_timeout():
 
 func _on_stats_dead():
 	dead = true
-	(sprite.material as ShaderMaterial).set_shader_parameter("tile_color", Vector4(0.114, 0.094, 0.094, 1))
+	(sprite.material as ShaderMaterial).set_shader_parameter("tile_color", death_color)
 	collision_layer = 16
 
 

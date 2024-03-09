@@ -104,7 +104,7 @@ lifetime = 0.25
 one_shot = true
 
 [node name="ColorRect" type="ColorRect" parent="."]
-z_index = -1
+z_index = -10
 z_as_relative = false
 material = SubResource("ShaderMaterial_scehc")
 anchors_preset = 8

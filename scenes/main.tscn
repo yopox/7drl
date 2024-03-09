@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://b2vk64q03a0y6"]
 
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_e4mj0"]
-[ext_resource type="EventAsset" uid="uid://b3lsdshilovvm" path="res://addons/FMOD/editor/resources/events/{4a519f1c-f74a-4a4d-be73-3038632a4165}.tres" id="2_16xy5"]
+[ext_resource type="EventAsset" uid="uid://diq1postlr3hc" path="res://addons/FMOD/editor/resources/events/{4a519f1c-f74a-4a4d-be73-3038632a4165}.tres" id="2_16xy5"]
 [ext_resource type="PackedScene" uid="uid://dmkf7kd0k8py0" path="res://scenes/ui/android_buttons.tscn" id="3_p3vh5"]
 
 [node name="Main" type="Node2D"]

@@ -13,6 +13,13 @@ var android_start: bool = false
 var android_select1: bool = false
 var android_select2: bool = false
 
+var starting_items: Array[Inventory.Item] = [
+	Inventory.Item.Bomb,
+	Inventory.Item.Potion
+]
+var items: Array[Inventory.Item] = []
+var selected_item: int = 0
+
 signal enter_dungeon
 
 
