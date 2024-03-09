@@ -43,6 +43,7 @@ func spawn_character_selection():
 
 func spawn_level(hero: Hero.Class, stats: Stats):
 	title_music.stop(FMODStudioModule.FMOD_STUDIO_STOP_ALLOWFADEOUT)
+	Util.items = Util.starting_items
 	var scene = level.instantiate()
 	scene_container.add_child(scene)
 	hero_node = scene.setup_hero(hero, stats)
@@ -68,6 +69,9 @@ func enter_dungeon():
 	var scene = dungeon.instantiate()
 	scene_container.add_child(scene)
 	hero_node.global_position = scene.hero.global_position
-	scene.hero = hero_node
+	scene.hero.stats.copy(hero_node.stats)
+	scene.hero.hero_class = hero_node.hero_class
+	scene.hero.update_stuff()
+	scene.hero.death_color = Vector4(0.208, 0.196, 0.196, 1.0)
 	scene_container.get_children()[0].remove_child(hero_node)
 	scene_container.get_children()[0].queue_free()
