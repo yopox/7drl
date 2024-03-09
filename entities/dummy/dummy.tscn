@@ -1,0 +1,45 @@
+[gd_scene load_steps=9 format=3 uid="uid://rs588it7alhn"]
+
+[ext_resource type="Script" path="res://entities/enemy.gd" id="1_bkskk"]
+[ext_resource type="Shader" path="res://assets/tile.gdshader" id="2_tryoy"]
+[ext_resource type="Texture2D" uid="uid://d4ibrl4nmd57w" path="res://assets/MRMOTEXT_EX.png" id="3_pfau8"]
+[ext_resource type="PackedScene" uid="uid://dgul0eolhcq2n" path="res://entities/stats.tscn" id="4_r4m3f"]
+[ext_resource type="PackedScene" uid="uid://dgx4rvib5fof0" path="res://entities/elite_emitter.tscn" id="5_kamqq"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6pwno"]
+shader = ExtResource("2_tryoy")
+shader_parameter/move_param = Vector4(0, 0, 0, 0)
+shader_parameter/tile_color = Vector4(0.824, 0.275, 0.275, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h01bk"]
+atlas = ExtResource("3_pfau8")
+region = Rect2(128, 216, 8, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sihfs"]
+size = Vector2(6, 6)
+
+[node name="Dummy" type="CharacterBody2D" node_paths=PackedStringArray("stats", "elite_emitter")]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_bkskk")
+stats = NodePath("Stats")
+elite_emitter = NodePath("EliteEmitter")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_6pwno")
+texture = SubResource("AtlasTexture_h01bk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_sihfs")
+
+[node name="Stats" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("4_r4m3f")]
+LVL = 128
+HP = 1024
+ATK = 0
+FRQ = 1
+SPD = 1
+sprite = NodePath("../Sprite2D")
+
+[node name="EliteEmitter" parent="." instance=ExtResource("5_kamqq")]
+
+[connection signal="hit" from="." to="Stats" method="_on_hit"]

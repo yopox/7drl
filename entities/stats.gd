@@ -125,7 +125,7 @@ func check_death():
 func level_xp(level: int) -> int:
 	if level <= 0:
 		return 0
-	return int(5 * 1.3 ** (level - 1))
+	return int(5 * 1.25 ** (level - 1))
 
 
 func add_xp(amount: int):
