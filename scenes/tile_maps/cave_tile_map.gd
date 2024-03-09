@@ -9,6 +9,7 @@ extends TileMap
 var patterns = [
 	[1, null],
 	[1, preload("res://patterns/dungeon/chest_spikes.tscn")],
+	[100, preload("res://patterns/dungeon/urchin_wizard.tscn")],
 ]
 var weights: int = 0
 

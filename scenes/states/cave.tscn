@@ -15,6 +15,13 @@ layer_0/tile_data = PackedInt32Array(0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 4, 0, 0
 [node name="Hero" parent="." instance=ExtResource("3_5fufa")]
 position = Vector2(73, 28)
 
+[node name="Stats" parent="Hero" index="0"]
+LVL = 15
+HP = 80
+ATK = 14.0
+
 [node name="Gui" parent="." instance=ExtResource("4_f0kje")]
 
 [connection signal="generated" from="CaveTileMap" to="." method="_on_cave_tile_map_generated"]
+
+[editable path="Hero"]
