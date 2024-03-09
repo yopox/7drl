@@ -1,10 +1,18 @@
-[gd_scene load_steps=10 format=3 uid="uid://tqdmep7msqf0"]
+[gd_scene load_steps=11 format=3 uid="uid://tqdmep7msqf0"]
 
 [ext_resource type="Script" path="res://entities/spider/spider.gd" id="1_ppom1"]
 [ext_resource type="PackedScene" uid="uid://dgul0eolhcq2n" path="res://entities/stats.tscn" id="2_x20hr"]
 [ext_resource type="Shader" path="res://assets/tile.gdshader" id="3_oy3ci"]
 [ext_resource type="Texture2D" uid="uid://d4ibrl4nmd57w" path="res://assets/MRMOTEXT_EX.png" id="4_2akcp"]
 [ext_resource type="PackedScene" uid="uid://dgx4rvib5fof0" path="res://entities/elite_emitter.tscn" id="5_lh7fh"]
+
+[sub_resource type="EventAsset" id="EventAsset_xwcv8"]
+is_oneshot = true
+min_distance = 1.0
+max_distance = 20.0
+path = "event:/Spider Attack"
+guid = "{7de5569d-bfb6-4007-835e-9ea2c53a4553}"
+name = "Spider Attack"
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4ouh0"]
 shader = ExtResource("3_oy3ci")
@@ -25,6 +33,7 @@ radius = 64.0
 collision_layer = 4
 collision_mask = 30
 script = ExtResource("1_ppom1")
+spiderattackevent = SubResource("EventAsset_xwcv8")
 stats = NodePath("Stats")
 elite_emitter = NodePath("EliteEmitter")
 

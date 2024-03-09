@@ -3,10 +3,16 @@ extends Enemy
 @onready var zone: Area2D = $Area2D
 @onready var decay: Timer = $Decay
 
+@export var spiderattackevent: EventAsset
+var spiderattackinstance: EventInstance
+
 var sting = preload("res://attacks/sting.tscn")
 var move = false
 var base_velocity: Vector2 = Vector2.ZERO
 
+
+func _ready():
+	spiderattackinstance = FMODRuntime.create_instance(spiderattackevent)
 
 func process_enemy(delta):
 	if move:
@@ -23,6 +29,7 @@ func process_enemy(delta):
 			var dist = hero_diff.length()
 			if dist > 48 and stats.shoot():
 				shoot(hero_diff)
+				spiderattackinstance.start()
 
 	velocity = base_velocity * (decay.time_left / 0.75) ** 2 * delta
 	move_and_slide()

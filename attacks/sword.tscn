@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://cos1feb5xgy1s"]
+[gd_scene load_steps=8 format=3 uid="uid://cos1feb5xgy1s"]
 
 [ext_resource type="Shader" path="res://attacks/sword.gdshader" id="1_35b16"]
 [ext_resource type="Script" path="res://attacks/sword.gd" id="1_p6ylk"]
+[ext_resource type="EventAsset" uid="uid://c4biun71860uw" path="res://addons/FMOD/editor/resources/events/{419d080c-27ea-41ae-a8ee-2ca9be425a57}.tres" id="3_vhgyu"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xg11b"]
 shader = ExtResource("1_35b16")
@@ -74,5 +75,9 @@ libraries = {
 "": SubResource("AnimationLibrary_1ice0")
 }
 autoplay = "new_animation"
+
+[node name="StudioEventEmitter2D" type="StudioEventEmitter2D" parent="."]
+play_event = 2
+event = ExtResource("3_vhgyu")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

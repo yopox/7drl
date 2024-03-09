@@ -14,7 +14,7 @@ name = "Wizard Cast"
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8ygun"]
 shader = ExtResource("1_71a14")
 shader_parameter/width = 24.0
-shader_parameter/progress = null
+shader_parameter/progress = 0.0
 
 [sub_resource type="Animation" id="Animation_ty64y"]
 resource_name = "default"

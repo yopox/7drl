@@ -38,10 +38,10 @@ func set_parameter(name: String, label: String, ignore_seek_speed: bool):
 
 
 func update_music(hero_terrain):
-	if hero_terrain == 2 and terrain != 2:
-		terrain_intent = 2
+	if hero_terrain == 3 and terrain != 3:
+		terrain_intent = 3
 		intent_timer.start()
-	elif hero_terrain == 1 and terrain != 1:
+	elif (hero_terrain == 1 or hero_terrain == 2) and terrain != 1:
 		terrain_intent = 1
 		intent_timer.start()
 
@@ -54,7 +54,7 @@ func _on_body_exited(_body):
 
 
 func _on_intent_timer_timeout():
-	if Util.hero.terrain == terrain_intent:
+	if Util.hero.terrain == terrain_intent or Util.hero.terrain == 2 and terrain_intent == 1:
 		print("music: %d" % terrain_intent)
 		terrain = terrain_intent
 		terrain_intent = 0
@@ -62,6 +62,6 @@ func _on_intent_timer_timeout():
 			1:
 				instance_lvl2.stop(FMODStudioModule.FMOD_STUDIO_STOP_ALLOWFADEOUT)
 				instance_lvl1.start()
-			2:
+			3:
 				instance_lvl1.stop(FMODStudioModule.FMOD_STUDIO_STOP_ALLOWFADEOUT)
 				instance_lvl2.start()
