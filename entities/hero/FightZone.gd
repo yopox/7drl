@@ -13,8 +13,11 @@ var terrain_intent = 0
 
 func _ready():
 	instance_lvl1 = FMODRuntime.create_instance(event_lvl1)
-	instance_lvl1.start()
 	instance_lvl2 = FMODRuntime.create_instance(event_lvl2)
+
+
+func start():
+	instance_lvl1.start()
 
 
 func update_instance():
@@ -30,7 +33,6 @@ func update_instance():
 		set_parameter("EnterCombatTest", "OutBattle", false)
 		set_parameter("EnterCombatTest", "InBattle", false)
 		set_parameter("EnterCombatTest", "InBattleElite", true)
-
 
 func set_parameter(name: String, label: String, ignore_seek_speed: bool):
 	for instance: EventInstance in [instance_lvl1, instance_lvl2]:
@@ -65,3 +67,8 @@ func _on_intent_timer_timeout():
 			3:
 				instance_lvl1.stop(FMODStudioModule.FMOD_STUDIO_STOP_ALLOWFADEOUT)
 				instance_lvl2.start()
+
+
+func stop():
+	instance_lvl2.stop(FMODStudioModule.FMOD_STUDIO_STOP_ALLOWFADEOUT)
+	instance_lvl1.stop(FMODStudioModule.FMOD_STUDIO_STOP_ALLOWFADEOUT)

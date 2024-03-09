@@ -1,7 +1,7 @@
 extends Node2D
 
 @export var event: EventAsset
-
+@export var dungeonmusicevent: EventAsset
 @onready var scene_container: Node2D = $SceneContainer
 @onready var buttons: Control = $Buttons
 
@@ -10,8 +10,9 @@ var character_selection = preload("res://scenes/states/character_selection.tscn"
 var level = preload("res://scenes/states/level.tscn")
 var dungeon = preload("res://scenes/states/cave.tscn")
 var title_music: EventInstance
+var cave_music: EventInstance
 var hero_node
-	
+
 
 func _ready():
 	if OS.get_name() != "Android":
@@ -20,6 +21,7 @@ func _ready():
 		buttons.visible = true
 
 	title_music = FMODRuntime.create_instance(event)
+	cave_music = FMODRuntime.create_instance(dungeonmusicevent)
 	spawn_title()
 	Util.enter_dungeon.connect(enter_dungeon)
 
@@ -47,6 +49,7 @@ func spawn_level(hero: Hero.Class, stats: Stats):
 	var scene = level.instantiate()
 	scene_container.add_child(scene)
 	hero_node = scene.setup_hero(hero, stats)
+	hero_node.fight_zone.start()
 	scene.generate()
 
 
@@ -66,6 +69,8 @@ func _on_character_cancel():
 
 
 func enter_dungeon():
+	hero_node.fight_zone.stop()
+	cave_music.start()
 	var scene = dungeon.instantiate()
 	scene_container.add_child(scene)
 	hero_node.global_position = scene.hero.global_position
