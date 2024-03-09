@@ -1,0 +1,58 @@
+[gd_scene load_steps=10 format=3 uid="uid://tqdmep7msqf0"]
+
+[ext_resource type="Script" path="res://entities/spider/spider.gd" id="1_ppom1"]
+[ext_resource type="PackedScene" uid="uid://dgul0eolhcq2n" path="res://entities/stats.tscn" id="2_x20hr"]
+[ext_resource type="Shader" path="res://assets/tile.gdshader" id="3_oy3ci"]
+[ext_resource type="Texture2D" uid="uid://d4ibrl4nmd57w" path="res://assets/MRMOTEXT_EX.png" id="4_2akcp"]
+[ext_resource type="PackedScene" uid="uid://dgx4rvib5fof0" path="res://entities/elite_emitter.tscn" id="5_lh7fh"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4ouh0"]
+shader = ExtResource("3_oy3ci")
+shader_parameter/move_param = Vector4(0, 0, 0, 0)
+shader_parameter/tile_color = Vector4(0.322, 0.824, 0.275, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pjkyn"]
+atlas = ExtResource("4_2akcp")
+region = Rect2(40, 248, 8, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_usonb"]
+size = Vector2(6, 6)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pvg4b"]
+radius = 64.0
+
+[node name="Spider" type="CharacterBody2D" node_paths=PackedStringArray("stats", "elite_emitter")]
+collision_layer = 4
+collision_mask = 30
+script = ExtResource("1_ppom1")
+stats = NodePath("Stats")
+elite_emitter = NodePath("EliteEmitter")
+
+[node name="Stats" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("2_x20hr")]
+LVL = 6
+HP = 30
+ATK = 8
+FRQ = 1
+SPD = 20
+sprite = NodePath("../Sprite2D")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_4ouh0")
+texture = SubResource("AtlasTexture_pjkyn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_usonb")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_pvg4b")
+
+[node name="EliteEmitter" parent="." instance=ExtResource("5_lh7fh")]
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 1.5
+autostart = true
+
+[connection signal="hit" from="." to="Stats" method="_on_hit"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -1,0 +1,65 @@
+[gd_scene load_steps=9 format=3 uid="uid://ddp6aqusrgnhf"]
+
+[ext_resource type="Script" path="res://attacks/attack.gd" id="1_sk731"]
+[ext_resource type="Shader" path="res://assets/tile.gdshader" id="2_1frqr"]
+[ext_resource type="Texture2D" uid="uid://d4ibrl4nmd57w" path="res://assets/MRMOTEXT_EX.png" id="2_70utt"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_51u65"]
+shader = ExtResource("2_1frqr")
+shader_parameter/move_param = Vector4(0, 0, 0, 0)
+shader_parameter/tile_color = Vector4(0.322, 0.824, 0.275, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_af36f"]
+atlas = ExtResource("2_70utt")
+region = Rect2(105, 218, 6, 3)
+
+[sub_resource type="Animation" id="Animation_x7wop"]
+resource_name = "default"
+length = 2.0
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_h3t5a"]
+_data = {
+"default": SubResource("Animation_x7wop")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hnm3p"]
+size = Vector2(4, 2)
+
+[node name="Sting" type="RigidBody2D"]
+mass = 0.02
+lock_rotation = true
+script = ExtResource("1_sk731")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_51u65")
+texture = SubResource("AtlasTexture_af36f")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Sprite2D")
+libraries = {
+"": SubResource("AnimationLibrary_h3t5a")
+}
+autoplay = "default"
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 21
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_hnm3p")
+
+[connection signal="body_entered" from="Area2D" to="." method="contact"]

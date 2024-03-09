@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://o4ojnevevt2l" path="res://entities/shrimp/shrimp.tscn" id="4_tk2ht"]
 [ext_resource type="PackedScene" uid="uid://bybyhur6jxc01" path="res://scenes/gui.tscn" id="5_hrf7a"]
 [ext_resource type="PackedScene" uid="uid://cw1stwqv2g0b3" path="res://entities/urchin/urchin.tscn" id="6_1jpkg"]
-[ext_resource type="PackedScene" uid="uid://6umjbeyqxlek" path="res://items/bomb.tscn" id="7_204s1"]
+[ext_resource type="PackedScene" uid="uid://tqdmep7msqf0" path="res://entities/spider/spider.tscn" id="7_iikhi"]
 
 [node name="Test" type="Node2D"]
 
@@ -27,5 +27,5 @@ position = Vector2(1107, 471)
 [node name="Urchin" parent="." instance=ExtResource("6_1jpkg")]
 position = Vector2(1104, 498)
 
-[node name="Bomb" parent="." instance=ExtResource("7_204s1")]
-position = Vector2(1007, 546)
+[node name="Spider" parent="." instance=ExtResource("7_iikhi")]
+position = Vector2(1045, 589)
