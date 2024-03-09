@@ -26,6 +26,7 @@ colors = '''
 #a746d2
 #d246cc
 #d24683
+#7acd81
 '''
 
 colors = colors.strip().split('\n')

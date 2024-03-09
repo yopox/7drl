@@ -2,14 +2,14 @@ class_name ContentGenerator extends Node
 
 var sand_patterns = [
 	[8, null],
-	[3, preload("res://entities/patterns/bloc.tscn")],
-	[2, preload("res://entities/patterns/bloc_2.tscn")],
-	[3, preload("res://entities/patterns/crab_l3.tscn")],
-	[3, preload("res://entities/patterns/shrimp_l2.tscn")],
-	[6, preload("res://entities/patterns/urchin_l2.tscn")],
-	[1, preload("res://entities/patterns/shrimp_blocs.tscn")],
-	[1, preload("res://entities/patterns/shrimp_urchin.tscn")],
-	[3, preload("res://entities/patterns/urchin_2.tscn")],
+	[3, preload("res://patterns/sand/bloc.tscn")],
+	[2, preload("res://patterns/sand/bloc_2.tscn")],
+	[3, preload("res://patterns/sand/crab_l3.tscn")],
+	[3, preload("res://patterns/sand/shrimp_l2.tscn")],
+	[6, preload("res://patterns/sand/urchin_l2.tscn")],
+	[1, preload("res://patterns/sand/shrimp_blocs.tscn")],
+	[1, preload("res://patterns/sand/shrimp_urchin.tscn")],
+	[3, preload("res://patterns/sand/urchin_2.tscn")],
 	[1, preload("res://entities/chest/chest.tscn")],
 ]
 var sand_weights: int = 0
