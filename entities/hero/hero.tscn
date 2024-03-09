@@ -105,6 +105,10 @@ event_lvl2 = SubResource("EventAsset_tu6bw")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FightZone"]
 shape = SubResource("CircleShape2D_e3cw4")
 
+[node name="IntentTimer" type="Timer" parent="FightZone"]
+wait_time = 2.0
+one_shot = true
+
 [node name="Camera2D" type="Camera2D" parent="."]
 offset = Vector2(48, 12)
 
@@ -136,4 +140,5 @@ shape = SubResource("CircleShape2D_jlsid")
 [connection signal="level_up" from="Stats" to="." method="_on_stats_level_up"]
 [connection signal="body_entered" from="FightZone" to="FightZone" method="_on_body_entered"]
 [connection signal="body_exited" from="FightZone" to="FightZone" method="_on_body_exited"]
+[connection signal="timeout" from="FightZone/IntentTimer" to="FightZone" method="_on_intent_timer_timeout"]
 [connection signal="timeout" from="DashTimer" to="." method="_on_dash_timer_timeout"]

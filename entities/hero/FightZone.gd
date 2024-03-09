@@ -3,10 +3,13 @@ class_name FightZone extends Area2D
 @export var event_lvl1: EventAsset
 @export var event_lvl2: EventAsset
 
+@onready var intent_timer: Timer = $IntentTimer
+
 var instance_lvl1: EventInstance
 var instance_lvl2: EventInstance
  
 var terrain = 1
+var terrain_intent = 0
 
 func _ready():
 	instance_lvl1 = FMODRuntime.create_instance(event_lvl1)
@@ -36,13 +39,11 @@ func set_parameter(name: String, label: String, ignore_seek_speed: bool):
 
 func update_music(hero_terrain):
 	if hero_terrain == 2 and terrain != 2:
-		terrain = 2
-		instance_lvl1.stop(FMODStudioModule.FMOD_STUDIO_STOP_ALLOWFADEOUT)
-		instance_lvl2.start()
+		terrain_intent = 2
+		intent_timer.start()
 	elif hero_terrain == 1 and terrain != 1:
-		terrain = 1
-		instance_lvl2.stop(FMODStudioModule.FMOD_STUDIO_STOP_ALLOWFADEOUT)
-		instance_lvl1.start()
+		terrain_intent = 1
+		intent_timer.start()
 
 func _on_body_entered(_body):
 	update_instance()
@@ -50,3 +51,17 @@ func _on_body_entered(_body):
 
 func _on_body_exited(_body):
 	update_instance()
+
+
+func _on_intent_timer_timeout():
+	if Util.hero.terrain == terrain_intent:
+		print("music: %d" % terrain_intent)
+		terrain = terrain_intent
+		terrain_intent = 0
+		match terrain:
+			1:
+				instance_lvl2.stop(FMODStudioModule.FMOD_STUDIO_STOP_ALLOWFADEOUT)
+				instance_lvl1.start()
+			2:
+				instance_lvl1.stop(FMODStudioModule.FMOD_STUDIO_STOP_ALLOWFADEOUT)
+				instance_lvl2.start()
