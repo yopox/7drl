@@ -23,6 +23,7 @@ var dash = false
 var dash_vel: Vector2
 var dead = false
 var terrain = 1: set = set_terrain
+var just_init = true
 
 signal hit(stats: Stats)
 
@@ -49,6 +50,11 @@ func _process(_delta):
 	check_terrain()
 	water_damage()
 	attack()
+	
+	if just_init:
+		just_init = false
+	elif Input.is_action_just_pressed("use_item"):
+		use_item()
 
 
 func _physics_process(delta):
@@ -64,9 +70,6 @@ func _physics_process(delta):
 		velocity = dash_vel
 	else:
 		velocity = input_dir * delta * stats.SPD * stats.SPD_SCALE
-		
-	if Input.is_action_just_pressed("use_item"):
-		use_item()
 	
 	move_and_slide()
 	enemy_damage()
