@@ -6,6 +6,12 @@ extends TileMap
 @export var corridor_x = Vector2i(4, 3)
 @export var corridor_y = Vector2i(2, 2)
 
+var patterns = [
+	[1, null],
+	[1, preload("res://patterns/dungeon/chest_spikes.tscn")],
+]
+var weights: int = 0
+
 var start_pattern = preload("res://patterns/dungeon/start.tscn")
 var exit_pattern = preload("res://patterns/dungeon/exit.tscn")
 
@@ -15,6 +21,9 @@ signal generated(pos: Vector2)
 #func _process(delta):
 	#if Input.is_action_pressed("use_item"):
 		#generate()
+
+func _ready():
+	weights = Util.update_weights(patterns)
 
 
 func generate():
@@ -128,12 +137,23 @@ func generate():
 		elif room == exit:
 			pattern = exit_pattern.instantiate()
 		else:
-			pass
+			var random_p = random_pattern()
+			if random_p != null:
+				pattern = random_p.instantiate()
+		
 		if pattern != null:
 			pattern.position = room_to_pos(room)
 			add_sibling(pattern)
 	
 	generated.emit(room_to_pos(starting) + Vector2(room_size.x * 4.0, room_size.y * 4.0))
+
+
+func random_pattern():
+	var index = randi_range(1, weights)
+	for p in patterns:
+		if p[0] >= index:
+			return p[1]
+	return null
 
 
 func room_to_pos(room: int) -> Vector2:
