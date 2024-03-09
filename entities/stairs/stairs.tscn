@@ -1,0 +1,38 @@
+[gd_scene load_steps=8 format=3 uid="uid://muhiyeyn04np"]
+
+[ext_resource type="Script" path="res://entities/stairs/stairs.gd" id="1_jci2g"]
+[ext_resource type="Shader" path="res://assets/tile.gdshader" id="2_avyxt"]
+[ext_resource type="Texture2D" uid="uid://d4ibrl4nmd57w" path="res://assets/MRMOTEXT_EX.png" id="3_gxqo7"]
+[ext_resource type="PackedScene" uid="uid://dgx4rvib5fof0" path="res://entities/elite_emitter.tscn" id="4_rpswn"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ese3d"]
+shader = ExtResource("2_avyxt")
+shader_parameter/move_param = Vector4(0, 0, 0, 0)
+shader_parameter/tile_color = Vector4(0.953, 0.953, 0.953, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rpv2s"]
+atlas = ExtResource("3_gxqo7")
+region = Rect2(88, 80, 8, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4ujq2"]
+size = Vector2(8, 7)
+
+[node name="Stairs" type="Node2D"]
+script = ExtResource("1_jci2g")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_ese3d")
+position = Vector2(2.08165e-12, -0.5)
+texture = SubResource("AtlasTexture_rpv2s")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_4ujq2")
+
+[node name="EliteEmitter" parent="." instance=ExtResource("4_rpswn")]
+emitting = true
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

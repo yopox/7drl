@@ -12,12 +12,13 @@ func generate():
 	init_level()
 
 
-func setup_hero(hero_class: Hero.Class, stats: Stats):
+func setup_hero(hero_class: Hero.Class, stats: Stats) -> Hero:
 	hero = load("res://entities/hero/hero.tscn").instantiate()
 	hero.visible = false
 	hero.hero_class = hero_class
 	add_child(hero)
 	hero.stats.copy(stats)
+	return hero
 
 
 func find_starting_pos() -> Vector2i:
@@ -37,7 +38,7 @@ func find_exit() -> Vector2i:
 
 
 func init_level():
-	var gui = load("res://scenes/gui.tscn").instantiate()
+	var gui = load("res://scenes/ui/gui.tscn").instantiate()
 	add_child(gui)
 	
 	# Generate a starting position in the sand

@@ -1,6 +1,6 @@
 extends Node2D
 
-@onready var hero = $Hero
+@onready var hero: Hero = $Hero
 @onready var tile_map = $CaveTileMap
 
 

@@ -13,6 +13,9 @@ var android_start: bool = false
 var android_select1: bool = false
 var android_select2: bool = false
 
+signal enter_dungeon
+
+
 func set_hero(value):
 	hero = value
 	if gui != null:
