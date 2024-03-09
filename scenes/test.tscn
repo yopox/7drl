@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dwhg6icaxvxjd"]
+[gd_scene load_steps=10 format=3 uid="uid://dwhg6icaxvxjd"]
 
 [ext_resource type="PackedScene" uid="uid://cmgwwovyu6kba" path="res://entities/hero/hero.tscn" id="1_1mg1f"]
 [ext_resource type="PackedScene" uid="uid://dc17tw0kij6ie" path="res://scenes/tile_maps/tile_map.tscn" id="2_77ne1"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://cw1stwqv2g0b3" path="res://entities/urchin/urchin.tscn" id="6_1jpkg"]
 [ext_resource type="PackedScene" uid="uid://tqdmep7msqf0" path="res://entities/spider/spider.tscn" id="7_iikhi"]
 [ext_resource type="PackedScene" uid="uid://cb4x8keq718h" path="res://entities/wizard/wizard.tscn" id="8_uju7c"]
+[ext_resource type="PackedScene" uid="uid://dyb0lr7t8angk" path="res://entities/spikes/spikes.tscn" id="9_j68rd"]
 
 [node name="Test" type="Node2D"]
 
@@ -33,3 +34,6 @@ position = Vector2(1045, 589)
 
 [node name="Wizard" parent="." instance=ExtResource("8_uju7c")]
 position = Vector2(999, 631)
+
+[node name="Spikes" parent="." instance=ExtResource("9_j68rd")]
+position = Vector2(1106, 600)

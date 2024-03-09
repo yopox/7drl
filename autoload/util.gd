@@ -47,3 +47,11 @@ func item_name(item: Inventory.Item):
 			return "BOMB"
 		Inventory.Item.Potion:
 			return "POTION"
+
+
+func update_weights(table) -> int:
+	var w = 0
+	for i in range(len(table)):
+		w += table[i][0]
+		table[i][0] = w
+	return w

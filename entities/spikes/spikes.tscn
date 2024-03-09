@@ -1,0 +1,37 @@
+[gd_scene load_steps=8 format=3 uid="uid://dyb0lr7t8angk"]
+
+[ext_resource type="Shader" path="res://assets/tile.gdshader" id="1_fq8sx"]
+[ext_resource type="Script" path="res://entities/spikes/spikes.gd" id="1_tusjd"]
+[ext_resource type="Texture2D" uid="uid://d4ibrl4nmd57w" path="res://assets/MRMOTEXT_EX.png" id="2_ujqry"]
+[ext_resource type="PackedScene" uid="uid://dgul0eolhcq2n" path="res://entities/stats.tscn" id="3_upjir"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_31ybo"]
+shader = ExtResource("1_fq8sx")
+shader_parameter/move_param = Vector4(0, 0, 0, 0)
+shader_parameter/tile_color = Vector4(0.953, 0.953, 0.953, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4jbno"]
+atlas = ExtResource("2_ujqry")
+region = Rect2(136, 208, 8, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nbm1g"]
+size = Vector2(8, 7)
+
+[node name="Spikes" type="Node2D"]
+script = ExtResource("1_tusjd")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -1
+material = SubResource("ShaderMaterial_31ybo")
+texture = SubResource("AtlasTexture_4jbno")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_nbm1g")
+
+[node name="Stats" parent="." instance=ExtResource("3_upjir")]
+ATK = 4.0
