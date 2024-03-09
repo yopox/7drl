@@ -7,6 +7,7 @@ class_name Bomb extends Node2D
 
 @export var bomb_event: EventAsset
 var bomb_instance: EventInstance
+var body_ignored = [self]
 
 @onready var color_rect: ColorRect = $ColorRect
 @onready var area: Area2D = $Area2D
@@ -57,7 +58,7 @@ func _process(_delta):
 func raycast(start, end, state):
 	var query = PhysicsRayQueryParameters2D.create(
 		start, end,
-		area.collision_mask, [self, get_parent()]
+		area.collision_mask, body_ignored
 	)
 	return state.intersect_ray(query)
 

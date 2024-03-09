@@ -12,6 +12,7 @@ func after_contact():
 	sleeping = true
 	detonated = true
 	bomb.explode()
+	bomb.body_ignored.append(self)
 	bomb_anim.play("explosion")
 
 
