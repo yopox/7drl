@@ -1,9 +1,11 @@
 extends Enemy
 
 @onready var zone: Area2D = $Area2D
+@onready var decay: Timer = $Decay
 
 var sting = preload("res://attacks/sting.tscn")
 var move = false
+var base_velocity: Vector2 = Vector2.ZERO
 
 
 func process_enemy(delta):
@@ -12,7 +14,8 @@ func process_enemy(delta):
 		var angle = randf() * 2 * PI
 		var dest = Util.tile_map.local_to_map(global_position + Vector2.from_angle(angle) * 16)
 		if Util.tile_map.get_cell_tile_data(0, dest).terrain == 2:
-			velocity = Vector2.from_angle(angle) * delta * stats.SPD * stats.SPD_SCALE
+			base_velocity = Vector2.from_angle(angle) * stats.SPD * stats.SPD_SCALE
+			decay.start()
 
 	if zone.get_overlapping_bodies().size() > 0:
 		if Util.hero.terrain == 2:
@@ -21,7 +24,7 @@ func process_enemy(delta):
 			if dist > 48 and stats.shoot():
 				shoot(hero_diff)
 
-	velocity *= 0.95
+	velocity = base_velocity * (decay.time_left / 0.75) ** 2 * delta
 	move_and_slide()
 
 

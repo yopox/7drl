@@ -56,15 +56,15 @@ func get_hp():
 
 
 func get_atk():
-	return ATK if not elite else 2 * ATK
+	return ATK if not elite else 1.5 * ATK
 
 
 func get_frq():
-	return FRQ if not elite else 2 * FRQ
+	return FRQ if not elite else 1.5 * FRQ
 
 
 func get_spd():
-	return SPD if not elite else 2 * SPD
+	return SPD if not elite else 1.5 * SPD
 
 
 func shoot() -> bool:

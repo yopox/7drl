@@ -17,4 +17,8 @@ func contact(body):
 	if body.has_signal("hit"):
 		body.hit.emit(stats)
 	
+	after_contact()
+
+
+func after_contact():
 	queue_free()

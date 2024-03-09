@@ -1,15 +1,18 @@
-extends Node2D
+class_name Bomb extends Node2D
 
 @export var damage: int = 15
 @export var progress: float = 0.0
 
+@export var sprites: Array[Sprite2D]
+
 @export var bomb_event: EventAsset
 var bomb_instance: EventInstance
 
-@onready var sprite: Sprite2D = $Sprite2D
 @onready var color_rect: ColorRect = $ColorRect
 @onready var area: Area2D = $Area2D
 @onready var emitter: GPUParticles2D = $GPUParticles2D
+
+signal detonated()
 
 
 func _ready():
@@ -52,12 +55,17 @@ func _process(_delta):
 func raycast(start, end, state):
 	var query = PhysicsRayQueryParameters2D.create(
 		start, end,
-		area.collision_mask, [self]
+		area.collision_mask, [self, get_parent()]
 	)
 	return state.intersect_ray(query)
 
 
 func explode():
-	sprite.visible = false
+	for sprite in sprites:
+		sprite.visible = false
 	emitter.emitting = true
 	bomb_instance.start()
+
+
+func detonate():
+	detonated.emit()

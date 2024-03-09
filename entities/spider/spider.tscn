@@ -41,9 +41,11 @@ material = SubResource("ShaderMaterial_4ouh0")
 texture = SubResource("AtlasTexture_pjkyn")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 shape = SubResource("RectangleShape2D_usonb")
 
 [node name="Area2D" type="Area2D" parent="."]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_pvg4b")
@@ -53,6 +55,10 @@ shape = SubResource("CircleShape2D_pvg4b")
 [node name="Timer" type="Timer" parent="."]
 wait_time = 1.5
 autostart = true
+
+[node name="Decay" type="Timer" parent="."]
+wait_time = 0.75
+one_shot = true
 
 [connection signal="hit" from="." to="Stats" method="_on_hit"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

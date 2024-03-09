@@ -32,6 +32,7 @@ material = SubResource("ShaderMaterial_vnlb5")
 texture = SubResource("AtlasTexture_iey0a")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 shape = SubResource("RectangleShape2D_t5tx7")
 
 [node name="Stats" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("4_6xuf7")]
