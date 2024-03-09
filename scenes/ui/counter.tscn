@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://btnpb51vrqidp"]
 
 [ext_resource type="Texture2D" uid="uid://d4ibrl4nmd57w" path="res://assets/MRMOTEXT_EX.png" id="1_dysqw"]
-[ext_resource type="Script" path="res://scenes/counter.gd" id="2_gcfew"]
+[ext_resource type="Script" path="res://scenes/ui/counter.gd" id="2_gcfew"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_g8u20"]
 texture = ExtResource("1_dysqw")

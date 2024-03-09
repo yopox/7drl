@@ -1,12 +1,15 @@
-[gd_scene load_steps=8 format=3 uid="uid://dwhg6icaxvxjd"]
+[gd_scene load_steps=11 format=3 uid="uid://dwhg6icaxvxjd"]
 
 [ext_resource type="PackedScene" uid="uid://cmgwwovyu6kba" path="res://entities/hero/hero.tscn" id="1_1mg1f"]
-[ext_resource type="PackedScene" uid="uid://dc17tw0kij6ie" path="res://scenes/tile_map.tscn" id="2_77ne1"]
+[ext_resource type="PackedScene" uid="uid://dc17tw0kij6ie" path="res://scenes/tile_maps/tile_map.tscn" id="2_77ne1"]
 [ext_resource type="PackedScene" uid="uid://fmnaew6q3fnr" path="res://entities/crab/crab.tscn" id="3_ogjmi"]
 [ext_resource type="PackedScene" uid="uid://o4ojnevevt2l" path="res://entities/shrimp/shrimp.tscn" id="4_tk2ht"]
-[ext_resource type="PackedScene" uid="uid://bybyhur6jxc01" path="res://scenes/gui.tscn" id="5_hrf7a"]
+[ext_resource type="PackedScene" uid="uid://bybyhur6jxc01" path="res://scenes/ui/gui.tscn" id="5_hrf7a"]
 [ext_resource type="PackedScene" uid="uid://cw1stwqv2g0b3" path="res://entities/urchin/urchin.tscn" id="6_1jpkg"]
 [ext_resource type="PackedScene" uid="uid://tqdmep7msqf0" path="res://entities/spider/spider.tscn" id="7_iikhi"]
+[ext_resource type="PackedScene" uid="uid://gliydobcreeq" path="res://entities/bear/bear.tscn" id="8_p1bp2"]
+[ext_resource type="PackedScene" uid="uid://cb4x8keq718h" path="res://entities/wizard/wizard.tscn" id="8_taa2d"]
+[ext_resource type="PackedScene" uid="uid://bmg882greav1c" path="res://entities/bomber/bomber.tscn" id="10_3bylf"]
 
 [node name="Test" type="Node2D"]
 
@@ -16,7 +19,7 @@
 generate_enemies = false
 
 [node name="Hero" parent="." instance=ExtResource("1_1mg1f")]
-position = Vector2(1036, 556)
+position = Vector2(1122, 571)
 
 [node name="Crab" parent="." instance=ExtResource("3_ogjmi")]
 position = Vector2(1218, 534)
@@ -24,8 +27,20 @@ position = Vector2(1218, 534)
 [node name="Shrimp" parent="." instance=ExtResource("4_tk2ht")]
 position = Vector2(1107, 471)
 
+[node name="Wizard" parent="." instance=ExtResource("8_taa2d")]
+position = Vector2(1171, 626)
+
+[node name="Wizard2" parent="." instance=ExtResource("8_taa2d")]
+position = Vector2(1174, 692)
+
+[node name="Bear" parent="." instance=ExtResource("8_p1bp2")]
+position = Vector2(928, 643)
+
 [node name="Urchin" parent="." instance=ExtResource("6_1jpkg")]
 position = Vector2(1104, 498)
 
 [node name="Spider" parent="." instance=ExtResource("7_iikhi")]
-position = Vector2(1045, 589)
+position = Vector2(909, 614)
+
+[node name="Bomber" parent="." instance=ExtResource("10_3bylf")]
+position = Vector2(1052, 639)
