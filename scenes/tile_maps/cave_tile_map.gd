@@ -1,20 +1,24 @@
 extends TileMap
 
+@export var room_size = Vector2i(20, 9)
+@export var rooms_y = 4
+@export var rooms_x = 4
+@export var corridor_x = Vector2i(4, 3)
+@export var corridor_y = Vector2i(2, 2)
+
+var start_pattern = preload("res://patterns/dungeon/start.tscn")
+var exit_pattern = preload("res://patterns/dungeon/exit.tscn")
+
 signal generated(pos: Vector2)
 
 
-func _process(delta):
-	if Input.is_action_pressed("use_item"):
-		generate()
+#func _process(delta):
+	#if Input.is_action_pressed("use_item"):
+		#generate()
 
 
 func generate():
 	clear()
-	var room_size = Vector2i(20, 9)
-	var rooms_y = 4
-	var rooms_x = 4
-	var corridor_x = Vector2i(4, 3)
-	var corridor_y = Vector2i(2, 2)
 	
 	# generate layout
 	var rooms = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
@@ -116,10 +120,27 @@ func generate():
 						else:
 							set_cell(0, Vector2i(r_x + dx, r_y + dy), 0, Vector2i(2, 21))
 	
-	generated.emit(map_to_local(Vector2i(
-		(starting % 4) * (room_size.x + corridor_x.x) + room_size.x / 2,
-		(starting / 4) * (room_size.y + corridor_y.y) + room_size.y / 2
-	)))
+	# spawn patterns
+	for room in rooms:
+		var pattern
+		if room == starting:
+			pattern = start_pattern.instantiate()
+		elif room == exit:
+			pattern = exit_pattern.instantiate()
+		else:
+			pass
+		if pattern != null:
+			pattern.position = room_to_pos(room)
+			add_sibling(pattern)
+	
+	generated.emit(room_to_pos(starting) + Vector2(room_size.x * 4.0, room_size.y * 4.0))
+
+
+func room_to_pos(room: int) -> Vector2:
+	return map_to_local(Vector2i(
+		(room % 4) * (room_size.x + corridor_x.x),
+		(room / 4) * (room_size.y + corridor_y.y)
+	)) - Vector2(4, 4)
 
 func build_graph(start_node: int, connections: Array, rooms: Array):
 	var graph = { start_node: 0 }
