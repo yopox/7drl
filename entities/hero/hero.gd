@@ -18,7 +18,7 @@ var arrow = preload("res://attacks/arrow.tscn")
 var sword = preload("res://attacks/sword.tscn")
 var wiz_zone = preload("res://attacks/wiz_zone.tscn")
 
-var hero_class: Class = Class.Archer
+var hero_class: Class = Class.Fighter
 var dash = false
 var dash_vel: Vector2
 var dead = false
@@ -96,7 +96,7 @@ func check_terrain():
 	if cell_pos == null:
 		return
 	var cell = map.get_cell_tile_data(0, cell_pos)
-	if cell.terrain != terrain:
+	if cell != null and cell.terrain != terrain:
 		terrain = cell.terrain
 
 

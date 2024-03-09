@@ -1,0 +1,57 @@
+[gd_scene load_steps=10 format=3 uid="uid://bmg882greav1c"]
+
+[ext_resource type="Script" path="res://entities/bomber/bomber.gd" id="1_wn0iw"]
+[ext_resource type="PackedScene" uid="uid://dgx4rvib5fof0" path="res://entities/elite_emitter.tscn" id="2_ifwll"]
+[ext_resource type="PackedScene" uid="uid://dgul0eolhcq2n" path="res://entities/stats.tscn" id="3_5j0p4"]
+[ext_resource type="Texture2D" uid="uid://d4ibrl4nmd57w" path="res://assets/MRMOTEXT_EX.png" id="4_3p2gy"]
+[ext_resource type="Shader" path="res://assets/tile.gdshader" id="4_m52su"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_s7cfy"]
+shader = ExtResource("4_m52su")
+shader_parameter/move_param = Vector4(0, 0, 0, 0)
+shader_parameter/tile_color = Vector4(0.275, 0.322, 0.824, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_372qv"]
+atlas = ExtResource("4_3p2gy")
+region = Rect2(56, 232, 9, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hkree"]
+size = Vector2(8, 6)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cttfc"]
+radius = 64.0
+
+[node name="Bomber" type="CharacterBody2D" node_paths=PackedStringArray("stats", "elite_emitter")]
+collision_layer = 4
+collision_mask = 30
+script = ExtResource("1_wn0iw")
+stats = NodePath("Stats")
+elite_emitter = NodePath("EliteEmitter")
+
+[node name="EliteEmitter" parent="." instance=ExtResource("2_ifwll")]
+
+[node name="Stats" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("3_5j0p4")]
+LVL = 10
+HP = 60
+FRQ = 1.0
+SPD = 8.0
+sprite = NodePath("../Sprite2D")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_s7cfy")
+texture = SubResource("AtlasTexture_372qv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_hkree")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_cttfc")
+
+[node name="Decay" type="Timer" parent="."]
+wait_time = 1.5
+one_shot = true
+
+[connection signal="hit" from="." to="Stats" method="_on_hit"]

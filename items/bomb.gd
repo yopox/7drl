@@ -13,6 +13,7 @@ var body_ignored = [self]
 @onready var area: Area2D = $Area2D
 @onready var emitter: GPUParticles2D = $GPUParticles2D
 
+signal exploded()
 signal detonated()
 
 
@@ -68,6 +69,7 @@ func explode():
 		sprite.visible = false
 	emitter.emitting = true
 	bomb_instance.start()
+	exploded.emit()
 
 
 func detonate():
