@@ -17,6 +17,8 @@ signal detonated()
 
 func _ready():
 	bomb_instance = FMODRuntime.create_instance(bomb_event)
+	color_rect.material = ShaderMaterial.new()
+	(color_rect.material as ShaderMaterial).shader = load("res://items/wave.gdshader")
 	
 func _process(_delta):
 	var size = color_rect.size.x / 2

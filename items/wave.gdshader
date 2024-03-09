@@ -1,7 +1,7 @@
 shader_type canvas_item;
 
-uniform float width;
-uniform float progress;
+uniform float width = 0.2;
+uniform float progress = 0.0;
 
 void fragment() {
 	vec2 center = vec2(0.5, 0.5);

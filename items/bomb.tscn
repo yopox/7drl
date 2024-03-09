@@ -32,7 +32,7 @@ color = Color(0.768627, 0.756863, 0.756863, 1)
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_scehc"]
 shader = ExtResource("2_4a8mh")
 shader_parameter/width = 0.2
-shader_parameter/progress = null
+shader_parameter/progress = 0.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_n3ocf"]
 radius = 36.0
@@ -120,7 +120,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-color = Color(0.376471, 0.239216, 0.239216, 1)
+color = Color(0.917647, 0.227451, 0.227451, 0.607843)
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 0

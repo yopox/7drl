@@ -1,0 +1,59 @@
+[gd_scene load_steps=10 format=3 uid="uid://cb4x8keq718h"]
+
+[ext_resource type="Script" path="res://entities/wizard/wizard.gd" id="1_smbyd"]
+[ext_resource type="Shader" path="res://assets/tile.gdshader" id="2_dh2io"]
+[ext_resource type="Texture2D" uid="uid://d4ibrl4nmd57w" path="res://assets/MRMOTEXT_EX.png" id="3_tu3t7"]
+[ext_resource type="PackedScene" uid="uid://dgx4rvib5fof0" path="res://entities/elite_emitter.tscn" id="4_8lj4w"]
+[ext_resource type="PackedScene" uid="uid://dgul0eolhcq2n" path="res://entities/stats.tscn" id="5_qso7y"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wt4j5"]
+shader = ExtResource("2_dh2io")
+shader_parameter/move_param = Vector4(0, 0, 0, 0)
+shader_parameter/tile_color = Vector4(0.275, 0.753, 0.824, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mk325"]
+atlas = ExtResource("3_tu3t7")
+region = Rect2(104, 231, 7, 9)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c0u2v"]
+size = Vector2(6, 7)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bcg8u"]
+radius = 48.0
+
+[node name="Wizard" type="CharacterBody2D" node_paths=PackedStringArray("stats", "elite_emitter")]
+collision_layer = 4
+collision_mask = 30
+script = ExtResource("1_smbyd")
+stats = NodePath("Stats")
+elite_emitter = NodePath("EliteEmitter")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_wt4j5")
+position = Vector2(2.08165e-12, 0.5)
+texture = SubResource("AtlasTexture_mk325")
+
+[node name="EliteEmitter" parent="." instance=ExtResource("4_8lj4w")]
+
+[node name="Stats" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("5_qso7y")]
+LVL = 8
+HP = 75
+ATK = 10
+FRQ = 4
+SPD = 12
+sprite = NodePath("../Sprite2D")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_c0u2v")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_bcg8u")
+
+[node name="Decay" type="Timer" parent="."]
+wait_time = 0.75
+one_shot = true
+
+[connection signal="hit" from="." to="Stats" method="_on_hit"]
