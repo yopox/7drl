@@ -1,23 +1,9 @@
 class_name FightZone extends Area2D
 
-@export var event_lvl1: EventAsset
-@export var event_lvl2: EventAsset
-
 @onready var intent_timer: Timer = $IntentTimer
-
-var instance_lvl1: EventInstance
-var instance_lvl2: EventInstance
  
 var terrain = 1
 var terrain_intent = 0
-
-func _ready():
-	instance_lvl1 = FMODRuntime.create_instance(event_lvl1)
-	instance_lvl2 = FMODRuntime.create_instance(event_lvl2)
-
-
-func start():
-	instance_lvl1.start()
 
 
 func update_instance():
@@ -25,18 +11,14 @@ func update_instance():
 	var has_elites = enemies.filter(func(e): return e is Enemy and (e as Enemy).stats.elite).size() > 0
 	var enemy_count = enemies.size()
 	if enemy_count >= 1 and has_elites == false: 
-		set_parameter("EnterCombatTest", "InBattle", true)
+		Util.BGM.set_parameter("EnterCombatTest", "InBattle", true)
 	else:
-		set_parameter("EnterCombatTest", "InBattle", false)
-		set_parameter("EnterCombatTest", "OutBattle", true)
+		Util.BGM.set_parameter("EnterCombatTest", "InBattle", false)
+		Util.BGM.set_parameter("EnterCombatTest", "OutBattle", true)
 	if has_elites == true: 
-		set_parameter("EnterCombatTest", "OutBattle", false)
-		set_parameter("EnterCombatTest", "InBattle", false)
-		set_parameter("EnterCombatTest", "InBattleElite", true)
-
-func set_parameter(name: String, label: String, ignore_seek_speed: bool):
-	for instance: EventInstance in [instance_lvl1, instance_lvl2]:
-		instance.set_parameter_by_name_with_label(name, label, ignore_seek_speed)
+		Util.BGM.set_parameter("EnterCombatTest", "OutBattle", false)
+		Util.BGM.set_parameter("EnterCombatTest", "InBattle", false)
+		Util.BGM.set_parameter("EnterCombatTest", "InBattleElite", true)
 
 
 func update_music(hero_terrain):
@@ -57,18 +39,10 @@ func _on_body_exited(_body):
 
 func _on_intent_timer_timeout():
 	if Util.hero.terrain == terrain_intent or Util.hero.terrain == 2 and terrain_intent == 1:
-		print("music: %d" % terrain_intent)
 		terrain = terrain_intent
 		terrain_intent = 0
 		match terrain:
 			1:
-				instance_lvl2.stop(FMODStudioModule.FMOD_STUDIO_STOP_ALLOWFADEOUT)
-				instance_lvl1.start()
+				Util.BGM.play_lvl1()
 			3:
-				instance_lvl1.stop(FMODStudioModule.FMOD_STUDIO_STOP_ALLOWFADEOUT)
-				instance_lvl2.start()
-
-
-func stop():
-	instance_lvl2.stop(FMODStudioModule.FMOD_STUDIO_STOP_ALLOWFADEOUT)
-	instance_lvl1.stop(FMODStudioModule.FMOD_STUDIO_STOP_ALLOWFADEOUT)
+				Util.BGM.play_lvl2()

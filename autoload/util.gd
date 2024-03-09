@@ -1,5 +1,7 @@
 extends Node
 
+var BGM: BGM
+
 var hero: Hero = null: set = set_hero
 var gui: GUI = null: set = set_gui
 var tile_map: TileMap = null
