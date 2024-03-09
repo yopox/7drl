@@ -144,7 +144,7 @@ func generate():
 		
 		if pattern != null:
 			pattern.position = room_to_pos(room)
-			add_sibling(pattern)
+			(func(): add_sibling(pattern)).call_deferred()
 	
 	generated.emit(room_to_pos(starting) + Vector2(room_size.x * 4.0, room_size.y * 4.0))
 
