@@ -73,5 +73,6 @@ func enter_dungeon():
 	scene.hero.hero_class = hero_node.hero_class
 	scene.hero.update_stuff()
 	scene.hero.death_color = Vector4(0.208, 0.196, 0.196, 1.0)
+	hero_node = scene.hero
 	scene_container.get_children()[0].remove_child(hero_node)
 	scene_container.get_children()[0].queue_free()
