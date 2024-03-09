@@ -2,7 +2,6 @@
 
 [ext_resource type="Shader" path="res://attacks/sword.gdshader" id="1_35b16"]
 [ext_resource type="Script" path="res://attacks/sword.gd" id="1_p6ylk"]
-[ext_resource type="EventAsset" uid="uid://c4biun71860uw" path="res://addons/FMOD/editor/resources/events/{419d080c-27ea-41ae-a8ee-2ca9be425a57}.tres" id="3_vhgyu"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xg11b"]
 shader = ExtResource("1_35b16")
@@ -46,6 +45,14 @@ _data = {
 "new_animation": SubResource("Animation_1h0sa")
 }
 
+[sub_resource type="EventAsset" id="EventAsset_5l2ac"]
+is_oneshot = true
+min_distance = 1.0
+max_distance = 20.0
+path = "event:/Warrior Attack"
+guid = "{419d080c-27ea-41ae-a8ee-2ca9be425a57}"
+name = "Warrior Attack"
+
 [node name="Sword" type="RigidBody2D"]
 script = ExtResource("1_p6ylk")
 
@@ -78,6 +85,6 @@ autoplay = "new_animation"
 
 [node name="StudioEventEmitter2D" type="StudioEventEmitter2D" parent="."]
 play_event = 2
-event = ExtResource("3_vhgyu")
+event = SubResource("EventAsset_5l2ac")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

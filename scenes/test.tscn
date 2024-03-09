@@ -1,10 +1,10 @@
 [gd_scene load_steps=9 format=3 uid="uid://dwhg6icaxvxjd"]
 
 [ext_resource type="PackedScene" uid="uid://cmgwwovyu6kba" path="res://entities/hero/hero.tscn" id="1_1mg1f"]
-[ext_resource type="PackedScene" uid="uid://dc17tw0kij6ie" path="res://scenes/tile_map.tscn" id="2_77ne1"]
+[ext_resource type="PackedScene" uid="uid://dc17tw0kij6ie" path="res://scenes/tile_maps/tile_map.tscn" id="2_77ne1"]
 [ext_resource type="PackedScene" uid="uid://fmnaew6q3fnr" path="res://entities/crab/crab.tscn" id="3_ogjmi"]
 [ext_resource type="PackedScene" uid="uid://o4ojnevevt2l" path="res://entities/shrimp/shrimp.tscn" id="4_tk2ht"]
-[ext_resource type="PackedScene" uid="uid://bybyhur6jxc01" path="res://scenes/gui.tscn" id="5_hrf7a"]
+[ext_resource type="PackedScene" uid="uid://bybyhur6jxc01" path="res://scenes/ui/gui.tscn" id="5_hrf7a"]
 [ext_resource type="PackedScene" uid="uid://cw1stwqv2g0b3" path="res://entities/urchin/urchin.tscn" id="6_1jpkg"]
 [ext_resource type="PackedScene" uid="uid://tqdmep7msqf0" path="res://entities/spider/spider.tscn" id="7_iikhi"]
 [ext_resource type="PackedScene" uid="uid://cb4x8keq718h" path="res://entities/wizard/wizard.tscn" id="8_uju7c"]
