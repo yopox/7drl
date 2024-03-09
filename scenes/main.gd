@@ -8,7 +8,9 @@ extends Node2D
 var title = preload("res://scenes/states/title.tscn")
 var character_selection = preload("res://scenes/states/character_selection.tscn")
 var level = preload("res://scenes/states/level.tscn")
+var dungeon = preload("res://scenes/states/cave.tscn")
 var title_music: EventInstance
+var hero_node
 	
 
 func _ready():
@@ -19,6 +21,7 @@ func _ready():
 
 	title_music = FMODRuntime.create_instance(event)
 	spawn_title()
+	Util.enter_dungeon.connect(enter_dungeon)
 
 
 func spawn_title():
@@ -42,7 +45,7 @@ func spawn_level(hero: Hero.Class, stats: Stats):
 	title_music.stop(FMODStudioModule.FMOD_STUDIO_STOP_ALLOWFADEOUT)
 	var scene = level.instantiate()
 	scene_container.add_child(scene)
-	scene.setup_hero(hero, stats)
+	hero_node = scene.setup_hero(hero, stats)
 	scene.generate()
 
 
@@ -59,3 +62,12 @@ func _on_character_confirm(hero: Hero.Class, stats: Stats):
 func _on_character_cancel():
 	scene_container.get_children()[0].queue_free()
 	spawn_title()
+
+
+func enter_dungeon():
+	var scene = dungeon.instantiate()
+	scene_container.add_child(scene)
+	hero_node.global_position = scene.hero.global_position
+	scene.hero = hero_node
+	scene_container.get_children()[0].remove_child(hero_node)
+	scene_container.get_children()[0].queue_free()

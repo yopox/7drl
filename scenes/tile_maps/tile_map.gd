@@ -2,7 +2,7 @@ extends TileMap
 
 @export var generate_enemies = true
 
-var bloc = preload("res://entities/terrain/bloc.tscn")
+var stairs = preload("res://entities/stairs/stairs.tscn")
 var content_generator: ContentGenerator
 
 func _ready():
@@ -42,6 +42,6 @@ func place_enemies(start_pos: Vector2i, exit_pos: Vector2i, grid: GaeaGrid):
 			pattern.visible = true
 			add_sibling.call_deferred(pattern)
 
-	var exit = bloc.instantiate()
+	var exit = stairs.instantiate()
 	exit.position = map_to_local(exit_pos)
 	add_sibling(exit)
