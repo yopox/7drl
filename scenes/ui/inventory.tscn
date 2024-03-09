@@ -2,7 +2,7 @@
 
 [ext_resource type="Material" uid="uid://dv6xh64115ihe" path="res://assets/textmode_letter.tres" id="1_l7vi7"]
 [ext_resource type="Texture2D" uid="uid://d4ibrl4nmd57w" path="res://assets/MRMOTEXT_EX.png" id="2_15lbv"]
-[ext_resource type="Script" path="res://scenes/inventory.gd" id="3_xm3j7"]
+[ext_resource type="Script" path="res://scenes/ui/inventory.gd" id="3_xm3j7"]
 [ext_resource type="PackedScene" uid="uid://ba4cvlmlqe2tm" path="res://items/item_node.tscn" id="4_dcnxo"]
 [ext_resource type="Shader" path="res://scenes/textmode.gdshader" id="5_kaiu3"]
 

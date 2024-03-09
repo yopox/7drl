@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://scenes/states/character_selection.gd" id="1_ggcog"]
 [ext_resource type="Material" uid="uid://d2cpahxj1a3l8" path="res://assets/textmode_border.tres" id="2_7jhkh"]
 [ext_resource type="Texture2D" uid="uid://d4ibrl4nmd57w" path="res://assets/MRMOTEXT_EX.png" id="3_elk80"]
-[ext_resource type="PackedScene" uid="uid://btnpb51vrqidp" path="res://scenes/counter.tscn" id="5_lpaso"]
+[ext_resource type="PackedScene" uid="uid://btnpb51vrqidp" path="res://scenes/ui/counter.tscn" id="5_lpaso"]
 [ext_resource type="PackedScene" uid="uid://dgul0eolhcq2n" path="res://entities/stats.tscn" id="6_72wyr"]
 [ext_resource type="Shader" path="res://assets/tile.gdshader" id="6_r6hxh"]
 [ext_resource type="PackedScene" uid="uid://rs588it7alhn" path="res://entities/dummy/dummy.tscn" id="8_dhklt"]

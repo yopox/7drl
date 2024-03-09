@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://d4ibrl4nmd57w" path="res://assets/MRMOTEXT_EX.png" id="2_cx5ly"]
 [ext_resource type="Shader" path="res://scenes/textmode.gdshader" id="3_vgero"]
 [ext_resource type="Material" uid="uid://c3nwerqwydqyf" path="res://assets/compass_letter.tres" id="3_xpmo6"]
-[ext_resource type="Script" path="res://scenes/compass.gd" id="5_dl7t3"]
+[ext_resource type="Script" path="res://scenes/ui/compass.gd" id="5_dl7t3"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_h12xw"]
 shader = ExtResource("3_vgero")

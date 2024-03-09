@@ -1,7 +1,7 @@
 [gd_scene load_steps=22 format=3 uid="uid://b3eabjdt3o24b"]
 
 [ext_resource type="Script" path="res://scenes/states/level.gd" id="1_s6r0d"]
-[ext_resource type="PackedScene" uid="uid://dc17tw0kij6ie" path="res://scenes/tile_map.tscn" id="2_l3aa6"]
+[ext_resource type="PackedScene" uid="uid://dc17tw0kij6ie" path="res://scenes/tile_maps/tile_map.tscn" id="2_l3aa6"]
 [ext_resource type="Script" path="res://addons/gaea/generators/2D/noise_generator/noise_generator.gd" id="3_206he"]
 [ext_resource type="Script" path="res://addons/gaea/others/falloff_map.gd" id="4_q2qgh"]
 [ext_resource type="Script" path="res://addons/gaea/generators/2D/noise_generator/noise_generator_settings.gd" id="5_sngot"]

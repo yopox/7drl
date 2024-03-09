@@ -2,7 +2,7 @@
 
 [ext_resource type="Shader" path="res://assets/tile.gdshader" id="1_jkjun"]
 [ext_resource type="Texture2D" uid="uid://d4ibrl4nmd57w" path="res://assets/MRMOTEXT_EX.png" id="2_6bvmg"]
-[ext_resource type="Script" path="res://scenes/tile_map.gd" id="3_gb56w"]
+[ext_resource type="Script" path="res://scenes/tile_maps/tile_map.gd" id="3_gb56w"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8enw5"]
 shader = ExtResource("1_jkjun")

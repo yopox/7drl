@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://c4uxdhy6e6qq1"]
 
-[ext_resource type="Script" path="res://scenes/joystick.gd" id="1_a62d8"]
+[ext_resource type="Script" path="res://scenes/ui/joystick.gd" id="1_a62d8"]
 
 [sub_resource type="GDScript" id="GDScript_p8fhw"]
 script/source = "extends ColorRect

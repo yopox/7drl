@@ -1,11 +1,11 @@
 [gd_scene load_steps=8 format=3 uid="uid://dmkf7kd0k8py0"]
 
-[ext_resource type="PackedScene" uid="uid://c4uxdhy6e6qq1" path="res://scenes/joystick.tscn" id="1_3h3yo"]
-[ext_resource type="Script" path="res://scenes/move_joystick.gd" id="2_xm4ks"]
-[ext_resource type="Script" path="res://scenes/attack_joystick.gd" id="3_7f3w4"]
-[ext_resource type="Script" path="res://scenes/stat_button.gd" id="4_tlqh8"]
-[ext_resource type="Script" path="res://scenes/item_button.gd" id="5_7obka"]
-[ext_resource type="Script" path="res://scenes/dash_button.gd" id="6_y803e"]
+[ext_resource type="PackedScene" uid="uid://c4uxdhy6e6qq1" path="res://scenes/ui/joystick.tscn" id="1_3h3yo"]
+[ext_resource type="Script" path="res://scenes/ui/move_joystick.gd" id="2_xm4ks"]
+[ext_resource type="Script" path="res://scenes/ui/attack_joystick.gd" id="3_7f3w4"]
+[ext_resource type="Script" path="res://scenes/ui/stat_button.gd" id="4_tlqh8"]
+[ext_resource type="Script" path="res://scenes/ui/item_button.gd" id="5_7obka"]
+[ext_resource type="Script" path="res://scenes/ui/dash_button.gd" id="6_y803e"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0xy15"]
 
