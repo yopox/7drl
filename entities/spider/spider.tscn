@@ -31,9 +31,9 @@ elite_emitter = NodePath("EliteEmitter")
 [node name="Stats" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("2_x20hr")]
 LVL = 6
 HP = 30
-ATK = 8
-FRQ = 1
-SPD = 20
+ATK = 8.0
+FRQ = 1.0
+SPD = 20.0
 sprite = NodePath("../Sprite2D")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

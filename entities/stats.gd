@@ -3,9 +3,9 @@ class_name Stats extends Node
 @export_category("Character Stats")
 @export var LVL: int = 1: get = get_lvl
 @export var HP: int = 20: get = get_hp
-@export var ATK: int = 5: get = get_atk
-@export var FRQ: int = 5: get = get_frq
-@export var SPD: int = 10: get = get_spd
+@export var ATK: float = 5: get = get_atk
+@export var FRQ: float = 5: get = get_frq
+@export var SPD: float = 10: get = get_spd
 @export var elite: bool = false
 var XP: int = 0
 

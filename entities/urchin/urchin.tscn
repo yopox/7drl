@@ -38,7 +38,7 @@ shape = SubResource("RectangleShape2D_t5tx7")
 [node name="Stats" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("4_6xuf7")]
 LVL = 2
 HP = 10
-ATK = 4
+ATK = 4.0
 sprite = NodePath("../Sprite2D")
 
 [node name="SpikesTimer" type="Timer" parent="."]
