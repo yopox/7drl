@@ -48,7 +48,7 @@ func _ready():
 
 
 func get_lvl():
-	return LVL if not elite else 5 * LVL
+	return LVL if not elite else 4 * LVL
 
 
 func get_hp():

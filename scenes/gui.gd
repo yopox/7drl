@@ -7,7 +7,6 @@ class_name GUI extends Control
 @onready var SPD: Counter = $CanvasLayer/SPD
 @onready var stat_select: Node2D = $CanvasLayer/StatSelect
 @onready var inventory: Inventory = $CanvasLayer/Inventory
-@onready var buttons: Node2D = $CanvasLayer/Buttons
 
 var stat_selected: int = 0
 
