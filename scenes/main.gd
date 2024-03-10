@@ -49,7 +49,7 @@ func spawn_character_selection():
 func spawn_level(hero: Hero.Class, stats: Stats):
 	title_music.stop(FMODStudioModule.FMOD_STUDIO_STOP_ALLOWFADEOUT)
 	bgm.play_lvl1()
-	Util.items = Util.starting_items
+	Util.items = Util.starting_items.duplicate(true)
 	Util.dungeon = false
 	Util.game_over = false
 	Util.boss_defeated = false
