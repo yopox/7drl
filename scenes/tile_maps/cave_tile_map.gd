@@ -7,10 +7,17 @@ extends TileMap
 @export var corridor_y = Vector2i(2, 2)
 
 var patterns = [
-	[1, null],
+	[1, preload("res://patterns/dungeon/start.tscn")],
 	[1, preload("res://patterns/dungeon/chest_spikes.tscn")],
-	[100, preload("res://patterns/dungeon/urchin_wizard.tscn")],
+	[1, preload("res://patterns/dungeon/urchin_wizard.tscn")],
+	[1, preload("res://patterns/dungeon/bomber_shrimp2.tscn")],
+	[1, preload("res://patterns/dungeon/bear_crab2.tscn")],
+	[1, preload("res://patterns/dungeon/spider_2.tscn")],
+	[1, preload("res://patterns/dungeon/urchin_wizard.tscn")],
+	[1, preload("res://patterns/dungeon/wizard_walled_2.tscn")],
+	[1, preload("res://patterns/dungeon/shrimpbarricade.tscn")],
 ]
+
 var weights: int = 0
 
 var start_pattern = preload("res://patterns/dungeon/start.tscn")

@@ -1,6 +1,41 @@
-[gd_scene load_steps=2 format=3 uid="uid://cinnm4xiieldb"]
+[gd_scene load_steps=9 format=3 uid="uid://cinnm4xiieldb"]
 
 [ext_resource type="Script" path="res://scenes/BGM.gd" id="1_jy4ru"]
+[ext_resource type="EventAsset" uid="uid://ctu8kway4nlaa" path="res://addons/FMOD/editor/resources/events/{11055db4-7ce9-49b0-8c44-c8c5a71c834a}.tres" id="2_tqjt6"]
+[ext_resource type="EventAsset" uid="uid://b07a87ptpg1ax" path="res://addons/FMOD/editor/resources/events/{65696e8f-9ed6-4c33-985f-d274c37194a4}.tres" id="3_p46dp"]
+[ext_resource type="EventAsset" uid="uid://c4e3u8s5go3al" path="res://addons/FMOD/editor/resources/events/{0180ede2-dc4f-4841-b94b-ea05221fbb29}.tres" id="4_vfe6l"]
+
+[sub_resource type="FMOD_STUDIO_PARAMETER_ID" id="FMOD_STUDIO_PARAMETER_ID_ub3mv"]
+data1 = 2457712100
+data2 = 3701589890
+
+[sub_resource type="FMOD_STUDIO_PARAMETER_DESCRIPTION" id="FMOD_STUDIO_PARAMETER_DESCRIPTION_w43n8"]
+name = "BossHealth"
+id = SubResource("FMOD_STUDIO_PARAMETER_ID_ub3mv")
+maximum = 2.0
+flags = 24
+guid = "{86ef01e4-add6-4dd1-a53a-c9f87d36e4c6}"
+
+[sub_resource type="ParameterAsset" id="ParameterAsset_bwmty"]
+parameter_description = SubResource("FMOD_STUDIO_PARAMETER_DESCRIPTION_w43n8")
+labels = ["FirstHalf", "SecondHalf", "Dead"]
+path = "parameter:/BossHealth"
+guid = "{86ef01e4-add6-4dd1-a53a-c9f87d36e4c6}"
+name = "BossHealth"
+
+[sub_resource type="EventAsset" id="EventAsset_2sg6w"]
+min_distance = 1.0
+max_distance = 20.0
+parameters = {
+"{86ef01e4-add6-4dd1-a53a-c9f87d36e4c6}": SubResource("ParameterAsset_bwmty")
+}
+path = "event:/Boss"
+guid = "{7adcb410-027a-404e-8987-cd6009aa8c14}"
+name = "Boss"
 
 [node name="Bgm" type="Node"]
 script = ExtResource("1_jy4ru")
+event_lvl1 = ExtResource("2_tqjt6")
+event_lvl2 = ExtResource("3_p46dp")
+event_lvl3 = ExtResource("4_vfe6l")
+event_boss = SubResource("EventAsset_2sg6w")

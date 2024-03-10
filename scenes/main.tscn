@@ -1,12 +1,12 @@
-[gd_scene load_steps=12 format=3 uid="uid://b2vk64q03a0y6"]
+[gd_scene load_steps=16 format=3 uid="uid://b2vk64q03a0y6"]
 
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_e4mj0"]
-[ext_resource type="EventAsset" uid="uid://diq1postlr3hc" path="res://addons/FMOD/editor/resources/events/{4a519f1c-f74a-4a4d-be73-3038632a4165}.tres" id="2_16xy5"]
+[ext_resource type="EventAsset" uid="uid://b3lsdshilovvm" path="res://addons/FMOD/editor/resources/events/{4a519f1c-f74a-4a4d-be73-3038632a4165}.tres" id="2_16xy5"]
 [ext_resource type="PackedScene" uid="uid://dmkf7kd0k8py0" path="res://scenes/ui/android_buttons.tscn" id="3_p3vh5"]
 [ext_resource type="PackedScene" uid="uid://cinnm4xiieldb" path="res://scenes/BGM.tscn" id="4_wpvqh"]
-[ext_resource type="EventAsset" uid="uid://cmdbapmvmglmv" path="res://addons/FMOD/editor/resources/events/{11055db4-7ce9-49b0-8c44-c8c5a71c834a}.tres" id="5_npefx"]
-[ext_resource type="EventAsset" uid="uid://u2rvlrvk5eas" path="res://addons/FMOD/editor/resources/events/{65696e8f-9ed6-4c33-985f-d274c37194a4}.tres" id="6_qktt1"]
-[ext_resource type="EventAsset" uid="uid://bsd13rkbjdd58" path="res://addons/FMOD/editor/resources/events/{0180ede2-dc4f-4841-b94b-ea05221fbb29}.tres" id="7_wri0y"]
+[ext_resource type="EventAsset" uid="uid://ctu8kway4nlaa" path="res://addons/FMOD/editor/resources/events/{11055db4-7ce9-49b0-8c44-c8c5a71c834a}.tres" id="5_npefx"]
+[ext_resource type="EventAsset" uid="uid://b07a87ptpg1ax" path="res://addons/FMOD/editor/resources/events/{65696e8f-9ed6-4c33-985f-d274c37194a4}.tres" id="6_qktt1"]
+[ext_resource type="EventAsset" uid="uid://c4e3u8s5go3al" path="res://addons/FMOD/editor/resources/events/{0180ede2-dc4f-4841-b94b-ea05221fbb29}.tres" id="7_wri0y"]
 
 [sub_resource type="FMOD_STUDIO_PARAMETER_ID" id="FMOD_STUDIO_PARAMETER_ID_8y1du"]
 data1 = 2912458685
@@ -36,10 +36,39 @@ path = "event:/Level 03"
 guid = "{0180ede2-dc4f-4841-b94b-ea05221fbb29}"
 name = "Level 03"
 
+[sub_resource type="FMOD_STUDIO_PARAMETER_ID" id="FMOD_STUDIO_PARAMETER_ID_ub3mv"]
+data1 = 2457712100
+data2 = 3701589890
+
+[sub_resource type="FMOD_STUDIO_PARAMETER_DESCRIPTION" id="FMOD_STUDIO_PARAMETER_DESCRIPTION_w43n8"]
+name = "BossHealth"
+id = SubResource("FMOD_STUDIO_PARAMETER_ID_ub3mv")
+maximum = 2.0
+flags = 24
+guid = "{86ef01e4-add6-4dd1-a53a-c9f87d36e4c6}"
+
+[sub_resource type="ParameterAsset" id="ParameterAsset_bwmty"]
+parameter_description = SubResource("FMOD_STUDIO_PARAMETER_DESCRIPTION_w43n8")
+labels = ["FirstHalf", "SecondHalf", "Dead"]
+path = "parameter:/BossHealth"
+guid = "{86ef01e4-add6-4dd1-a53a-c9f87d36e4c6}"
+name = "BossHealth"
+
+[sub_resource type="EventAsset" id="EventAsset_2sg6w"]
+min_distance = 1.0
+max_distance = 20.0
+parameters = {
+"{86ef01e4-add6-4dd1-a53a-c9f87d36e4c6}": SubResource("ParameterAsset_bwmty")
+}
+path = "event:/Boss"
+guid = "{7adcb410-027a-404e-8987-cd6009aa8c14}"
+name = "Boss"
+
 [node name="Main" type="Node2D"]
 script = ExtResource("1_e4mj0")
 event = ExtResource("2_16xy5")
 dungeonmusicevent = SubResource("EventAsset_seg72")
+bossmusicevent = SubResource("EventAsset_2sg6w")
 
 [node name="Buttons" parent="." instance=ExtResource("3_p3vh5")]
 top_level = true
