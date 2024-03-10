@@ -9,7 +9,7 @@ var drops = [
 	Inventory.Item.Bomb, Inventory.Item.Bomb, Inventory.Item.Bomb,
 	Inventory.Item.Potion, Inventory.Item.Potion, Inventory.Item.Potion,
 	Inventory.Item.Potion, Inventory.Item.Potion, Inventory.Item.Potion,
-	Inventory.Item.Clover, Inventory.Item.Clover, Inventory.Item.Clover,
+	Inventory.Item.Clover, Inventory.Item.Clover,
 	Inventory.Item.Ankh
 ]
 
