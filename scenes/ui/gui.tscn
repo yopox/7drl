@@ -2096,7 +2096,7 @@ sources/0 = SubResource("TileSetAtlasSource_iaxn0")
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_437xy"]
 shader = ExtResource("3_v83a2")
 shader_parameter/fg = Vector4(0.953, 0.953, 0.953, 1)
-shader_parameter/bg = Vector4(0.114, 0.094, 0.094, 0.5)
+shader_parameter/bg = Vector4(0.114, 0.094, 0.094, 0.75)
 shader_parameter/no_bg = false
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_o48wm"]
