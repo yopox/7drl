@@ -1,12 +1,10 @@
-[gd_scene load_steps=16 format=3 uid="uid://b2vk64q03a0y6"]
+[gd_scene load_steps=14 format=3 uid="uid://b2vk64q03a0y6"]
 
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_e4mj0"]
-[ext_resource type="EventAsset" uid="uid://b3lsdshilovvm" path="res://addons/FMOD/editor/resources/events/{4a519f1c-f74a-4a4d-be73-3038632a4165}.tres" id="2_16xy5"]
+[ext_resource type="EventAsset" uid="uid://diq1postlr3hc" path="res://addons/FMOD/editor/resources/events/{4a519f1c-f74a-4a4d-be73-3038632a4165}.tres" id="2_16xy5"]
 [ext_resource type="PackedScene" uid="uid://dmkf7kd0k8py0" path="res://scenes/ui/android_buttons.tscn" id="3_p3vh5"]
 [ext_resource type="PackedScene" uid="uid://cinnm4xiieldb" path="res://scenes/BGM.tscn" id="4_wpvqh"]
-[ext_resource type="EventAsset" uid="uid://ctu8kway4nlaa" path="res://addons/FMOD/editor/resources/events/{11055db4-7ce9-49b0-8c44-c8c5a71c834a}.tres" id="5_npefx"]
-[ext_resource type="EventAsset" uid="uid://b07a87ptpg1ax" path="res://addons/FMOD/editor/resources/events/{65696e8f-9ed6-4c33-985f-d274c37194a4}.tres" id="6_qktt1"]
-[ext_resource type="EventAsset" uid="uid://c4e3u8s5go3al" path="res://addons/FMOD/editor/resources/events/{0180ede2-dc4f-4841-b94b-ea05221fbb29}.tres" id="7_wri0y"]
+[ext_resource type="Script" path="res://scenes/chrono.gd" id="5_l00ja"]
 
 [sub_resource type="FMOD_STUDIO_PARAMETER_ID" id="FMOD_STUDIO_PARAMETER_ID_8y1du"]
 data1 = 2912458685
@@ -77,6 +75,6 @@ z_index = 1
 [node name="SceneContainer" type="Node2D" parent="."]
 
 [node name="Bgm" parent="." instance=ExtResource("4_wpvqh")]
-event_lvl1 = ExtResource("5_npefx")
-event_lvl2 = ExtResource("6_qktt1")
-event_lvl3 = ExtResource("7_wri0y")
+
+[node name="Chrono" type="Node" parent="."]
+script = ExtResource("5_l00ja")

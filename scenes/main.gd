@@ -6,6 +6,7 @@ extends Node2D
 @onready var scene_container: Node2D = $SceneContainer
 @onready var buttons: Control = $Buttons
 @onready var bgm: BGM = $Bgm
+@onready var chrono: Chrono = $Chrono
 
 var title = preload("res://scenes/states/title.tscn")
 var character_selection = preload("res://scenes/states/character_selection.tscn")
@@ -22,6 +23,7 @@ func _ready():
 		buttons.queue_free()
 	else:
 		buttons.visible = true
+	Util.chrono = chrono
 
 	title_music = FMODRuntime.create_instance(event)
 	spawn_title()
@@ -59,6 +61,7 @@ func spawn_level(hero: Hero.Class, stats: Stats):
 	scene_container.add_child(scene)
 	hero_node = scene.setup_hero(hero, stats)
 	scene.generate()
+	chrono.start()
 
 
 func _on_title_exit_title():
@@ -105,7 +108,7 @@ func enter_boss():
 
 
 func return_to_title():
-	scene_container.get_children()[0].queue_free()
-	hero_node.queue_free()
 	bgm.stop()
 	spawn_title()
+	scene_container.get_children()[0].queue_free()
+	hero_node.queue_free()

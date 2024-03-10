@@ -16,6 +16,9 @@ func _ready():
 
 
 func _process(_delta):
+	if Util.game_over:
+		return
+	
 	if Input.is_action_just_pressed("stat"):
 		select_stat()
 

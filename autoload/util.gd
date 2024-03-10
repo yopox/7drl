@@ -1,6 +1,7 @@
 extends Node
 
 var BGM: BGM
+var chrono: Chrono
 
 var game_over: bool = false
 var boss_defeated: bool = false
