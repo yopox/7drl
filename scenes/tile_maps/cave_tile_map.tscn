@@ -3098,7 +3098,7 @@ physics_layer_0/collision_mask = 0
 sources/0 = SubResource("TileSetAtlasSource_kitfd")
 
 [node name="CaveTileMap" type="TileMap"]
-z_index = -10
+z_index = -20
 z_as_relative = false
 tile_set = SubResource("TileSet_yahmg")
 format = 2
