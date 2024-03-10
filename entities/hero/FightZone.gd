@@ -7,6 +7,8 @@ var terrain_intent = 0
 
 
 func update_instance():
+	if Util.bgm == null:
+		return
 	var enemies = get_overlapping_bodies()
 	var has_elites = enemies.filter(func(e): return e is Enemy and (e as Enemy).stats.elite).size() > 0
 	var enemy_count = enemies.size()
