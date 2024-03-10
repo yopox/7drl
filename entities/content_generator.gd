@@ -1,7 +1,7 @@
 class_name ContentGenerator extends Node
 
 var sand_patterns = [
-	[17, null],
+	[12, null],
 	[3, preload("res://patterns/sand/bloc.tscn")],
 	[2, preload("res://patterns/sand/bloc_2.tscn")],
 	[3, preload("res://patterns/sand/crab_l3.tscn")],
@@ -22,6 +22,8 @@ var grass_patterns = [
 	[1, preload("res://entities/spikes/spikes.tscn")],
 	[4, preload("res://patterns/grass/bear_l4.tscn")],
 	[3, preload("res://patterns/grass/spider_l8.tscn")],
+	[1, preload("res://entities/chest/chest.tscn")],
+	[1, preload("res://patterns/grass/clover.tscn")],
 ]
 var grass_weights: int = 0
 

@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://kg47i7cq4o0y"]
+
+[ext_resource type="Script" path="res://patterns/grass/clover.gd" id="1_214u3"]
+[ext_resource type="PackedScene" uid="uid://63lfcy3hctnw" path="res://items/item_drop.tscn" id="2_rmkey"]
+
+[node name="Clover" type="Node2D"]
+script = ExtResource("1_214u3")
+
+[node name="ItemDrop" parent="." instance=ExtResource("2_rmkey")]
