@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://cpvtewsx6kn82"]
+
+[ext_resource type="Script" path="res://patterns/grass/potion.gd" id="1_n4w4x"]
+[ext_resource type="PackedScene" uid="uid://63lfcy3hctnw" path="res://items/item_drop.tscn" id="2_uabmp"]
+
+[node name="Potion" type="Node2D"]
+script = ExtResource("1_n4w4x")
+
+[node name="ItemDrop" parent="." instance=ExtResource("2_uabmp")]
