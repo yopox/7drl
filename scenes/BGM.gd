@@ -48,5 +48,5 @@ func play_boss():
 
 
 func stop():
-	for i in [instance_lvl1, instance_lvl2, instance_lvl3]:
+	for i in [instance_lvl1, instance_lvl2, instance_lvl3, instance_boss]:
 		i.stop(FMODStudioModule.FMOD_STUDIO_STOP_ALLOWFADEOUT)
