@@ -27,6 +27,10 @@ func process_enemy(_delta):
 
 
 func die():
+	if stats == null:
+		on_dead()
+		return
+	
 	# Spawn loot
 	if stats.elite:
 		var item = item_drop.instantiate()
