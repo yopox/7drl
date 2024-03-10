@@ -45,7 +45,3 @@ func place_enemies(start_pos: Vector2i, exit_pos: Vector2i, grid: GaeaGrid):
 	var exit = stairs.instantiate()
 	exit.position = map_to_local(exit_pos)
 	add_sibling(exit)
-	
-	var fake_exit = stairs.instantiate()
-	fake_exit.position = map_to_local(start_pos) + Vector2(8, 8)
-	add_sibling(fake_exit)
