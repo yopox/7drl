@@ -6,6 +6,7 @@ class_name ItemDrop extends RigidBody2D
 var drops = [
 	Inventory.Item.Bomb, Inventory.Item.Bomb, Inventory.Item.Bomb,
 	Inventory.Item.Potion, Inventory.Item.Potion,
+	Inventory.Item.Clover,
 ]
 
 

@@ -45,3 +45,7 @@ func update():
 		Inventory.Item.Bomb:
 			t.region.position = Vector2(120, 104)
 			sm.set_shader_parameter("fg", Color("#4652d2"))
+		Inventory.Item.Clover:
+			t.region.position = Vector2(113, 184)
+			sm.set_shader_parameter("fg", Color("#52d246"))
+			

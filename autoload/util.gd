@@ -22,7 +22,7 @@ var android_select2: bool = false
 
 var starting_items: Array[Inventory.Item] = [
 	Inventory.Item.Bomb,
-	Inventory.Item.Potion
+	Inventory.Item.Potion,
 ]
 var items: Array[Inventory.Item] = []
 var selected_item: int = 0
@@ -66,6 +66,8 @@ func item_name(item: Inventory.Item):
 			return "BOMB"
 		Inventory.Item.Potion:
 			return "POTION"
+		Inventory.Item.Clover:
+			return "CLOVER"
 
 
 func update_weights(table) -> int:

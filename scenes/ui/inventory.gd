@@ -1,6 +1,6 @@
 class_name Inventory extends TileMap
 
-enum Item { Dash, Bomb, Potion, }
+enum Item { Dash, Bomb, Potion, Clover }
 
 @onready var items_node: Node2D = $Items
 @onready var dash: Sprite2D = $Dash
@@ -45,6 +45,8 @@ func item_used():
 			Util.hero.add_sibling(bomb)
 		Item.Potion:
 			Util.hero.stats.heal()
+		Item.Clover:
+			Util.hero.stats.add_xp(Util.hero.stats.level_xp(Util.hero.stats.LVL) - Util.hero.stats.XP)
 
 	if Util.selected_item > 0:
 		Util.items.remove_at(Util.selected_item - 1)
