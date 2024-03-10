@@ -7,6 +7,7 @@ class_name GUI extends Control
 @onready var SPD: Counter = $CanvasLayer/SPD
 @onready var stat_select: Node2D = $CanvasLayer/StatSelect
 @onready var inventory: Inventory = $CanvasLayer/Inventory
+@onready var indicator: Sprite2D = $CanvasLayer/Indicator
 
 var stat_selected: int = 0
 
@@ -50,3 +51,21 @@ func update_gui():
 			stat_select.position.y = 88 + 24
 		3:
 			stat_select.position.y = 88 + 32
+
+
+func update_indicator():
+	var hero = Util.hero
+	if Util.dungeon:
+		if not Util.is_fighting_boss:
+			indicator.position.x = 236 + 32
+		else:
+			indicator.position.x = 236 + 48
+	else:
+		if hero.terrain <= 1:
+			indicator.position.x = 236
+		elif hero.terrain == 2:
+			indicator.position.x = 236 + 8
+		else:
+			indicator.position.x = 236 + 16
+			
+			

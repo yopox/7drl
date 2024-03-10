@@ -92,6 +92,7 @@ func use_item():
 
 func set_terrain(value):
 	terrain = value
+	Util.gui.update_indicator()
 	fight_zone.update_music(terrain)
 
 

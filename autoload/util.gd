@@ -6,6 +6,7 @@ var chrono: Chrono
 var game_over: bool = false
 var boss_defeated: bool = false
 var dungeon: bool = false
+var is_fighting_boss: bool = false
 
 var hero: Hero = null: set = set_hero
 var gui: GUI = null: set = set_gui

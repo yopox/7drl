@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://bybyhur6jxc01"]
+[gd_scene load_steps=20 format=3 uid="uid://bybyhur6jxc01"]
 
 [ext_resource type="Material" uid="uid://dv6xh64115ihe" path="res://assets/textmode_letter.tres" id="1_38xkm"]
 [ext_resource type="Texture2D" uid="uid://d4ibrl4nmd57w" path="res://assets/MRMOTEXT_EX.png" id="1_mxj7s"]
@@ -5195,6 +5195,10 @@ texture_region_size = Vector2i(8, 8)
 tile_size = Vector2i(8, 8)
 sources/0 = SubResource("TileSetAtlasSource_2xpiu")
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_wq2ap"]
+atlas = ExtResource("1_mxj7s")
+region = Rect2(240, 224, 8, 5)
+
 [node name="Gui" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -5255,3 +5259,8 @@ layer_0/tile_data = PackedInt32Array(0, 1245184, 5, 10, 1310720, 4)
 
 [node name="Inventory" parent="CanvasLayer" instance=ExtResource("7_gmwyi")]
 position = Vector2(48, 152)
+
+[node name="Indicator" type="Sprite2D" parent="CanvasLayer"]
+material = ExtResource("1_38xkm")
+position = Vector2(236, 34.5)
+texture = SubResource("AtlasTexture_wq2ap")

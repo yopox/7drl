@@ -51,6 +51,7 @@ func spawn_level(hero: Hero.Class, stats: Stats):
 	bgm.play_lvl1()
 	Util.items = Util.starting_items.duplicate(true)
 	Util.dungeon = false
+	Util.is_fighting_boss = false
 	Util.game_over = false
 	Util.boss_defeated = false
 	var scene = level.instantiate()
@@ -86,6 +87,7 @@ func enter_dungeon():
 		scene.hero.hero_class = hero_node.hero_class
 		scene.hero.update_stuff()
 		scene.hero.death_color = Vector4(0.208, 0.196, 0.196, 1.0)
+		Util.gui.update_indicator()
 		hero_node = scene.hero
 		scene_container.get_children()[0].queue_free()).call_deferred()
 
@@ -94,6 +96,7 @@ func enter_boss():
 	bgm.play_boss()
 	var scene = boss.instantiate()
 	Util.exit = null
+	Util.is_fighting_boss = true
 	(func():
 		scene_container.add_child(scene)
 		hero_node.global_position = scene.hero.global_position
@@ -101,6 +104,7 @@ func enter_boss():
 		scene.hero.hero_class = hero_node.hero_class
 		scene.hero.update_stuff()
 		scene.hero.death_color = Vector4(0.208, 0.196, 0.196, 1.0)
+		Util.gui.update_indicator()
 		hero_node = scene.hero
 		scene_container.get_children()[0].queue_free()).call_deferred()
 
