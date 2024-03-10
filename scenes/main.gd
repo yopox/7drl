@@ -52,6 +52,7 @@ func spawn_level(hero: Hero.Class, stats: Stats):
 	title_music.stop(FMODStudioModule.FMOD_STUDIO_STOP_ALLOWFADEOUT)
 	bgm.play_lvl1()
 	Util.items = Util.starting_items
+	Util.dungeon = false
 	Util.game_over = false
 	var scene = level.instantiate()
 	scene_container.add_child(scene)
@@ -76,6 +77,7 @@ func _on_character_cancel():
 
 func enter_dungeon():
 	bgm.play_lvl3()
+	Util.dungeon = true
 	var scene = dungeon.instantiate()
 	scene_container.add_child(scene)
 	hero_node.global_position = scene.hero.global_position
