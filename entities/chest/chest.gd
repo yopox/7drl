@@ -14,7 +14,9 @@ func open(_stats):
 		item.position = position
 		var angle = randf() * 2 * PI
 		item.apply_impulse(Vector2(cos(angle), sin(angle)) * 2)
-		add_sibling(item)
-		item.randomize()
+		(func():
+			add_sibling(item)
+			item.randomize()
+		).call_deferred()
 		
 	queue_free()
