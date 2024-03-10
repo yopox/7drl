@@ -1,8 +1,6 @@
 extends Node2D
 
 @export var event: EventAsset
-@export var dungeonmusicevent: EventAsset
-@export var bossmusicevent: EventAsset
 @onready var scene_container: Node2D = $SceneContainer
 @onready var buttons: Control = $Buttons
 @onready var bgm: BGM = $Bgm
@@ -14,7 +12,6 @@ var level = preload("res://scenes/states/level.tscn")
 var dungeon = preload("res://scenes/states/cave.tscn")
 var boss = preload("res://scenes/tile_maps/final_boss.tscn")
 var title_music: EventInstance
-var boss_music: EventInstance
 var hero_node
 
 
@@ -27,7 +24,6 @@ func _ready():
 
 	title_music = FMODRuntime.create_instance(event)
 	spawn_title()
-	boss_music = FMODRuntime.create_instance(bossmusicevent)
 	Util.enter_dungeon.connect(enter_dungeon)
 	Util.enter_boss.connect(enter_boss)
 	Util.return_to_title.connect(return_to_title)
@@ -112,4 +108,3 @@ func return_to_title():
 	bgm.stop()
 	spawn_title()
 	scene_container.get_children()[0].queue_free()
-	hero_node.queue_free()
