@@ -2080,7 +2080,6 @@ layer_0/tile_data = PackedInt32Array(0, 0, 0, 65536, 0, 0, 131072, 0, 0, 196608,
 position = Vector2(32, 28)
 
 [node name="Stats" parent="Urchin" index="3"]
-LVL = 4
 HP = 20
 ATK = 5.0
 
@@ -2090,7 +2089,6 @@ stats = NodePath("../Urchin/Stats")
 elite_emitter = NodePath("../Urchin/EliteEmitter")
 
 [node name="Stats" parent="Urchin2" index="3" node_paths=PackedStringArray("sprite")]
-LVL = 4
 HP = 20
 ATK = 5.0
 sprite = NodePath("../../Urchin/Sprite2D")
@@ -2101,7 +2099,6 @@ stats = NodePath("../Urchin/Stats")
 elite_emitter = NodePath("../Urchin/EliteEmitter")
 
 [node name="Stats" parent="Urchin11" index="3" node_paths=PackedStringArray("sprite")]
-LVL = 4
 HP = 20
 ATK = 5.0
 sprite = NodePath("../../Urchin/Sprite2D")
@@ -2112,7 +2109,6 @@ stats = NodePath("../Urchin/Stats")
 elite_emitter = NodePath("../Urchin/EliteEmitter")
 
 [node name="Stats" parent="Urchin12" index="3" node_paths=PackedStringArray("sprite")]
-LVL = 4
 HP = 20
 ATK = 5.0
 sprite = NodePath("../../Urchin/Sprite2D")
@@ -2123,7 +2119,6 @@ stats = NodePath("../Urchin/Stats")
 elite_emitter = NodePath("../Urchin/EliteEmitter")
 
 [node name="Stats" parent="Urchin3" index="3" node_paths=PackedStringArray("sprite")]
-LVL = 4
 HP = 20
 ATK = 5.0
 sprite = NodePath("../../Urchin/Sprite2D")
@@ -2134,7 +2129,6 @@ stats = NodePath("../Urchin/Stats")
 elite_emitter = NodePath("../Urchin/EliteEmitter")
 
 [node name="Stats" parent="Urchin4" index="3" node_paths=PackedStringArray("sprite")]
-LVL = 4
 HP = 20
 ATK = 5.0
 sprite = NodePath("../../Urchin/Sprite2D")
@@ -2145,7 +2139,6 @@ stats = NodePath("../Urchin/Stats")
 elite_emitter = NodePath("../Urchin/EliteEmitter")
 
 [node name="Stats" parent="Urchin5" index="3" node_paths=PackedStringArray("sprite")]
-LVL = 4
 HP = 20
 ATK = 5.0
 sprite = NodePath("../../Urchin/Sprite2D")
@@ -2156,7 +2149,6 @@ stats = NodePath("../Urchin/Stats")
 elite_emitter = NodePath("../Urchin/EliteEmitter")
 
 [node name="Stats" parent="Urchin8" index="3" node_paths=PackedStringArray("sprite")]
-LVL = 4
 HP = 20
 ATK = 5.0
 sprite = NodePath("../../Urchin/Sprite2D")
@@ -2167,7 +2159,6 @@ stats = NodePath("../Urchin/Stats")
 elite_emitter = NodePath("../Urchin/EliteEmitter")
 
 [node name="Stats" parent="Urchin9" index="3" node_paths=PackedStringArray("sprite")]
-LVL = 4
 HP = 20
 ATK = 5.0
 sprite = NodePath("../../Urchin/Sprite2D")
@@ -2178,7 +2169,6 @@ stats = NodePath("../Urchin/Stats")
 elite_emitter = NodePath("../Urchin/EliteEmitter")
 
 [node name="Stats" parent="Urchin10" index="3" node_paths=PackedStringArray("sprite")]
-LVL = 4
 HP = 20
 ATK = 5.0
 sprite = NodePath("../../Urchin/Sprite2D")
