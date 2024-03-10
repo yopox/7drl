@@ -9,7 +9,8 @@ var is_dead = false
 
 
 func process_enemy(_delta):
-	print("hp %d" % stats.CURRENT_HP)
+	if is_dead or Util.game_over:
+		return
 		
 	match pattern:
 		Boss.Pattern.BOMBS:

@@ -8,7 +8,7 @@ var is_dead = false
 var bubble := preload("res://attacks/bubble.tscn")
 
 func process_enemy(_delta):
-	if is_dead:
+	if is_dead or Util.game_over:
 		return
 	
 	match pattern:
