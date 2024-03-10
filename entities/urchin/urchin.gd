@@ -11,7 +11,7 @@ func counter_attack():
 
 func _on_spikes_timer_timeout():
 	var hero = Util.hero
-	if hero == null:
+	if stats == null or hero == null:
 		return
 	
 	var angle = (hero.global_position - global_position).angle()
