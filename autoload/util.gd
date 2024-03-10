@@ -3,6 +3,7 @@ extends Node
 var BGM: BGM
 
 var game_over: bool = false
+var boss_defeated: bool = false
 var dungeon: bool = false
 
 var hero: Hero = null: set = set_hero
