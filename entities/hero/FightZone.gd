@@ -10,7 +10,9 @@ func update_instance():
 	if Util.bgm == null:
 		return
 	var enemies = get_overlapping_bodies()
-	var has_elites = enemies.filter(func(e): return e is Enemy and (e as Enemy).stats.elite).size() > 0
+	var has_elites = enemies.filter(
+		func(e): return e is Enemy and e.stats != null and (e as Enemy).stats.elite
+	).size() > 0
 	var enemy_count = enemies.size()
 	if enemy_count >= 1 and has_elites == false: 
 		Util.bgm.set_parameter("EnterCombatTest", "InBattle", true)
