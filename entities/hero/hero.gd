@@ -19,6 +19,7 @@ var sword = preload("res://attacks/sword.tscn")
 var wiz_zone = preload("res://attacks/wiz_zone.tscn")
 
 var hero_class: Class = Class.Archer
+var alive_color = Vector4(0.953, 0.953, 0.953, 1)
 var death_color = Vector4(0.114, 0.094, 0.094, 1)
 var dash = false
 var dash_vel: Vector2
@@ -31,6 +32,7 @@ signal hit(stats: Stats)
 
 func _ready():
 	lvlup_instance = FMODRuntime.create_instance(lvlup_event)
+	(sprite.material as ShaderMaterial).set_shader_parameter("tile_color", alive_color)
 	update_stuff()
 
 
@@ -49,7 +51,7 @@ func update_stuff():
 
 
 func _process(_delta):
-	if dead:
+	if Util.game_over:
 		return
 	
 	check_terrain()
@@ -63,7 +65,7 @@ func _process(_delta):
 
 
 func _physics_process(delta):
-	if dead:
+	if Util.game_over:
 		return
 	
 	var input_dir = Input.get_vector("left", "right", "up", "down") + Util.move_vector
@@ -201,6 +203,7 @@ func _on_dash_timer_timeout():
 
 func _on_stats_dead():
 	dead = true
+	Util.game_over = true
 	(sprite.material as ShaderMaterial).set_shader_parameter("tile_color", death_color)
 	collision_layer = 16
 

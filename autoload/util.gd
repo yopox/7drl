@@ -2,6 +2,8 @@ extends Node
 
 var BGM: BGM
 
+var game_over: bool = false
+
 var hero: Hero = null: set = set_hero
 var gui: GUI = null: set = set_gui
 var tile_map: TileMap = null
@@ -24,6 +26,7 @@ var selected_item: int = 0
 
 signal enter_dungeon
 signal enter_boss
+signal return_to_title
 
 
 func set_hero(value):

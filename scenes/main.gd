@@ -25,6 +25,7 @@ func _ready():
 	spawn_title()
 	Util.enter_dungeon.connect(enter_dungeon)
 	Util.enter_boss.connect(enter_boss)
+	Util.return_to_title.connect(return_to_title)
 
 
 func spawn_title():
@@ -48,6 +49,7 @@ func spawn_level(hero: Hero.Class, stats: Stats):
 	title_music.stop(FMODStudioModule.FMOD_STUDIO_STOP_ALLOWFADEOUT)
 	bgm.play_lvl1()
 	Util.items = Util.starting_items
+	Util.game_over = false
 	var scene = level.instantiate()
 	scene_container.add_child(scene)
 	hero_node = scene.setup_hero(hero, stats)
@@ -79,8 +81,8 @@ func enter_dungeon():
 	scene.hero.update_stuff()
 	scene.hero.death_color = Vector4(0.208, 0.196, 0.196, 1.0)
 	hero_node = scene.hero
-	scene_container.get_children()[0].remove_child(hero_node)
 	scene_container.get_children()[0].queue_free()
+
 
 func enter_boss():
 	#bgm.play_boss()
@@ -92,5 +94,11 @@ func enter_boss():
 	scene.hero.update_stuff()
 	scene.hero.death_color = Vector4(0.208, 0.196, 0.196, 1.0)
 	hero_node = scene.hero
-	scene_container.get_children()[0].remove_child(hero_node)
 	scene_container.get_children()[0].queue_free()
+
+
+func return_to_title():
+	scene_container.get_children()[0].queue_free()
+	hero_node.queue_free()
+	bgm.stop()
+	spawn_title()
