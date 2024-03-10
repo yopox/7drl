@@ -17,7 +17,7 @@ func setup_hero(hero_class: Hero.Class, stats: Stats) -> Hero:
 	hero.visible = false
 	hero.hero_class = hero_class
 	add_child(hero)
-	hero.stats.copy(stats)
+	hero.stats.copy(stats,  false)
 	return hero
 
 

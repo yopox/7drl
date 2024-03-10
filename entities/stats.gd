@@ -142,7 +142,10 @@ func heal():
 	changed.emit()
 
 
-func copy(s: Stats):
+func copy(s: Stats, with_xp: bool):
+	if with_xp:
+		LVL = s.LVL
+		XP = s.XP
 	HP = s.HP
 	CURRENT_HP = HP
 	ATK = s.ATK

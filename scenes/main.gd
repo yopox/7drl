@@ -82,7 +82,7 @@ func enter_dungeon():
 	(func():
 		scene_container.add_child(scene)
 		hero_node.global_position = scene.hero.global_position
-		scene.hero.stats.copy(hero_node.stats)
+		scene.hero.stats.copy(hero_node.stats, true)
 		scene.hero.hero_class = hero_node.hero_class
 		scene.hero.update_stuff()
 		scene.hero.death_color = Vector4(0.208, 0.196, 0.196, 1.0)
@@ -97,7 +97,7 @@ func enter_boss():
 	(func():
 		scene_container.add_child(scene)
 		hero_node.global_position = scene.hero.global_position
-		scene.hero.stats.copy(hero_node.stats)
+		scene.hero.stats.copy(hero_node.stats, true)
 		scene.hero.hero_class = hero_node.hero_class
 		scene.hero.update_stuff()
 		scene.hero.death_color = Vector4(0.208, 0.196, 0.196, 1.0)
