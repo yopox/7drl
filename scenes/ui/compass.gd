@@ -33,7 +33,7 @@ func _process(_delta):
 	var current = angle - SPAN / 2
 	var important = [
 		[(Util.exit - hero.global_position).angle(), GOAL]
-	]
+	] if Util.exit != null else []
 	for i in range(9):
 		set_cell(0, Vector2i(i, 0), 0, tile(current, important))
 		current += SPAN / 9.0

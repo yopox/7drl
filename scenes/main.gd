@@ -93,6 +93,7 @@ func enter_dungeon():
 func enter_boss():
 	bgm.play_boss()
 	var scene = boss.instantiate()
+	Util.exit = null
 	(func():
 		scene_container.add_child(scene)
 		hero_node.global_position = scene.hero.global_position
