@@ -23,6 +23,7 @@ var items: Array[Inventory.Item] = []
 var selected_item: int = 0
 
 signal enter_dungeon
+signal enter_boss
 
 
 func set_hero(value):

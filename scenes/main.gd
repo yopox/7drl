@@ -10,6 +10,7 @@ var title = preload("res://scenes/states/title.tscn")
 var character_selection = preload("res://scenes/states/character_selection.tscn")
 var level = preload("res://scenes/states/level.tscn")
 var dungeon = preload("res://scenes/states/cave.tscn")
+var boss = preload("res://scenes/tile_maps/final_boss.tscn")
 var title_music: EventInstance
 var hero_node
 
@@ -23,6 +24,7 @@ func _ready():
 	title_music = FMODRuntime.create_instance(event)
 	spawn_title()
 	Util.enter_dungeon.connect(enter_dungeon)
+	Util.enter_boss.connect(enter_boss)
 
 
 func spawn_title():
@@ -70,6 +72,19 @@ func _on_character_cancel():
 func enter_dungeon():
 	bgm.play_lvl3()
 	var scene = dungeon.instantiate()
+	scene_container.add_child(scene)
+	hero_node.global_position = scene.hero.global_position
+	scene.hero.stats.copy(hero_node.stats)
+	scene.hero.hero_class = hero_node.hero_class
+	scene.hero.update_stuff()
+	scene.hero.death_color = Vector4(0.208, 0.196, 0.196, 1.0)
+	hero_node = scene.hero
+	scene_container.get_children()[0].remove_child(hero_node)
+	scene_container.get_children()[0].queue_free()
+
+func enter_boss():
+	#bgm.play_boss()
+	var scene = boss.instantiate()
 	scene_container.add_child(scene)
 	hero_node.global_position = scene.hero.global_position
 	scene.hero.stats.copy(hero_node.stats)
