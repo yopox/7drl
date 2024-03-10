@@ -48,4 +48,6 @@ func update():
 		Inventory.Item.Clover:
 			t.region.position = Vector2(113, 184)
 			sm.set_shader_parameter("fg", Color("#52d246"))
-			
+		Inventory.Item.Ankh:
+			t.region.position = Vector2(104, 176)
+			sm.set_shader_parameter("fg", Color("#a746d2"))

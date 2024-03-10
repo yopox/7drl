@@ -117,6 +117,14 @@ func show_sprite():
 
 func check_death():
 	if CURRENT_HP <= 0:
+		if get_parent() is Hero and Inventory.Item.Ankh in Util.items:
+			Util.items.erase(Inventory.Item.Ankh)
+			heal()
+			emitter.amount /= 2
+			emitter.lifetime /= 1.6
+			invulnerable["hit"] = false
+			Util.gui.inventory.update()
+			return
 		dead.emit()
 	else:
 		invulnerable["hit"] = false

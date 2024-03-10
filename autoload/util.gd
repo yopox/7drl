@@ -68,6 +68,8 @@ func item_name(item: Inventory.Item):
 			return "POTION"
 		Inventory.Item.Clover:
 			return "CLOVER"
+		Inventory.Item.Ankh:
+			return "ANKH"
 
 
 func update_weights(table) -> int:
