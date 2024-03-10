@@ -11,14 +11,14 @@ func update_instance():
 	var has_elites = enemies.filter(func(e): return e is Enemy and (e as Enemy).stats.elite).size() > 0
 	var enemy_count = enemies.size()
 	if enemy_count >= 1 and has_elites == false: 
-		Util.BGM.set_parameter("EnterCombatTest", "InBattle", true)
+		Util.bgm.set_parameter("EnterCombatTest", "InBattle", true)
 	else:
-		Util.BGM.set_parameter("EnterCombatTest", "InBattle", false)
-		Util.BGM.set_parameter("EnterCombatTest", "OutBattle", true)
+		Util.bgm.set_parameter("EnterCombatTest", "InBattle", false)
+		Util.bgm.set_parameter("EnterCombatTest", "OutBattle", true)
 	if has_elites == true: 
-		Util.BGM.set_parameter("EnterCombatTest", "OutBattle", false)
-		Util.BGM.set_parameter("EnterCombatTest", "InBattle", false)
-		Util.BGM.set_parameter("EnterCombatTest", "InBattleElite", true)
+		Util.bgm.set_parameter("EnterCombatTest", "OutBattle", false)
+		Util.bgm.set_parameter("EnterCombatTest", "InBattle", false)
+		Util.bgm.set_parameter("EnterCombatTest", "InBattleElite", true)
 
 
 func update_music(hero_terrain):
@@ -44,6 +44,6 @@ func _on_intent_timer_timeout():
 		terrain_intent = 0
 		match terrain:
 			1:
-				Util.BGM.play_lvl1()
+				Util.bgm.play_lvl1()
 			3:
-				Util.BGM.play_lvl2()
+				Util.bgm.play_lvl2()

@@ -4,7 +4,7 @@ extends Node2D
 @onready var zone: Area2D = $Area2D
 
 
-func _process(delta):
+func _process(_delta):
 	for body in zone.get_overlapping_bodies():
 		if body.has_signal("hit"):
 			body.hit.emit(stats)

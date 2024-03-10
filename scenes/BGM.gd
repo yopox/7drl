@@ -11,16 +11,16 @@ var instance_lvl3: EventInstance
 var instance_boss: EventInstance
 
 func _ready():
-	Util.BGM = self
+	Util.bgm = self
 	instance_lvl1 = FMODRuntime.create_instance(event_lvl1)
 	instance_lvl2 = FMODRuntime.create_instance(event_lvl2)
 	instance_lvl3 = FMODRuntime.create_instance(event_lvl3)
 	instance_boss = FMODRuntime.create_instance(event_boss)
 
 
-func set_parameter(name: String, label: String, ignore_seek_speed: bool):
+func set_parameter(param_name: String, label: String, ignore_seek_speed: bool):
 	for instance: EventInstance in [instance_lvl1, instance_lvl2, instance_lvl3]:
-		instance.set_parameter_by_name_with_label(name, label, ignore_seek_speed)
+		instance.set_parameter_by_name_with_label(param_name, label, ignore_seek_speed)
 
 
 func play_lvl1():

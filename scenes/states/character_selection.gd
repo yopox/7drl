@@ -28,7 +28,7 @@ func _ready():
 	update()
 
 
-func _process(delta):
+func _process(_delta):
 	match hero_selected:
 		0:
 			if archer_stats.shoot():
@@ -101,13 +101,13 @@ func update():
 
 
 func launch_arrow():
-	var bullet: RigidBody2D = arrow.instantiate()
-	bullet.stats = archer_stats
-	bullet.position.x = archer.position.x + 8 * cos(-PI / 2)
-	bullet.position.y = archer.position.y + 8 * sin(-PI / 2)
-	bullet.rotation = 0
-	bullet.apply_impulse(Vector2.from_angle(-PI / 2) * archer_stats.SPD / 10.0)
-	archer.add_sibling(bullet)
+	var a: RigidBody2D = arrow.instantiate()
+	a.stats = archer_stats
+	a.position.x = archer.position.x + 8 * cos(-PI / 2)
+	a.position.y = archer.position.y + 8 * sin(-PI / 2)
+	a.rotation = 0
+	a.apply_impulse(Vector2.from_angle(-PI / 2) * archer_stats.SPD / 10.0)
+	archer.add_sibling(a)
 
 
 func use_sword():

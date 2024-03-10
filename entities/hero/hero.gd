@@ -150,17 +150,17 @@ func launch_arrow(attack_dir: Vector2):
 	var enemies_in_zone = fight_zone.get_overlapping_bodies()\
 		.filter(func(e): return e is Enemy)
 	
-	var min = [20000, 0]
+	var closest = [20000, 0]
 	for body in enemies_in_zone:
 		var diff = body.global_position - global_position
 		var beta = diff.angle()
 		if abs(angle - beta) < PI / 4 or abs(angle - beta - 2 * PI) < PI / 4:
 			var dist = diff.length_squared()
-			if dist < min[0]:
-				min = [dist, beta]
+			if dist < closest[0]:
+				closest = [dist, beta]
 	
-	if min[0] < 19999:
-		angle = min[1]
+	if closest[0] < 19999:
+		angle = closest[1]
 	
 	bullet.position.x = position.x + 8 * cos(angle)
 	bullet.position.y = position.y + 8 * sin(angle)

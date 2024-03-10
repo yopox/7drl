@@ -1,6 +1,6 @@
 extends Node
 
-var BGM: BGM
+var bgm: BGM
 var chrono: Chrono
 
 var game_over: bool = false

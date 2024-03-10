@@ -41,7 +41,7 @@ func shoot_cry():
 func shoot_madness():
 	if stats.shoot():
 		var alpha = (Util.hero.global_position - global_position).angle()
-		alpha += randf_range(-PI / 8, 0) * 1 if is_left else -1
+		alpha += randf_range(-PI / 8, 0) * (1.0 if is_left else -1.0)
 		var b = bubble.instantiate()
 		var dir = Vector2.from_angle(alpha)
 		b.stats = stats
