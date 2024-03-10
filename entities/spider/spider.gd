@@ -21,13 +21,13 @@ func process_enemy(delta):
 		var attacking = Util.dungeon
 		if not attacking:
 			var dest = Util.tile_map.local_to_map(global_position + Vector2.from_angle(angle) * 16)
-			attacking = Util.tile_map.get_cell_tile_data(0, dest).terrain == 2
+			attacking = Util.tile_map.get_cell_tile_data(0, dest).terrain != 1
 		if attacking:
 			base_velocity = Vector2.from_angle(angle) * stats.SPD * stats.SPD_SCALE
 			decay.start()
 
 	if zone.get_overlapping_bodies().size() > 0:
-		if Util.hero.terrain != 1:
+		if Util.dungeon or Util.hero.terrain != 1:
 			var hero_diff := Util.hero.global_position - global_position
 			var dist = hero_diff.length()
 			if dist > 48 and stats.shoot():

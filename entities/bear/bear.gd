@@ -11,7 +11,7 @@ var bear_bomb = preload("res://entities/bear/bear_bomb.tscn")
 
 func process_enemy(delta):
 	if area.get_overlapping_bodies().size() > 0 and not rushing and not bomb:
-		if Util.hero.terrain != 2:
+		if Util.hero.terrain == 1:
 			return
 		rushing = true
 		decay.start()

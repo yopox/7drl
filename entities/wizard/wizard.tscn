@@ -41,7 +41,7 @@ texture = SubResource("AtlasTexture_mk325")
 LVL = 12
 HP = 75
 ATK = 10.0
-FRQ = 4.0
+FRQ = 3.0
 SPD = 12.0
 sprite = NodePath("../Sprite2D")
 
