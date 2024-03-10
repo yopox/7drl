@@ -1,0 +1,44 @@
+[gd_scene load_steps=9 format=3 uid="uid://b3vk05bl3p1no"]
+
+[ext_resource type="Script" path="res://entities/boss/boss_eye/boss_eye.gd" id="1_cwj50"]
+[ext_resource type="PackedScene" uid="uid://dgx4rvib5fof0" path="res://entities/elite_emitter.tscn" id="2_1drlr"]
+[ext_resource type="Shader" path="res://assets/tile.gdshader" id="2_k1fqg"]
+[ext_resource type="Texture2D" uid="uid://d4ibrl4nmd57w" path="res://assets/MRMOTEXT_EX.png" id="2_miwwa"]
+[ext_resource type="PackedScene" uid="uid://dgul0eolhcq2n" path="res://entities/stats.tscn" id="3_k7p7g"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3xmua"]
+shader = ExtResource("2_k1fqg")
+shader_parameter/move_param = Vector4(0, 0, 0, 0)
+shader_parameter/tile_color = Vector4(0.8, 0.824, 0.275, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_05qj3"]
+atlas = ExtResource("2_miwwa")
+region = Rect2(49, 240, 6, 7)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nplru"]
+size = Vector2(6, 4)
+
+[node name="BossEye" type="CharacterBody2D" node_paths=PackedStringArray("stats", "elite_emitter")]
+collision_layer = 4
+collision_mask = 10
+script = ExtResource("1_cwj50")
+stats = NodePath("Stats")
+elite_emitter = NodePath("EliteEmitter")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_3xmua")
+position = Vector2(2.08165e-12, -0.5)
+texture = SubResource("AtlasTexture_05qj3")
+
+[node name="EliteEmitter" parent="." instance=ExtResource("2_1drlr")]
+
+[node name="Stats" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("3_k7p7g")]
+LVL = 0
+HP = 150
+sprite = NodePath("../Sprite2D")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_nplru")
+
+[connection signal="hit" from="." to="Stats" method="_on_hit"]

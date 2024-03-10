@@ -24,7 +24,7 @@ func process_enemy(delta):
 			decay.start()
 
 	if zone.get_overlapping_bodies().size() > 0:
-		if Util.hero.terrain == 2:
+		if Util.hero.terrain != 1:
 			var hero_diff := Util.hero.global_position - global_position
 			var dist = hero_diff.length()
 			if dist > 48 and stats.shoot():

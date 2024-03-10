@@ -1,0 +1,135 @@
+[gd_scene load_steps=15 format=3 uid="uid://dskn2fiwi16x2"]
+
+[ext_resource type="Script" path="res://entities/boss/boss.gd" id="1_put5u"]
+[ext_resource type="Texture2D" uid="uid://d4ibrl4nmd57w" path="res://assets/MRMOTEXT_EX.png" id="2_fgo3e"]
+[ext_resource type="PackedScene" uid="uid://b3vk05bl3p1no" path="res://entities/boss/boss_eye/boss_eye.tscn" id="2_p4k0w"]
+[ext_resource type="PackedScene" uid="uid://cwsbmehodflbd" path="res://entities/boss/boss_hand/boss_hand.tscn" id="4_o5yei"]
+[ext_resource type="Shader" path="res://assets/tile.gdshader" id="4_vpg8k"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pj14r"]
+shader = ExtResource("4_vpg8k")
+shader_parameter/move_param = Vector4(0, 0, 0, 0)
+shader_parameter/tile_color = Vector4(0.8, 0.824, 0.275, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_p55s4"]
+shader = ExtResource("4_vpg8k")
+shader_parameter/move_param = Vector4(0, 0, 0, 0)
+shader_parameter/tile_color = Vector4(0.8, 0.824, 0.275, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8blbw"]
+shader = ExtResource("4_vpg8k")
+shader_parameter/move_param = Vector4(0, 0, 0, 0)
+shader_parameter/tile_color = Vector4(0.322, 0.302, 0.302, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6dvb6"]
+atlas = ExtResource("2_fgo3e")
+region = Rect2(72, 203, 16, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2ycom"]
+size = Vector2(14, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ooynh"]
+atlas = ExtResource("2_fgo3e")
+region = Rect2(192, 144, 16, 8)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2v7mo"]
+radius = 0.920505
+height = 17.8539
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_n6h5n"]
+shader = ExtResource("4_vpg8k")
+shader_parameter/move_param = Vector4(0, 0, 0, 0)
+shader_parameter/tile_color = Vector4(0.8, 0.824, 0.275, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nrvap"]
+shader = ExtResource("4_vpg8k")
+shader_parameter/move_param = Vector4(0, 0, 0, 0)
+shader_parameter/tile_color = Vector4(0.8, 0.824, 0.275, 1)
+
+[node name="Boss" type="Node2D"]
+script = ExtResource("1_put5u")
+
+[node name="BossEye" parent="." instance=ExtResource("2_p4k0w")]
+position = Vector2(-11, 0)
+can_be_elite = false
+
+[node name="Sprite2D" parent="BossEye" index="0"]
+material = SubResource("ShaderMaterial_pj14r")
+
+[node name="BossEye2" parent="." instance=ExtResource("2_p4k0w")]
+position = Vector2(11, 0)
+scale = Vector2(-1, 1)
+can_be_elite = false
+
+[node name="Sprite2D" parent="BossEye2" index="0"]
+material = SubResource("ShaderMaterial_p55s4")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_8blbw")
+texture = SubResource("AtlasTexture_6dvb6")
+
+[node name="RigidBody2D" type="RigidBody2D" parent="Sprite2D"]
+collision_layer = 16
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/RigidBody2D"]
+shape = SubResource("RectangleShape2D_2ycom")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_8blbw")
+position = Vector2(23, 4)
+texture = SubResource("AtlasTexture_ooynh")
+
+[node name="RigidBody2D2" type="RigidBody2D" parent="Sprite2D2"]
+position = Vector2(-1, 0)
+collision_layer = 16
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D2/RigidBody2D2"]
+position = Vector2(2, -1)
+rotation = -1.16937
+shape = SubResource("CapsuleShape2D_2v7mo")
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_8blbw")
+position = Vector2(-23, 4)
+scale = Vector2(-1, 1)
+texture = SubResource("AtlasTexture_ooynh")
+
+[node name="RigidBody2D3" type="RigidBody2D" parent="Sprite2D3"]
+position = Vector2(3, 0)
+rotation = 3.14159
+scale = Vector2(1, -1)
+collision_layer = 16
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D3/RigidBody2D3"]
+position = Vector2(2, -1)
+rotation = 1.16937
+shape = SubResource("CapsuleShape2D_2v7mo")
+
+[node name="BossHand" parent="." instance=ExtResource("4_o5yei")]
+position = Vector2(-27, 11)
+can_be_elite = false
+
+[node name="Sprite2D" parent="BossHand" index="0"]
+material = SubResource("ShaderMaterial_n6h5n")
+
+[node name="BossHand2" parent="." instance=ExtResource("4_o5yei")]
+position = Vector2(27, 11)
+scale = Vector2(-1, 1)
+can_be_elite = false
+
+[node name="Sprite2D" parent="BossHand2" index="0"]
+material = SubResource("ShaderMaterial_nrvap")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 6.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+
+[editable path="BossEye"]
+[editable path="BossEye2"]
+[editable path="BossHand"]
+[editable path="BossHand2"]

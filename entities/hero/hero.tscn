@@ -1,11 +1,10 @@
-[gd_scene load_steps=21 format=3 uid="uid://cmgwwovyu6kba"]
+[gd_scene load_steps=16 format=3 uid="uid://cmgwwovyu6kba"]
 
 [ext_resource type="Script" path="res://entities/hero/hero.gd" id="1_0bavb"]
 [ext_resource type="Shader" path="res://assets/tile.gdshader" id="1_ucpnx"]
 [ext_resource type="PackedScene" uid="uid://dgul0eolhcq2n" path="res://entities/stats.tscn" id="2_25foy"]
 [ext_resource type="Texture2D" uid="uid://d4ibrl4nmd57w" path="res://assets/MRMOTEXT_EX.png" id="2_g2vsp"]
 [ext_resource type="Script" path="res://entities/hero/FightZone.gd" id="5_xmbvs"]
-[ext_resource type="EventAsset" uid="uid://ctu8kway4nlaa" path="res://addons/FMOD/editor/resources/events/{11055db4-7ce9-49b0-8c44-c8c5a71c834a}.tres" id="6_5ol6p"]
 [ext_resource type="PackedScene" uid="uid://2upqhrf5ek4c" path="res://attacks/dash_manager.tscn" id="7_iljwf"]
 [ext_resource type="Script" path="res://entities/hero/ActiveZone.gd" id="8_3bxfe"]
 
@@ -28,34 +27,6 @@ shader_parameter/tile_color = Vector4(0.953, 0.953, 0.953, 1)
 [sub_resource type="AtlasTexture" id="AtlasTexture_78j2y"]
 atlas = ExtResource("2_g2vsp")
 region = Rect2(128, 240, 8, 8)
-
-[sub_resource type="FMOD_STUDIO_PARAMETER_ID" id="FMOD_STUDIO_PARAMETER_ID_q6jg2"]
-data1 = 2912458685
-data2 = 124417944
-
-[sub_resource type="FMOD_STUDIO_PARAMETER_DESCRIPTION" id="FMOD_STUDIO_PARAMETER_DESCRIPTION_cdrmp"]
-name = "EnterCombatTest"
-id = SubResource("FMOD_STUDIO_PARAMETER_ID_q6jg2")
-maximum = 2.0
-flags = 24
-guid = "{f937c430-aaa6-49b9-9fa7-4cbafcfa2ee8}"
-
-[sub_resource type="ParameterAsset" id="ParameterAsset_vr1xk"]
-parameter_description = SubResource("FMOD_STUDIO_PARAMETER_DESCRIPTION_cdrmp")
-labels = ["OutBattle", "InBattle", "InBattleElite"]
-path = "parameter:/EnterCombatTest"
-guid = "{f937c430-aaa6-49b9-9fa7-4cbafcfa2ee8}"
-name = "EnterCombatTest"
-
-[sub_resource type="EventAsset" id="EventAsset_tu6bw"]
-min_distance = 1.0
-max_distance = 20.0
-parameters = {
-"{f937c430-aaa6-49b9-9fa7-4cbafcfa2ee8}": SubResource("ParameterAsset_vr1xk")
-}
-path = "event:/Level 02"
-guid = "{65696e8f-9ed6-4c33-985f-d274c37194a4}"
-name = "Level 02"
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_e3cw4"]
 radius = 96.0
@@ -99,8 +70,6 @@ collision_layer = 0
 collision_mask = 4
 monitorable = false
 script = ExtResource("5_xmbvs")
-event_lvl1 = ExtResource("6_5ol6p")
-event_lvl2 = SubResource("EventAsset_tu6bw")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FightZone"]
 shape = SubResource("CircleShape2D_e3cw4")

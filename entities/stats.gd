@@ -83,6 +83,8 @@ func _on_hit(stats: Stats):
 	if is_invulnerable() or CURRENT_HP <= 0:
 		return
 	
+	print(CURRENT_HP)
+	
 	# Take damage
 	invulnerable["hit"] = true
 	CURRENT_HP -= stats.ATK
