@@ -10,7 +10,7 @@ func _process(_delta):
 		visible = true
 
 func setup():
-	var m1 = "   YOU WON!" if Util.boss_defeated else "   GAME OVER!   "
+	var m1 = "   YOU WON!  " if Util.boss_defeated else "   GAME OVER!   "
 	for x in range(len(m1)):
 		set_cell(0, Vector2i(x, 4), 0, Util.get_char_pos(m1, x))
 	
