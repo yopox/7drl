@@ -17,6 +17,11 @@ func _ready():
 		elite_emitter.emitting = true
 
 
+func pre_process_enemy(delta):
+	if stats != null:
+		process_enemy(delta)
+
+
 func process_enemy(_delta):
 	pass
 
