@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://cmy444v1tn8qj"]
+
+[ext_resource type="PackedScene" uid="uid://tqdmep7msqf0" path="res://entities/spider/spider.tscn" id="1_sj2h2"]
+
+[node name="SpiderL8" type="Node2D"]
+
+[node name="Spider" parent="." instance=ExtResource("1_sj2h2")]
+position = Vector2(16, -8)
+
+[node name="Stats" parent="Spider" index="0"]
+LVL = 8
+HP = 35
+ATK = 9.0
+SPD = 23.0
+
+[editable path="Spider"]

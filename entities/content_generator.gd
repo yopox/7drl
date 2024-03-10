@@ -1,7 +1,7 @@
 class_name ContentGenerator extends Node
 
 var sand_patterns = [
-	[8, null],
+	[20, null],
 	[3, preload("res://patterns/sand/bloc.tscn")],
 	[2, preload("res://patterns/sand/bloc_2.tscn")],
 	[3, preload("res://patterns/sand/crab_l3.tscn")],
@@ -14,9 +14,34 @@ var sand_patterns = [
 ]
 var sand_weights: int = 0
 
+var grass_patterns = [
+	[15, null],
+	[0, preload("res://patterns/grass/spiders_2.tscn")],
+	[1, preload("res://patterns/grass/potion.tscn")],
+	[2, preload("res://patterns/sand/bloc_2.tscn")],
+	[0, preload("res://entities/spikes/spikes.tscn")],
+	[3, preload("res://patterns/grass/bear_l2.tscn")],
+	[2, preload("res://patterns/grass/spider_l2.tscn")],
+]
+var grass_weights: int = 0
+
+var rock_patterns = [
+	[18, null],
+	[0, preload("res://patterns/rock/crab_l15.tscn")],
+	[1, preload("res://patterns/grass/potion.tscn")],
+	[2, preload("res://patterns/sand/bloc_2.tscn")],
+	[0, preload("res://entities/spikes/spikes.tscn")],
+	[3, preload("res://patterns/rock/shrimp_blocs_l13.tscn")],
+	[2, preload("res://patterns/rock/spiders_18.tscn")],
+	[2, preload("res://patterns/rock/shrimp_urchin_l16.tscn")],
+]
+
+var rock_weights: int = 0
 
 func prepare():
 	sand_weights = Util.update_weights(sand_patterns)
+	grass_weights = Util.update_weights(grass_patterns)
+	rock_weights = Util.update_weights(rock_patterns)
 
 
 func generate(terrain: String) -> Node2D:
@@ -25,9 +50,13 @@ func generate(terrain: String) -> Node2D:
 	var pool: Array
 	if terrain == "sand":
 		pool = [sand_weights, sand_patterns]
+	elif terrain == "grass":
+		pool = [grass_weights, grass_patterns]
+	elif terrain == "rock":
+		pool = [rock_weights, rock_patterns]
 	else:
 		return null
-			
+	
 	# Get random pattern
 	var index = randi_range(1, pool[0])
 	for p in pool[1]:

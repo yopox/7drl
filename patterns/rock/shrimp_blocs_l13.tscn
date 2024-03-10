@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://20cpyv3joi1q"]
+
+[ext_resource type="PackedScene" uid="uid://dsnpfoi7bvtj3" path="res://entities/terrain/bloc.tscn" id="1_r73vj"]
+[ext_resource type="PackedScene" uid="uid://o4ojnevevt2l" path="res://entities/shrimp/shrimp.tscn" id="2_w83r0"]
+
+[node name="ShrimpBlocs" type="Node2D"]
+
+[node name="Bloc3" parent="." instance=ExtResource("1_r73vj")]
+position = Vector2(-24, 2.08165e-12)
+
+[node name="Bloc2" parent="." instance=ExtResource("1_r73vj")]
+position = Vector2(24, 2.08165e-12)
+
+[node name="Bloc" parent="." instance=ExtResource("1_r73vj")]
+position = Vector2(2.08165e-12, 24)
+
+[node name="Shrimp" parent="." instance=ExtResource("2_w83r0")]
+
+[node name="Stats" parent="Shrimp" index="1"]
+LVL = 13
+HP = 19
+ATK = 12.0
+
+[editable path="Shrimp"]
