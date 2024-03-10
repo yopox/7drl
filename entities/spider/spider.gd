@@ -18,8 +18,11 @@ func process_enemy(delta):
 	if move:
 		move = false
 		var angle = randf() * 2 * PI
-		var dest = Util.tile_map.local_to_map(global_position + Vector2.from_angle(angle) * 16)
-		if Util.tile_map.get_cell_tile_data(0, dest).terrain == 2:
+		var attacking = Util.dungeon
+		if not attacking:
+			var dest = Util.tile_map.local_to_map(global_position + Vector2.from_angle(angle) * 16)
+			attacking = Util.tile_map.get_cell_tile_data(0, dest).terrain == 2
+		if attacking:
 			base_velocity = Vector2.from_angle(angle) * stats.SPD * stats.SPD_SCALE
 			decay.start()
 
