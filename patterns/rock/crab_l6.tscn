@@ -1,25 +1,25 @@
 [gd_scene load_steps=2 format=3 uid="uid://dh45nmm8517ey"]
 
-[ext_resource type="PackedScene" uid="uid://fmnaew6q3fnr" path="res://entities/crab/crab.tscn" id="1_mftkl"]
+[ext_resource type="PackedScene" uid="uid://fmnaew6q3fnr" path="res://entities/crab/crab.tscn" id="1_irsgx"]
 
 [node name="CrabL15" type="Node2D"]
 
-[node name="Crab" parent="." instance=ExtResource("1_mftkl")]
+[node name="Crab" parent="." instance=ExtResource("1_irsgx")]
 position = Vector2(-16, -8)
 
 [node name="Stats" parent="Crab" index="0"]
-LVL = 15
+LVL = 6
 HP = 30
 ATK = 8.0
 FRQ = 6.0
 
-[node name="Crab2" parent="." node_paths=PackedStringArray("stats", "elite_emitter") instance=ExtResource("1_mftkl")]
+[node name="Crab2" parent="." node_paths=PackedStringArray("stats", "elite_emitter") instance=ExtResource("1_irsgx")]
 position = Vector2(16, 16)
 stats = NodePath("../Crab/Stats")
 elite_emitter = NodePath("../Crab/EliteEmitter")
 
 [node name="Stats" parent="Crab2" index="0" node_paths=PackedStringArray("sprite")]
-LVL = 15
+LVL = 6
 HP = 30
 ATK = 8.0
 FRQ = 6.0

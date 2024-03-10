@@ -8,4 +8,4 @@
 position = Vector2(16, 0)
 
 [node name="Spider2" parent="." instance=ExtResource("1_f25h0")]
-position = Vector2(-8, 16)
+position = Vector2(-16, 2.08165e-12)

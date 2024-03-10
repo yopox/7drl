@@ -7,15 +7,19 @@ extends TileMap
 @export var corridor_y = Vector2i(2, 2)
 
 var patterns = [
-	[1, preload("res://patterns/dungeon/start.tscn")],
-	[1, preload("res://patterns/dungeon/chest_spikes.tscn")],
-	[1, preload("res://patterns/dungeon/urchin_wizard.tscn")],
-	[1, preload("res://patterns/dungeon/bomber_shrimp2.tscn")],
-	[1, preload("res://patterns/dungeon/bear_crab2.tscn")],
-	[1, preload("res://patterns/dungeon/spider_2.tscn")],
-	[1, preload("res://patterns/dungeon/urchin_wizard.tscn")],
-	[1, preload("res://patterns/dungeon/wizard_walled_2.tscn")],
-	[1, preload("res://patterns/dungeon/shrimpbarricade.tscn")],
+	[2, preload("res://patterns/dungeon/bear_crab2.tscn")],
+	[2, preload("res://patterns/dungeon/bomber.tscn")],
+	[3, preload("res://patterns/dungeon/chest_spikes.tscn")],
+	[4, preload("res://patterns/dungeon/crab_spider.tscn")],
+	[2, preload("res://patterns/dungeon/shrimpbarricade.tscn")],
+	[4, preload("res://patterns/dungeon/shrimp_2.tscn")],
+	[2, preload("res://patterns/dungeon/spider_2.tscn")],
+	[3, preload("res://patterns/dungeon/start.tscn")],
+	[1, preload("res://patterns/dungeon/treasure_room.tscn")],
+	[1, preload("res://patterns/dungeon/urchin_12.tscn")],
+	[6, preload("res://patterns/dungeon/urchin_wizard.tscn")],
+	[5, preload("res://patterns/dungeon/wizard.tscn")],
+	[2, preload("res://patterns/dungeon/wizard_walled_2.tscn")],
 ]
 
 var weights: int = 0

@@ -2079,6 +2079,9 @@ layer_0/tile_data = PackedInt32Array(0, 0, 0, 65536, 0, 0, 131072, 0, 0, 196608,
 [node name="Shrimp" parent="." instance=ExtResource("3_33kjb")]
 position = Vector2(80, 36)
 
+[node name="Stats" parent="Shrimp" index="1"]
+LVL = 12
+
 [node name="Bloc" parent="." instance=ExtResource("4_8cirg")]
 position = Vector2(80, 20)
 
@@ -2126,3 +2129,5 @@ position = Vector2(96, 20)
 
 [node name="Bloc16" parent="." instance=ExtResource("4_8cirg")]
 position = Vector2(88, 20)
+
+[editable path="Shrimp"]

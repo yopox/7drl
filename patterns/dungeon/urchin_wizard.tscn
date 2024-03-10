@@ -2079,6 +2079,10 @@ layer_0/tile_data = PackedInt32Array(0, 0, 0, 65536, 0, 0, 131072, 0, 0, 196608,
 [node name="Urchin" parent="." instance=ExtResource("3_l7ryi")]
 position = Vector2(80, 40)
 
+[node name="Stats" parent="Urchin" index="3"]
+LVL = 4
+ATK = 6.0
+
 [node name="Wizard" parent="." instance=ExtResource("4_jqmts")]
 position = Vector2(80, 20)
 

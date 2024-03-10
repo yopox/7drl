@@ -2079,5 +2079,11 @@ layer_0/tile_data = PackedInt32Array(0, 0, 0, 65536, 0, 0, 131072, 0, 0, 196608,
 [node name="Crab" parent="." instance=ExtResource("3_7vnbb")]
 position = Vector2(80, 36)
 
+[node name="Stats" parent="Crab" index="0"]
+LVL = 5
+ATK = 8.0
+
 [node name="Spider" parent="." instance=ExtResource("4_jvm2v")]
 position = Vector2(140, 12)
+
+[editable path="Crab"]

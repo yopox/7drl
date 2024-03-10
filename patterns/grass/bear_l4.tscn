@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://dd68cn44ivvrc"]
+
+[ext_resource type="PackedScene" uid="uid://gliydobcreeq" path="res://entities/bear/bear.tscn" id="1_ryc6k"]
+
+[node name="BearL8" type="Node2D"]
+
+[node name="Bear" parent="." instance=ExtResource("1_ryc6k")]
+
+[node name="Stats" parent="Bear" index="2"]
+LVL = 4
+
+[editable path="Bear"]

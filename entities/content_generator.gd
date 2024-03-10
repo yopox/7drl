@@ -1,7 +1,7 @@
 class_name ContentGenerator extends Node
 
 var sand_patterns = [
-	[20, null],
+	[17, null],
 	[3, preload("res://patterns/sand/bloc.tscn")],
 	[2, preload("res://patterns/sand/bloc_2.tscn")],
 	[3, preload("res://patterns/sand/crab_l3.tscn")],
@@ -15,25 +15,25 @@ var sand_patterns = [
 var sand_weights: int = 0
 
 var grass_patterns = [
-	[15, null],
-	[0, preload("res://patterns/grass/spiders_2.tscn")],
-	[1, preload("res://patterns/grass/potion.tscn")],
-	[2, preload("res://patterns/sand/bloc_2.tscn")],
-	[0, preload("res://entities/spikes/spikes.tscn")],
-	[3, preload("res://patterns/grass/bear_l2.tscn")],
-	[2, preload("res://patterns/grass/spider_l2.tscn")],
+	[13, null],
+	[1, preload("res://patterns/grass/spiders_2.tscn")],
+	[3, preload("res://patterns/grass/potion.tscn")],
+	[3, preload("res://patterns/sand/bloc_2.tscn")],
+	[1, preload("res://entities/spikes/spikes.tscn")],
+	[4, preload("res://patterns/grass/bear_l4.tscn")],
+	[3, preload("res://patterns/grass/spider_l8.tscn")],
 ]
 var grass_weights: int = 0
 
 var rock_patterns = [
-	[18, null],
-	[0, preload("res://patterns/rock/crab_l15.tscn")],
+	[12, null],
+	[2, preload("res://patterns/rock/crab_l6.tscn")],
 	[1, preload("res://patterns/grass/potion.tscn")],
 	[2, preload("res://patterns/sand/bloc_2.tscn")],
-	[0, preload("res://entities/spikes/spikes.tscn")],
-	[3, preload("res://patterns/rock/shrimp_blocs_l13.tscn")],
-	[2, preload("res://patterns/rock/spiders_18.tscn")],
-	[2, preload("res://patterns/rock/shrimp_urchin_l16.tscn")],
+	[3, preload("res://entities/spikes/spikes.tscn")],
+	[3, preload("res://patterns/rock/shrimp_blocs_l6.tscn")],
+	[2, preload("res://patterns/rock/spider_l9.tscn")],
+	[2, preload("res://patterns/rock/shrimp_urchin_l8.tscn")],
 ]
 
 var rock_weights: int = 0
