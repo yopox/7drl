@@ -38,7 +38,7 @@ shape = SubResource("RectangleShape2D_14c6k")
 [node name="Stats" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("4_qbbxv")]
 LVL = 6
 HP = 50
-ATK = 12.0
+ATK = 8.0
 FRQ = 1.0
 SPD = 30.0
 sprite = NodePath("../Sprite2D")
