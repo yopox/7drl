@@ -26,6 +26,7 @@ func process_enemy(delta):
 			add_child(b)
 			b.detonated.connect(detonated)
 			b.damage = stats.ATK
+			b.body_ignored.append(self)
 		if decay.time_left < 0.01:
 			rushing = false
 	else:

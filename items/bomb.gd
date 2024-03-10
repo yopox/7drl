@@ -7,7 +7,7 @@ class_name Bomb extends Node2D
 
 @export var bomb_event: EventAsset
 var bomb_instance: EventInstance
-var body_ignored = [self]
+var body_ignored := [self]
 
 @onready var color_rect: ColorRect = $ColorRect
 @onready var area: Area2D = $Area2D
