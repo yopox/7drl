@@ -2,6 +2,7 @@ class_name Enemy extends CharacterBody2D
 
 @export var stats: Stats
 @export var elite_emitter: GPUParticles2D
+@export var can_be_elite: bool = true
 
 signal hit(stats: Stats)
 signal hit_player
@@ -11,7 +12,7 @@ var item_drop = preload("res://items/item_drop.tscn")
 
 
 func _ready():
-	if randi_range(0, 20) == 0:
+	if can_be_elite and randi_range(0, 20) == 0:
 		stats.elite = true
 		elite_emitter.emitting = true
 
@@ -35,5 +36,8 @@ func die():
 		var angle = randf() * 2 * PI
 		ball.apply_impulse(Vector2(cos(angle), sin(angle)))
 		add_sibling(ball)
-		
+	
+	on_dead()
+
+func on_dead():
 	queue_free()

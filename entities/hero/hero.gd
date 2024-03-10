@@ -18,7 +18,7 @@ var arrow = preload("res://attacks/arrow.tscn")
 var sword = preload("res://attacks/sword.tscn")
 var wiz_zone = preload("res://attacks/wiz_zone.tscn")
 
-var hero_class: Class = Class.Fighter
+var hero_class: Class = Class.Archer
 var death_color = Vector4(0.114, 0.094, 0.094, 1)
 var dash = false
 var dash_vel: Vector2

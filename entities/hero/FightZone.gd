@@ -29,6 +29,7 @@ func update_music(hero_terrain):
 		terrain_intent = 1
 		intent_timer.start()
 
+
 func _on_body_entered(_body):
 	update_instance()
 
