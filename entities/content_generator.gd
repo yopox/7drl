@@ -19,7 +19,7 @@ var grass_patterns = [
 	[1, preload("res://patterns/grass/spiders_2.tscn")],
 	[3, preload("res://patterns/sand/bloc_2.tscn")],
 	[1, preload("res://entities/spikes/spikes.tscn")],
-	[4, preload("res://patterns/grass/bear_l4.tscn")],
+	[4, preload("res://patterns/grass/bear_l6.tscn")],
 	[3, preload("res://patterns/grass/spider_l8.tscn")],
 	[1, preload("res://entities/chest/chest.tscn")],
 	[1, preload("res://patterns/grass/clover.tscn")],

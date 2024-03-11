@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://dd68cn44ivvrc"]
+
+[ext_resource type="PackedScene" uid="uid://gliydobcreeq" path="res://entities/bear/bear.tscn" id="1_53buu"]
+
+[node name="BearL6" type="Node2D"]
+
+[node name="Bear" parent="." instance=ExtResource("1_53buu")]
+
+[editable path="Bear"]
