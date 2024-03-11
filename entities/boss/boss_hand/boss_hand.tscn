@@ -33,8 +33,7 @@ texture = SubResource("AtlasTexture_j1glv")
 
 [node name="Stats" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("5_v2ixx")]
 LVL = 0
-HP = 200
-ATK = 4.0
+HP = 250
 FRQ = 8.0
 sprite = NodePath("../Sprite2D")
 

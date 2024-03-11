@@ -34,8 +34,7 @@ texture = SubResource("AtlasTexture_05qj3")
 
 [node name="Stats" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("3_k7p7g")]
 LVL = 0
-HP = 200
-ATK = 4.0
+HP = 250
 sprite = NodePath("../Sprite2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
