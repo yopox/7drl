@@ -20,7 +20,8 @@ func _process(_delta):
 	if Util.game_over:
 		return
 	
-	if Input.is_action_just_pressed("select_item"):
+	if Input.is_action_just_pressed("select_item") or Util.android_select1:
+		Util.android_select1 = false
 		Util.selected_item = (Util.selected_item + 1) % 7
 		Audio.play_sfx(Audio.SFX.Select)
 		update()

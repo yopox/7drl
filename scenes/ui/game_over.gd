@@ -2,11 +2,17 @@ class_name GameOver extends TileMap
 
 
 func _process(_delta):
-	if visible and Input.is_action_just_pressed("use_item"):
+	if visible and (Input.is_action_just_pressed("use_item") or Util.android_select1 or Util.android_select2 or Util.android_start):
+		Util.android_select1 = false
+		Util.android_select2 = false
+		Util.android_start = false
 		Util.return_to_title.emit()
 	
 	if not visible and Util.game_over:
 		setup()
+		Util.android_select1 = false
+		Util.android_select2 = false
+		Util.android_start = false
 		visible = true
 
 func setup():

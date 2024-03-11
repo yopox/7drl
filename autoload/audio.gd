@@ -11,4 +11,3 @@ func play_sfx(sfx: SFX):
 		SFX.GrabItem:
 			FMODRuntime.play_one_shot_path("event:/Grab Item")
 
-
