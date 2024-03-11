@@ -2,10 +2,10 @@
 
 [ext_resource type="PackedScene" uid="uid://fmnaew6q3fnr" path="res://entities/crab/crab.tscn" id="1_irsgx"]
 
-[node name="CrabL15" type="Node2D"]
+[node name="Crabs_2" type="Node2D"]
 
 [node name="Crab" parent="." instance=ExtResource("1_irsgx")]
-position = Vector2(-16, -8)
+position = Vector2(16, 2.08165e-12)
 
 [node name="Stats" parent="Crab" index="0"]
 LVL = 6
@@ -13,16 +13,14 @@ HP = 30
 ATK = 8.0
 FRQ = 6.0
 
-[node name="Crab2" parent="." node_paths=PackedStringArray("elite_emitter") instance=ExtResource("1_irsgx")]
-position = Vector2(16, 16)
-elite_emitter = NodePath("../Crab/EliteEmitter")
+[node name="Crab2" parent="." instance=ExtResource("1_irsgx")]
+position = Vector2(-16, 2.08165e-12)
 
-[node name="Stats" parent="Crab2" index="0" node_paths=PackedStringArray("sprite")]
+[node name="Stats" parent="Crab2" index="0"]
 LVL = 6
 HP = 30
 ATK = 8.0
 FRQ = 6.0
-sprite = NodePath("../../Crab/Sprite2D")
 
 [editable path="Crab"]
 [editable path="Crab2"]
