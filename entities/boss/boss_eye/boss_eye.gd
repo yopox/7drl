@@ -1,11 +1,17 @@
 extends Enemy
 
+@onready var emitter: GPUParticles2D = $EliteEmitter
 @onready var sprite: Sprite2D = $Sprite2D
 
 var pattern: Boss.Pattern = Boss.Pattern.NONE
 var is_left: bool = false
 var is_dead = false
 var bubble := preload("res://attacks/bubble.tscn")
+
+
+func _ready():
+		(sprite.material as ShaderMaterial).set_shader_parameter("tile_color", Vector4(0.8, 0.824, 0.275, 1.0))
+
 
 func process_enemy(_delta):
 	if is_dead or Util.game_over:
@@ -54,4 +60,5 @@ func on_dead():
 	is_dead = true
 	collision_layer = 0
 	collision_mask = 0
+	emitter.emitting = false
 	(sprite.material as ShaderMaterial).set_shader_parameter("tile_color", Vector4(0.322, 0.302, 0.302, 1.0))
